@@ -1,21 +1,16 @@
-import { popularAnimeSchema, popularAnimeType } from "../types";
+import { popularAnimeSchema } from "../types";
 import { instance } from "./instance";
 
 export const popularAnime = async () => {
   try {
-    const { data }: { data: popularAnimeType } = await instance.get(
+    const { data }: { data: unknown } = await instance.get(
       "meta/anilist/popular",
       {
-        params: {
-          page: 1,
-          perPage: 20,
-        },
+        params: { page: 2, perPage: 20 },
       }
     );
 
     const validatedAnime = popularAnimeSchema.safeParse(data);
-
-    console.log(data);
 
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);

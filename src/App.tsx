@@ -1,16 +1,21 @@
+import { Route, Routes } from "react-router-dom";
+import Home from "./page/Home";
+import Navigation from "./components/Navigation/Navigation";
+import { popularAnime } from "./services/api";
 import { useQuery } from "@tanstack/react-query";
 
-import { popularAnime } from "./services/api";
-
 function App() {
-  const { data, error, isError } = useQuery({
-    queryKey: ["anime"],
+  const { data } = useQuery({
+    queryKey: ["popular"],
     queryFn: popularAnime,
   });
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </>
   );
 }
