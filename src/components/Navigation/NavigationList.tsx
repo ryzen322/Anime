@@ -7,7 +7,6 @@ const NavigationList = ({
   category: string;
   list: string[];
 }) => {
-  console.log(list);
   return (
     <li className=" flex flex-col gap-1">
       <h1 className=" text-lg">{category}</h1>
