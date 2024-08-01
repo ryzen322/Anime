@@ -1,15 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./page/Home";
 import Navigation from "./components/Navigation/Navigation";
-import { popularAnime } from "./services/api";
-import { useQuery } from "@tanstack/react-query";
 
 function App() {
-  const { data } = useQuery({
-    queryKey: ["popular"],
-    queryFn: popularAnime,
-  });
-
   return (
     <>
       <Navigation />
