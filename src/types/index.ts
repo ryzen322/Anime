@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const titleObjectSchema = z.object({
-  english: z.string(),
+  english: z.string().nullable(),
   native: z.string(),
   romaji: z.string(),
   userPreferred: z.string(),
@@ -12,6 +12,7 @@ export const trailerObjectSchema = z.object({
   thumbnail: z.string().optional(),
   thumbnailHash: z.string(),
 });
+
 export const genresObjectSchema = z.string().array();
 
 export const animeObjectSchema = z.object({
@@ -40,4 +41,28 @@ export const popularAnimeSchema = z.object({
   results: z.array(animeObjectSchema),
 });
 
+export const searchObjectSchema = z.object({
+  id: z.string(),
+  color: z.string().nullable(),
+  cover: z.string().nullable(),
+  coverHash: z.string(),
+  currentEpisodeCount: z.number().nullable(),
+  description: z.string().nullable(),
+  genres: genresObjectSchema.nullable(),
+  image: z.string(),
+  imageHash: z.string(),
+  malId: z.number(),
+  popularity: z.number(),
+  rating: z.number().nullable(),
+  releaseDate: z.number().nullable(),
+  status: z.string(),
+  title: titleObjectSchema,
+  totalEpisodes: z.number().nullable(),
+  type: z.string().nullable(),
+});
+
+export const searchAnimeSchema = z.object({
+  results: z.array(searchObjectSchema).nonempty(),
+});
+export type SearchAnime = z.infer<typeof searchAnimeSchema>;
 export type popularAnimeType = z.infer<typeof popularAnimeSchema>;

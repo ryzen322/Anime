@@ -1,7 +1,12 @@
 import { createPortal } from "react-dom";
 import { IoSearch } from "react-icons/io5";
+
+import { useSearchAnime } from "../../hooks/useSearchAnime";
 import { Link } from "react-router-dom";
+
 const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
+  const { queries, setFilter } = useSearchAnime();
+
   function closeModal() {
     modalToggle();
     const portalEl = document.querySelector("#portal");
@@ -14,7 +19,7 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
       onClick={() => closeModal()}
     >
       <div
-        className=" w-[26rem]  flex flex-col h-[80dvh]  bg-[#181818] rounded-md"
+        className=" w-[24.5rem]  flex flex-col bg-[#181818] rounded-md"
         onClick={(event) => {
           event.stopPropagation();
         }}
@@ -26,11 +31,25 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
               type="text"
               placeholder="What do you want to listen to?"
               className=" w-full outline-none  font-medium placeholder-stone-500"
+              onChange={(e) => {
+                setFilter(e.target.value);
+              }}
             />
           </div>
         </div>
-        <ul className=" flex flex-col">
-          <Link to={""} className=" w-full h-[4rem] "></Link>
+        <ul className=" flex flex-col min-h-[25rem] max-h-[25rem] overflow-y-scroll px-3 no-scrollbar">
+          {queries.data?.results?.map((item) => (
+            <Link
+              key={item.id}
+              to={""}
+              className=" w-full min-h-[4rem] bg-stone-500 rounded-md"
+            >
+              <p>{item.title.english}</p>
+            </Link>
+          ))}
+          {queries.isLoading && (
+            <div className=" w-full min-h-[4rem] bg-stone-500 rounded-md animate-pulse"></div>
+          )}
         </ul>
       </div>
     </div>,
