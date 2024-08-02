@@ -27,9 +27,9 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #101014;
-  opacity: 56%;
-  z-index: 100;
+  background-color: rgba(16, 16, 20, 0.56);
+
+  z-index: 30;
 }
 .hidden {
   display: none;

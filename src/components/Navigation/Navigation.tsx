@@ -32,7 +32,6 @@ const Navigation = () => {
     setModal(!modal);
     const portalEl = document.querySelector("#portal");
     portalEl?.classList.remove("hidden");
-    console.log("clicked");
   }
 
   return (
