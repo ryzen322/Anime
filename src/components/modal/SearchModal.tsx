@@ -22,11 +22,11 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
 
   return createPortal(
     <div
-      className=" w-full h-full flex  justify-center items-center relative z-40"
+      className=" h-dvh w-full flex  justify-center items-center relative z-40"
       onClick={() => closeModal()}
     >
       <div
-        className=" w-[24.5rem] min-h-[31rem]  flex flex-col  rounded-md"
+        className=" w-[24.5rem] min-h-[31rem]  flex flex-col  rounded-md bg-[#181818] sm:w-[30rem]"
         onClick={(event) => {
           event.stopPropagation();
         }}
@@ -36,10 +36,10 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
             <IoSearch className=" text-2xl" />
             <input
               type="text"
-              placeholder="What do you want to listen to?"
-              className=" w-full outline-none  font-medium placeholder-stone-500"
+              placeholder="Search Anime you like sample One Piece"
+              className=" w-full outline-none  font-medium placeholder-stone-500 placeholder:text-sm"
               onChange={(e) => {
-                setFilter(e.target.value);
+                setFilter(e.target.value.toLowerCase());
               }}
             />
             {queries.isLoading && (
@@ -66,6 +66,7 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
               </SearchUl>
             )
           )}
+
           {queries.isLoading && <SearchComp isLoading={!queries.isLoading} />}
         </>
       </div>

@@ -25,13 +25,12 @@ const SearchList = ({ src, type, title, genre }: ListSearch) => {
         <h1 className=" text-white text-sm font-semibold truncate ">{title}</h1>
         <div className=" flex items-center gap-1 truncate">
           {genre?.map((item, index) => (
-            <Link
+            <p
               key={index}
-              to={""}
               className=" text-[#7c7c7c] font-semibold text-xs hover:underline"
             >
               {index === genre.length - 1 ? `${item}` : `${item},`}
-            </Link>
+            </p>
           ))}
         </div>
       </div>

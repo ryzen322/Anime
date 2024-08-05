@@ -1,7 +1,7 @@
 const SearchLoading = ({ isLoading }: { isLoading: boolean | undefined }) => {
   return (
     <div
-      className={` h-[4rem] w-full ${
+      className={` min-h-[4rem] w-full ${
         isLoading ? "hidden" : "flex"
       } flex gap-2 p-1 animate-pulse`}
     >

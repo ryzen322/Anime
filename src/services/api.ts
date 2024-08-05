@@ -23,7 +23,11 @@ export const popularAnime = async () => {
 
 export const searchAnime = async (search: string | undefined) => {
   try {
-    const { data } = await instance.get(`meta/anilist/${search}`);
+    const { data } = await instance.get(`meta/anilist/${search}`, {
+      params: {
+        page: 1,
+      },
+    });
 
     data.results.map(() => {
       // console.log(item.title);

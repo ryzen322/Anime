@@ -13,7 +13,7 @@ const SearchUl = ({
     <ul
       className={` flex flex-col ${className} ${
         !loading ? "h-[25rem]" : "h-0"
-      }  overflow-y-scroll rounded-b-md no-scrollbar transition-all duration-100 ease-in-out px-3 bg-[#181818]`}
+      } w-full overflow-y-scroll rounded-b-md no-scrollbar transition-all duration-100 ease-in-out px-3 sm:h-[35rem]`}
     >
       {children}
     </ul>

@@ -1,1 +1,1 @@
-export const fakeArray = Array.from({ length: 6 }, (_, index) => index + 1);
+export const fakeArray = Array.from({ length: 10 }, (_, index) => index + 1);
