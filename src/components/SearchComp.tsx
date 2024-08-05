@@ -4,7 +4,7 @@ import SearchLoading from "./common/search/loadingComponents/SearchLoading";
 
 const SearchComp = ({ isLoading }: { isLoading: boolean | undefined }) => {
   return (
-    <SearchUl loading={isLoading}>
+    <SearchUl className="" loading={isLoading}>
       {fakeArray.map((_, index) => (
         <SearchLoading key={index} isLoading={isLoading} />
       ))}
