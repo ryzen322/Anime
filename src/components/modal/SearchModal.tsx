@@ -1,8 +1,11 @@
 import { createPortal } from "react-dom";
 import { IoSearch } from "react-icons/io5";
-
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useSearchAnime } from "../../hooks/useSearchAnime";
-import { Link } from "react-router-dom";
+import SearchUl from "../common/search/SearchUl";
+import SearchComp from "../SearchComp";
+import SearchList from "../SearchList";
+import SearchError from "../common/search/Error/SearchError";
 
 const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
   const { queries, setFilter } = useSearchAnime();
@@ -13,18 +16,22 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
     portalEl?.classList.add("hidden");
   }
 
+  if (queries.data) {
+    console.log(queries.data);
+  }
+
   return createPortal(
     <div
       className=" w-full h-full flex  justify-center items-center relative z-40"
       onClick={() => closeModal()}
     >
       <div
-        className=" w-[24.5rem]  flex flex-col bg-[#181818] rounded-md"
+        className=" w-[24.5rem] min-h-[31rem]  flex flex-col  rounded-md"
         onClick={(event) => {
           event.stopPropagation();
         }}
       >
-        <div className=" w-full h-[4.5rem]  rounded-md flex items-center p-3">
+        <div className=" w-full h-[4.5rem] p-3 rounded-md flex items-center bg-[#181818] ">
           <div className=" w-full bg-white h-full rounded-3xl p-4 flex items-center gap-2 ">
             <IoSearch className=" text-2xl" />
             <input
@@ -35,22 +42,32 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
                 setFilter(e.target.value);
               }}
             />
+            {queries.isLoading && (
+              <AiOutlineLoading3Quarters className=" text-2xl animate-spin" />
+            )}
           </div>
         </div>
-        <ul className=" flex flex-col min-h-[25rem] max-h-[25rem] overflow-y-scroll px-3 no-scrollbar">
-          {queries.data?.results?.map((item) => (
-            <Link
-              key={item.id}
-              to={""}
-              className=" w-full min-h-[4rem] bg-stone-500 rounded-md"
-            >
-              <p>{item.title.english}</p>
-            </Link>
-          ))}
-          {queries.isLoading && (
-            <div className=" w-full min-h-[4rem] bg-stone-500 rounded-md animate-pulse"></div>
+
+        <>
+          {queries.isError ? (
+            <SearchError error={queries.error.message} />
+          ) : (
+            !queries.isLoading && (
+              <SearchUl className=" gap-0" loading={queries.isLoading}>
+                {queries.data?.results?.map((item) => (
+                  <SearchList
+                    genre={item.genres}
+                    key={item.id}
+                    src={item.image}
+                    type={item.type}
+                    title={item.title.userPreferred}
+                  />
+                ))}
+              </SearchUl>
+            )
           )}
-        </ul>
+          {queries.isLoading && <SearchComp isLoading={!queries.isLoading} />}
+        </>
       </div>
     </div>,
     document.getElementById("portal")!
