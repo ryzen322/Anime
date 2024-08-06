@@ -16,10 +16,6 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
     portalEl?.classList.add("hidden");
   }
 
-  if (queries.data) {
-    console.log(queries.data);
-  }
-
   return createPortal(
     <div
       className=" h-dvh w-full flex  justify-center items-center relative z-40"

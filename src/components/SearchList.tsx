@@ -18,7 +18,6 @@ const SearchList = ({ src, type, title, genre }: ListSearch) => {
         <Image
           className=" w-full h-full rounded-md object-cover"
           src={`${src}`}
-          loading="lazy"
         />
       </div>
       <div className=" flex flex-col  h-full justify-evenly w-[60%] gap-1">
