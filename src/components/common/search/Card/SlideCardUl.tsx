@@ -16,7 +16,6 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
       if (selectChild) {
         selectChild.forEach((el, index) => {
           if (index === 0) {
-            // el.classList.add(`left-[${viewScroll * 100}%]`);
             el.style.left = `-${viewScroll * 100}%`;
           } else {
             el.style.right = `${viewScroll * 100}%`;
@@ -43,6 +42,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
           <SlideCardAction
             key={data.id}
             current={index}
+            active={index === viewScroll}
             showSlide={setViewScroll}
           />
         ))}
