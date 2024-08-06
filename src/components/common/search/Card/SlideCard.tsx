@@ -3,10 +3,10 @@ import Image from "../Image";
 const SlideCard = ({ src }: { src: string }) => {
   return (
     <li
-      className=" child-0 min-w-full h-full p-2 relative transition-all duration-300 "
+      className="  min-w-full p-4 relative transition-all duration-300 flex items-center justify-center"
       id={"child"}
     >
-      <div className=" h-full w-full p-2">
+      <div className=" h-[25rem] w-full  rounded-md ">
         <Image className=" w-full h-full object-cover rounded-md" src={src} />
       </div>
     </li>
