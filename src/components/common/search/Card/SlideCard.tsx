@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Image from "../Image";
 import { FaPlus, FaPlay } from "react-icons/fa6";
-import { MdOutlinePlaylistAdd, MdInsertLink } from "react-icons/md";
-
+import { MdOutlinePlaylistAdd } from "react-icons/md";
+import { IoAlertCircle } from "react-icons/io5";
 const SlideCard = ({
   src,
   description,
@@ -53,13 +53,13 @@ const SlideCard = ({
             </div>
             <div className=" flex items-center gap-2 mt-1">
               <button className=" text-black bg-white/70  text-xs font-bold flex items-center justify-center px-3 py-1 gap-1  rounded-sm ">
-                <FaPlay />
+                <FaPlay className=" text-base" />
               </button>
               <button className=" text-black bg-white/70  text-xs font-bold flex items-center justify-center px-3 py-1  rounded-sm ">
-                <MdOutlinePlaylistAdd />
+                <MdOutlinePlaylistAdd className=" text-base" />
               </button>
               <button className=" text-black bg-white/70  text-xs font-bold flex items-center justify-center px-3 py-1  rounded-sm ">
-                <MdInsertLink />
+                <IoAlertCircle className=" text-base" />
               </button>
             </div>
           </div>
