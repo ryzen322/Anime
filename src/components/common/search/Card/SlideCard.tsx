@@ -1,13 +1,18 @@
 import { useState } from "react";
 import Image from "../Image";
-import { FaPlus } from "react-icons/fa6";
+import { FaPlus, FaPlay } from "react-icons/fa6";
+import { MdOutlinePlaylistAdd, MdInsertLink } from "react-icons/md";
 
-const SlideCard = ({ src }: { src: string }) => {
-  const [toggleText, setToggleText] = useState(false);
-  const string = `Several hundred years ago, humans were nearly exterminated by titans. Titans are typically several stories tall, seem to have no intelligence, devour human beings and, worst of all, seem to do it for the pleasure rather than as a food source. A small percentage of humanity survived by walling themselves in a city protected by extremely high walls, even taller than the biggest of titans.<br><br>
-Flash forward to the present and the city has not seen a titan in over 100 years. Teenage boy Eren and his foster sister Mikasa witness something horrific as the city walls are destroyed by a colossal titan that appears out of thin air. As the smaller titans flood the city, the two kids watch in horror as their mother is eaten alive. Eren vows that he will murder every single titan and take revenge for all of mankind.<br><br>
-(Source: MangaHelpers)`;
-  const text = string.split(" ").slice(0, 6);
+const SlideCard = ({
+  src,
+  description,
+}: {
+  src: string;
+  description: string;
+}) => {
+  const [toggleText, setToggleText] = useState(true);
+
+  const text = description.split(" ").slice(0, 6);
   const textSTring = [...text].toString().replaceAll(",", " ");
   return (
     <li
@@ -35,7 +40,7 @@ Flash forward to the present and the city has not seen a titan in over 100 years
               <p
                 className=" text-xs relative top-0 bottom-0"
                 dangerouslySetInnerHTML={{
-                  __html: toggleText ? `${textSTring}` : `${string} ...`,
+                  __html: toggleText ? `${textSTring}` : `${description} ...`,
                 }}
                 onClick={() => setToggleText(!toggleText)}
               />
@@ -46,8 +51,20 @@ Flash forward to the present and the city has not seen a titan in over 100 years
                 {toggleText ? "more" : ""}
               </p>
             </div>
+            <div className=" flex items-center gap-2 mt-1">
+              <button className=" text-black bg-white/70  text-xs font-bold flex items-center justify-center px-3 py-1 gap-1  rounded-sm ">
+                <FaPlay />
+              </button>
+              <button className=" text-black bg-white/70  text-xs font-bold flex items-center justify-center px-3 py-1  rounded-sm ">
+                <MdOutlinePlaylistAdd />
+              </button>
+              <button className=" text-black bg-white/70  text-xs font-bold flex items-center justify-center px-3 py-1  rounded-sm ">
+                <MdInsertLink />
+              </button>
+            </div>
           </div>
         </div>
+
         <Image
           className=" w-full h-full object-cover rounded-md scale-95"
           src={src}
