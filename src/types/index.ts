@@ -64,6 +64,8 @@ export const searchObjectSchema = z.object({
 export const searchAnimeSchema = z.object({
   results: z.array(searchObjectSchema).nonempty(),
 });
+
+export type AnimeObj = z.infer<typeof animeObjectSchema>;
 export type Genres = z.infer<typeof genresObjectSchema>;
 export type SearchAnime = z.infer<typeof searchAnimeSchema>;
 export type popularAnimeType = z.infer<typeof popularAnimeSchema>;

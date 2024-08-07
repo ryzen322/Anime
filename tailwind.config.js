@@ -9,6 +9,9 @@ export default {
       backgroundColor: {
         Primary: "#101014",
       },
+      screens: {
+        phoneX: "500px",
+      },
     },
   },
   plugins: [],

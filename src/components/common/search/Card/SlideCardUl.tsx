@@ -5,6 +5,7 @@ import { popularAnimeType } from "../../../../types";
 
 const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
   const [viewScroll, setViewScroll] = useState(0);
+  const [increment, setIncrement] = useState(true);
   const refEl = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -24,6 +25,26 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
       }
     }
   }, [viewScroll]);
+
+  useEffect(() => {
+    const timex = setInterval(() => {
+      setViewScroll((prevCount) => {
+        if (prevCount === 5) {
+          setIncrement(false);
+          return prevCount - 1;
+        } else if (prevCount === 0) {
+          setIncrement(true);
+          return prevCount + 1;
+        } else {
+          return increment ? prevCount + 1 : prevCount - 1;
+        }
+      });
+    }, 4000);
+
+    return () => {
+      clearInterval(timex);
+    };
+  }, [viewScroll, item, increment]);
 
   return (
     <>

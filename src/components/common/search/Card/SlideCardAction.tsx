@@ -9,9 +9,9 @@ const SlideCardAction = ({
 }) => {
   return (
     <li
-      className={` h-[.5rem] w-[.5rem] rounded-full ${
+      className={` p-1 rounded-full ${
         active ? " bg-green-800" : " bg-white"
-      } flex items-center justify-center cursor-point transition-all duration-200 ease-linear`}
+      } flex items-center justify-center cursor-point transition-all duration-200 ease-linear cursor-pointer sm:p-2`}
       onClick={() => {
         showSlide(current);
       }}
