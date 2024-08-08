@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import SlideCardAction from "./SlideCardAction";
-import SlideCard from "./SlideCard";
+
 import { popularAnimeType } from "../../../../types";
+import SlideCard from "./SlideCard";
 
 const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
   const [viewScroll, setViewScroll] = useState(0);
+
   const [increment, setIncrement] = useState(true);
+  const intervalRef = useRef<HTMLLIElement>(null);
   const refEl = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -44,31 +47,36 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
     return () => {
       clearInterval(timex);
     };
-  }, [viewScroll, item, increment]);
+  }, [viewScroll, increment]);
 
   return (
     <>
       <ul
         ref={refEl}
-        className=" w-full  flex items-center  rounded-md  gap-1 overflow-hidden relative transition-all duration-200 ease-in-out "
+        className=" w-full  flex items-center  rounded-md overflow-hidden relative transition-all duration-200 ease-in-out "
         id={"parent"}
       >
-        {item.results.map((data) => (
+        {item.results.map((data, index) => (
           <SlideCard
+            ref={intervalRef}
             key={data.id}
             src={data.image}
             description={data.description}
+            coverImage={data.cover}
+            active={index === viewScroll ? true : false}
           />
         ))}
       </ul>
 
-      <ul className=" flex items-center justify-center gap-2">
+      <ul className=" flex items-center justify-center gap-2 md:flex-col md:gap-1">
         {item.results.map((data, index) => (
           <SlideCardAction
             key={data.id}
             current={index}
             active={index === viewScroll}
             showSlide={setViewScroll}
+            image={data.image}
+            title={data.title.userPreferred}
           />
         ))}
       </ul>
