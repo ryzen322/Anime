@@ -53,7 +53,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
     <>
       <ul
         ref={refEl}
-        className=" w-full  flex items-center  rounded-md overflow-hidden relative transition-all duration-200 ease-in-out "
+        className=" w-full  flex items-center rounded-md overflow-hidden relative transition-all duration-200 ease-in-out "
         id={"parent"}
       >
         {item.results.map((data, index) => (

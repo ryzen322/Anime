@@ -15,7 +15,7 @@ const SectionCart = () => {
   console.log(data);
 
   return (
-    <section className=" flex flex-col w-full  p-3 rounded-md md:flex-row md:p-0 md:gap-2 md:mt-2">
+    <section className=" flex flex-col w-full  p-3 rounded-md md:flex-row md:p-0 md:gap-2 md:mt-2 ">
       <SlideCardUl item={data!} />
     </section>
   );
