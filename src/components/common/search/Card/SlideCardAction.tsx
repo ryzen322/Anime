@@ -15,10 +15,11 @@ const SlideCardAction = ({
 }) => {
   return (
     <li
-      className={` p-1 rounded-full -z-40 ${
+      className={` p-1 rounded-full  ${
         active ? " bg-green-800 md:bg-[#28282C]" : " bg-white md:bg-Primary"
       } flex items-center justify-center cursor-point transition-all duration-200 ease-linear cursor-pointer sm:p-2 md:w-[7.5rem] md:flex-1 md:rounded-md md:justify-normal gap-2 relative overflow-hidden lg:w-[11rem] lg:p-1 lg:px-2 xl:w-[15rem]`}
       onClick={() => {
+        console.log("clicked");
         showSlide(current);
       }}
     >
