@@ -69,10 +69,9 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
             title={data.title.english ?? data.title.userPreferred}
           />
         ))}
-        {/* <div className=" w-full h-[15rem] bg-slate-700"></div> */}
       </ul>
 
-      <ul className=" flex items-center justify-center gap-2 md:flex-col md:gap-1">
+      <ul className=" flex items-center justify-center  gap-2 md:flex-col md:gap-1">
         {item.results.map((data, index) => (
           <SlideCardAction
             key={data.id}
