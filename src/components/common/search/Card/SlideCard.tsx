@@ -3,16 +3,20 @@ import Image from "../Image";
 import { FaPlay, FaPlus } from "react-icons/fa";
 import { MdOutlinePlaylistAdd } from "react-icons/md";
 import { IoAlertCircle } from "react-icons/io5";
+import { Button } from "../../../Button";
 
 interface ListItemProps {
   src: string;
   description: string;
   coverImage: string | null;
   active: boolean;
+  title: string;
+  rating: number;
+  genre: string[];
 }
 
 const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
-  ({ active, coverImage, description, src }, ref) => {
+  ({ active, coverImage, description, src, genre, rating, title }, ref) => {
     const [toggleText, setToggleText] = useState(true);
 
     const text = description.split(" ").slice(0, 6);
@@ -22,24 +26,43 @@ const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
         ref={ref}
         className={`  min-w-full p-4 relative ${
           active ? "opacity-100" : "opacity-0"
-        } transition-all duration-400 flex items-center justify-center md:p-0`}
+        } transition-all duration-700 flex items-center justify-center md:p-0`}
         id={"child"}
       >
-        <div className=" h-[30rem] w-full rounded-md relative phoneX:h-[35rem] sm:h-[45rem] md:h-[20rem] bg-stone-600 lg:h-[25rem] xl:h-[33rem]">
-          <div className=" absolute w-full h-full right-0 left-0 bg-gradient-to-b from-black/10 to-black/65 z-20 p-4 rounded-md flex flex-col phoneX:p-2">
+        <div className=" h-[30rem] w-full rounded-md relative phoneX:h-[35rem] sm:h-[45rem] md:h-[20rem]  lg:h-[25rem] xl:h-[33rem]">
+          <div className=" w-full h-full right-0 left-0 bg-gradient-to-b from-black/10 to-black/65 p-4 rounded-md flex flex-col phoneX:p-2">
             <div className=" w-[2rem] h-[2rem] bg-black/85 ml-auto rounded-full border-[2px] flex items-center justify-center hover:bg-black cursor-pointer">
               <FaPlus className=" text-white text-lg" />
             </div>
             <div className=" mt-auto text-white flex flex-col p-1">
               <h1 className=" text-2xl font-bold phoneX:text-3xl sm:text-4xl md:text-2xl xl:text-6xl">
-                Attack on Titan
+                {title}
               </h1>
               <p className=" text-sm font-semibold text-stone-300 phoneX:text-lg sm:text-lg md:text-sm xl:text-2xl">
-                Rating: 84
+                Rating: {rating}
               </p>
-              <span className=" text-xs font-semibold text-stone-300 phoneX:text-sm sm:text-base md:text-sm xl:text-2xl">
-                Adventure, Action, Drama
-              </span>
+              <div className=" flex items-center gap-2">
+                <span className=" text-xs font-semibold text-stone-300 phoneX:text-sm sm:text-base md:text-sm xl:text-2xl">
+                  Genre:
+                </span>
+                {genre.map((gen, index) =>
+                  index === genre.length - 1 ? (
+                    <span
+                      key={index}
+                      className=" text-xs font-semibold text-stone-300 phoneX:text-sm sm:text-base md:text-sm xl:text-2xl"
+                    >
+                      {gen}
+                    </span>
+                  ) : (
+                    <span
+                      key={index}
+                      className=" text-xs font-semibold text-stone-300 phoneX:text-sm sm:text-base md:text-sm xl:text-2xl"
+                    >
+                      {gen},
+                    </span>
+                  )
+                )}
+              </div>
               <div
                 className={` relative  ${
                   toggleText
@@ -64,25 +87,28 @@ const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
                 </p>
               </div>
               <div className=" flex items-center gap-2 mt-1 phoneX:mt-2 md:mt-1">
-                <button className=" text-black bg-white/70  text-xs font-bold flex items-center justify-center px-6 py-1 gap-1  rounded-sm ">
-                  <FaPlay className=" text-lg phoneX:text-2xl xl:text-4xl" />
-                </button>
-                <button className=" text-black bg-white/70  text-xs font-bold flex items-center justify-center px-6 py-1  rounded-sm ">
-                  <MdOutlinePlaylistAdd className=" text-lg phoneX:text-2xl xl:text-4xl" />
-                </button>
-                <button className=" text-black bg-white/70  text-xs font-bold flex items-center justify-center p-1 rounded-md ">
-                  <IoAlertCircle className=" text-lg phoneX:text-2xl xl:text-4xl" />
-                </button>
+                <Button>
+                  <FaPlay className="  h-full" />
+                  <p className=" text-sm text-center h-full flex items-center justify-center xl:text-lg xl:relative top-[-2px]">
+                    Play
+                  </p>
+                </Button>
+                <Button variant={"secondaryColor"}>
+                  <MdOutlinePlaylistAdd className="  h-full text-2xl" />
+                </Button>
+                <Button variant={"thirdColor"}>
+                  <IoAlertCircle className=" h-full text-2xl" />
+                </Button>
               </div>
             </div>
           </div>
 
           <Image
-            className=" w-full h-full object-cover rounded-md scale-95 phoneX:scale-100 md:hidden"
+            className=" w-full h-full absolute top-0 left-0 -z-20 object-cover rounded-md scale-95 phoneX:scale-100 md:hidden"
             src={src}
           />
           <Image
-            className=" hidden md:block w-full h-full object-cover rounded-md scale-95 phoneX:scale-100"
+            className=" hidden md:block w-full absolute top-0 left-0 -z-20 h-full object-cover rounded-md scale-95 phoneX:scale-100"
             src={coverImage ? coverImage : ""}
             alt="Cover Image"
           />

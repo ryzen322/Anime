@@ -8,8 +8,8 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
   const [viewScroll, setViewScroll] = useState(0);
 
   const [increment, setIncrement] = useState(true);
-  const intervalRef = useRef<HTMLLIElement>(null);
-  const refEl = useRef<HTMLUListElement>(null);
+  const intervalRef = useRef<HTMLLIElement | null>(null);
+  const refEl = useRef<HTMLUListElement | null>(null);
 
   useEffect(() => {
     if (refEl) {
@@ -42,7 +42,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
           return increment ? prevCount + 1 : prevCount - 1;
         }
       });
-    }, 4000);
+    }, 6000);
 
     return () => {
       clearInterval(timex);
@@ -64,8 +64,12 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
             description={data.description}
             coverImage={data.cover}
             active={index === viewScroll ? true : false}
+            genre={data.genres}
+            rating={data.rating}
+            title={data.title.english ?? data.title.userPreferred}
           />
         ))}
+        {/* <div className=" w-full h-[15rem] bg-slate-700"></div> */}
       </ul>
 
       <ul className=" flex items-center justify-center gap-2 md:flex-col md:gap-1">

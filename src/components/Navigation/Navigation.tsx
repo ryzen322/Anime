@@ -39,7 +39,7 @@ const Navigation = () => {
       ref={divRef}
       className=" container mx-auto font-Roboto font-bold bg-Primary h-[8dvh] text-white relative px-4 flex items-center justify-between z-10 "
     >
-      <nav className=" flex items-center gap-2 relative z-20 w-full h-full bg-Primary lg:gap-5">
+      <nav className=" flex items-center gap-2 relative z-50 w-full h-full bg-Primary lg:gap-5">
         <div className=" flex items-center gap-1">
           <div
             className=" h-[35px] w-[35px] rounded-full bg-stone-700 cursor-pointer"
