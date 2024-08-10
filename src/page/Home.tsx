@@ -7,7 +7,7 @@ const Home = () => {
       <h1 className=" text-white font-semibold text-2xl">Top New Release</h1>
       <SectionCart />
 
-      <div className=" h-[50rem] bg-slate-500 w-full"></div>
+      <Article />
     </main>
   );
 };
