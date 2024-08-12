@@ -30,6 +30,7 @@ const Navigation = () => {
 
   function searchModalToggle() {
     setModal(!modal);
+    document.body.style.overflow = "hidden";
     const portalEl = document.querySelector("#portal");
     portalEl?.classList.remove("hidden");
   }

@@ -1,18 +1,12 @@
 import { popularAnimeSchema, searchAnimeSchema } from "../types";
 import { instance } from "./instance";
 
-export const popularAnime = async ({
-  page,
-  perPage,
-}: {
-  page: number;
-  perPage: number;
-}) => {
+export const popularAnime = async () => {
   try {
     const { data }: { data: unknown } = await instance.get(
       "meta/anilist/popular",
       {
-        params: { page: page, perPage: perPage },
+        params: { page: 1, perPage: 6 },
       }
     );
 

@@ -12,7 +12,9 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
 
   function closeModal() {
     modalToggle();
+    document.body.removeAttribute("style");
     const portalEl = document.querySelector("#portal");
+
     portalEl?.classList.add("hidden");
   }
 

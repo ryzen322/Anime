@@ -4,7 +4,7 @@ const Card = () => {
   return (
     <ul className=" w-full flex items-center overflow-x-scroll h-[13rem] gap-2 no-scrollbar relative">
       <li className=" h-full w-[8rem] min-w-[8rem] rounded-md cursor-pointer relative group overflow-hidden">
-        <div className=" h-full w-full text-white relative -z-0">asd</div>
+        <div className=" h-full w-full text-white relative -z-0 flex flex-col justify-end p-1"></div>
 
         <Image
           src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101922-WBsBl0ClmgYL.jpg"
