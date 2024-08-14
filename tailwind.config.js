@@ -12,6 +12,9 @@ export default {
       screens: {
         phoneX: "500px",
       },
+      transitionProperty: {
+        width: "width",
+      },
     },
   },
   plugins: [],
