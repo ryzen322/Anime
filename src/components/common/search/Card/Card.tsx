@@ -10,6 +10,7 @@ const Card = ({ listAnime }: { listAnime: popularAnimeType }) => {
           image={item.image}
           title={item.title.english ?? item.title.userPreferred}
           genres={item.genres}
+          type={item.type}
         />
       ))}
     </ul>
