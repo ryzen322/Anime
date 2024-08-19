@@ -4,11 +4,12 @@ import SectionCart from "../components/SectionCart";
 const Home = () => {
   return (
     <main
-      className=" container mx-auto flex flex-col px-4 mt-[4.6rem] "
+      className=" container mx-auto flex flex-col gap-8 px-4 mt-[6rem] "
       id="main"
     >
-      <h1 className=" text-white font-semibold text-2xl">Top New Release</h1>
-      <SectionCart />
+      <div>
+        <SectionCart />
+      </div>
       <Article typeList="Popular" />
       <Article typeList="Trending" />
     </main>

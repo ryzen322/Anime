@@ -4,6 +4,8 @@ import Card from "./common/search/Card/Card";
 import { Link } from "react-router-dom";
 import { MdOutlineNavigateNext } from "react-icons/md";
 
+import { LoadingCardUI } from "./common/search/loadingComponents/LoadingCardUI";
+
 const Article = ({ typeList }: { typeList: listAnime }) => {
   const { data, isLoading } = useQuery({
     queryKey: ["animelist", typeList],
@@ -19,7 +21,7 @@ const Article = ({ typeList }: { typeList: listAnime }) => {
         <MdOutlineNavigateNext className=" text-white text-4xl font-bold" />
       </div>
 
-      {isLoading ? "loading" : <Card listAnime={data!} />}
+      {isLoading ? <LoadingCardUI /> : <Card listAnime={data!} />}
     </article>
   );
 };

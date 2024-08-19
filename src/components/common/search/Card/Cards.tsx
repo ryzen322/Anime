@@ -1,4 +1,5 @@
 import Image from "../Image";
+import { CardsUI } from "../loadingComponents/CardsUI";
 
 const Cards = ({
   image,
@@ -12,7 +13,7 @@ const Cards = ({
   type: string;
 }) => {
   return (
-    <li className="  ease-in-out delay-300 h-[423px] min-w-[223px] rounded-md cursor-pointer relative group overflow-hidden  duration-300  flex flex-col gap-2">
+    <CardsUI className=" ">
       <div className=" h-[310px] w-full  relative">
         <Image
           src={image}
@@ -30,7 +31,7 @@ const Cards = ({
           ))}
         </div>
       </div>
-    </li>
+    </CardsUI>
   );
 };
 

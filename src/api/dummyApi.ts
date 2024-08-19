@@ -86,3 +86,8 @@ export const dummyApi = [
     ],
   },
 ];
+export const dummyLoadingData = Array.from({ length: 20 }, (_, index) => {
+  return {
+    id: index + 1,
+  };
+});

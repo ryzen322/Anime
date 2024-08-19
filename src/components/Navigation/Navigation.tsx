@@ -38,9 +38,9 @@ const Navigation = () => {
   return (
     <header
       ref={divRef}
-      className="  font-Roboto font-bold bg-Primary h-[8dvh] text-white fixed w-full top-0 left-0 px-4 flex items-center justify-between z-10 "
+      className="  font-Roboto font-bold bg-Primary h-[8dvh] text-white fixed w-full top-0 left-0 px-4 flex items-center justify-between z-50 "
     >
-      <nav className=" container mx-auto flex items-center gap-2 relative z-50 w-full h-full bg-Primary   lg:gap-5">
+      <nav className=" container mx-auto flex items-center gap-2 relative z-50 w-full h-full  lg:gap-5">
         <div className=" flex items-center gap-1">
           <div
             className=" h-[35px] w-[35px] rounded-full bg-stone-700 cursor-pointer"
