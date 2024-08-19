@@ -14,11 +14,12 @@ const Cards = ({
 }) => {
   return (
     <CardsUI className=" ">
-      <div className=" h-[310px] w-full  relative">
+      <div className=" h-[310px] w-full  relative ">
         <Image
           src={image}
           className=" w-full h-full object-cover rounded-md absolute  top-0 left-0 "
         />
+        <div className=" h-full w-full absolute bg-gradient-to-b from-black/10 to-black/65 z-20 rounded-md"></div>
       </div>
       <div className=" flex-1 w-full flex flex-col justify-between">
         <p className=" text-[#828284] text-sm font-bold">Type: {type} </p>

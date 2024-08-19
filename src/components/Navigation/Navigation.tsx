@@ -58,11 +58,6 @@ const Navigation = () => {
             onMouseOver={(e): void => {
               setCartBox(true);
               e.preventDefault();
-              document
-                .querySelector("body")
-                ?.addEventListener("mouseleave", () => {
-                  setCartBox(false);
-                });
             }}
           >
             <IoChevronDownOutline

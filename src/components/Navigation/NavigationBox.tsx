@@ -3,7 +3,7 @@ import { dummyApi } from "../../api/dummyApi";
 const NavigationBox = () => {
   const [play, discovery, create] = dummyApi;
   return (
-    <div className=" hidden lg:flex absolute h-[31.5rem] w-[38rem] bg-[#28282C]/70 rounded-xl top-[4rem] z-30 ">
+    <div className=" container m-auto hidden lg:flex absolute h-[31.5rem] w-[38rem] bg-[#28282C]/85 rounded-xl top-[6rem] z-30  2xl:left-[12rem]">
       <ul className=" w-[45%] h-full flex flex-col">
         <li className=" flex flex-col  justify-center h-full border-[0.25px] border-[#cccc]/25 rounded-tl-xl px-8">
           <h1 className=" mb-2 text-lg">{play.category}</h1>
