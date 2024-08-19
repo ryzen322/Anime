@@ -1,16 +1,33 @@
 import Image from "../Image";
 
-const Cards = () => {
+const Cards = ({
+  image,
+  title,
+  genres,
+}: {
+  image: string;
+  title: string;
+  genres: string[];
+}) => {
   return (
-    <li className="  ease-in-out delay-300 h-[192px] min-w-[124px] rounded-md cursor-pointer relative group overflow-hidden hover:min-w-[20rem] duration-300">
-      <div className=" h-full w-full text-white relative -z-0 flex flex-col justify-end p-1 "></div>
-
-      <Image
-        src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101922-WBsBl0ClmgYL.jpg"
-        className=" w-full h-full object-cover rounded-md absolute  top-0 left-0 -z-10"
-      />
-
-      <div className="bg-gradient-to-b from-black/10 to-black/65 absolute w-full h-full top-0 left-0"></div>
+    <li className="  ease-in-out delay-300 h-[423px] min-w-[223px] rounded-md cursor-pointer relative group overflow-hidden  duration-300  flex flex-col gap-2">
+      <div className=" h-[310px] w-full  relative">
+        <Image
+          src={image}
+          className=" w-full h-full object-cover rounded-md absolute  top-0 left-0 "
+        />
+      </div>
+      <div className=" flex-1 w-full flex flex-col justify-between">
+        <p className=" text-[#828284] text-sm font-bold">Base Gaming </p>
+        <h1 className=" text-white font-bold leading-5">{title}</h1>
+        <div className=" flex items-start flex-wrap gap-1">
+          {genres.map((genre) => (
+            <p key={genre} className=" text-[#E1E1E1] text-xs font-semibold">
+              {genre}
+            </p>
+          ))}
+        </div>
+      </div>
     </li>
   );
 };

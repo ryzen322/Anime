@@ -9,7 +9,8 @@ const Home = () => {
     >
       <h1 className=" text-white font-semibold text-2xl">Top New Release</h1>
       <SectionCart />
-      <Article />
+      <Article typeList="Popular" />
+      <Article typeList="Trending" />
     </main>
   );
 };
