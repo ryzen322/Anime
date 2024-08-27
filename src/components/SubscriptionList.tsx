@@ -13,8 +13,8 @@ export function SubscriptionList({
   price,
 }: TypePlan) {
   return (
-    <li className=" h-[190px] min-w-[250px] max-w-[250px] rounded-md p-4 flex flex-col cursor-pointer  gap-1 border active:border-red-500 border-[#101014] hover:border-[#FF4A80]  lg:min-w-full">
-      <div className=" flex flex-col flex-1 text-white">
+    <li className=" h-[200px] min-w-[250px] max-w-[250px] rounded-md p-4 flex flex-col cursor-pointer  gap-1 border active:border-red-500 border-[#101014] hover:border-[#FF4A80]  lg:min-w-full">
+      <div className=" flex flex-col flex-1 text-white gap-4">
         <div className=" flex flex-col">
           <h1 className=" font-semibold text-lg">{plan}</h1>
           <p className=" text-[#FF4A80] font-bold text-sm">

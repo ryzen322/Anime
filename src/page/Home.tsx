@@ -15,8 +15,8 @@ const Home = () => {
       <Article typeList="Popular" />
       <Article typeList="Trending" />
 
-      <Subscription />
       <CardAnime />
+      <Subscription />
     </main>
   );
 };

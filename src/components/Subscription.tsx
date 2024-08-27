@@ -5,7 +5,7 @@ const Subscription = () => {
   return (
     <section className=" flex flex-col gap-2">
       <h1 className=" text-white font-semibold text-2xl">Subscription</h1>
-      <ul className=" h-auto w-full flex items-center overflow-x-scroll gap-3 no-scrollbar lg:grid lg:grid-cols-4 lg:justify-center lg:justify-items-center ">
+      <ul className=" h-auto w-full flex items-center overflow-x-scroll gap-3 p1 no-scrollbar lg:grid lg:grid-cols-4 lg:justify-center lg:justify-items-center ">
         {subcriptionPlan.map((item) => (
           <SubscriptionList
             key={item.id}

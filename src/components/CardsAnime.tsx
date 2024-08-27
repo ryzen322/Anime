@@ -2,19 +2,17 @@ import Image from "./common/search/Image";
 
 const CardsAnime = () => {
   return (
-    <li className=" h-[300px] rounded-md sm:h-[350px] relative overflow-hidden group  flex flex-col">
-      <div className=" w-full h-[70%] bg-stone-800 rounded-sm overflow-hidden relative">
+    <li className=" h-[300.78px] rounded-md  relative cursor-pointer overflow-hidden group  flex flex-col sm:h-[400px] lg:h-[350px] xl:h-[400px]">
+      <div className=" w-full h-full bg-stone-800 rounded-sm overflow-hidden relative">
         <Image
           src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-YCDoj1EkAxFn.jpg"
-          className=" relative h-full w-full object-cover"
+          className=" relative h-full w-full object-cover group-hover:scale-105 transition-all duration-200 ease-in-out"
         />
         <div className=" h-full w-full absolute bg-gradient-to-b from-black/10 to-black/65 z-20 rounded-md top-0 left-0"></div>
-      </div>
-      <div className=" flex-1 flex flex-col mt-2 text-stone-300">
-        <p className=" text-sm  font-medium">Title: One Piece</p>
-        <p className=" text-sm  font-medium">Duration: 20 mins</p>
-        <p className=" text-sm  font-medium">Genre: Drama, Classic</p>
-        <p className=" text-sm  font-medium">Type: Tv</p>
+        <div className=" absolute h-full w-full z-30 top-0 left-0 flex flex-col justify-end items-center p-2 text-stone-300 font-semibold">
+          <h1 className=" text-lg">One Piece</h1>
+          <p className=" text-stone-400 font-normal text-sm">2013 Action</p>
+        </div>
       </div>
     </li>
   );
