@@ -10,13 +10,11 @@ const CardsAnime = () => {
         />
         <div className=" h-full w-full absolute bg-gradient-to-b from-black/10 to-black/65 z-20 rounded-md top-0 left-0"></div>
       </div>
-      <div className=" flex-1 flex flex-col mt-2">
-        <p className=" text-sm text-stone-400 font-medium">Title: One Piece</p>
-        <p className=" text-sm text-stone-400 font-medium">Duration: 20 mins</p>
-        <p className=" text-sm text-stone-400 font-medium">
-          Genre: Drama, Classic
-        </p>
-        <p className=" text-sm text-stone-400 font-medium">Type: Tv</p>
+      <div className=" flex-1 flex flex-col mt-2 text-stone-300">
+        <p className=" text-sm  font-medium">Title: One Piece</p>
+        <p className=" text-sm  font-medium">Duration: 20 mins</p>
+        <p className=" text-sm  font-medium">Genre: Drama, Classic</p>
+        <p className=" text-sm  font-medium">Type: Tv</p>
       </div>
     </li>
   );

@@ -1,3 +1,5 @@
+import { TypePlan } from "../components/SubscriptionList";
+
 export const dummyApi = [
   {
     category: "Play",
@@ -91,3 +93,17 @@ export const dummyLoadingData = Array.from({ length: 20 }, (_, index) => {
     id: index + 1,
   };
 });
+
+export const subcriptionPlan: TypePlan[] = [
+  {
+    id: "1",
+    description: [
+      "Renewed automatically",
+      "it can be canceled anytime",
+      "Community Support",
+    ],
+    discount: 0.15,
+    plan: "Annual Standard",
+    price: 499,
+  },
+];
