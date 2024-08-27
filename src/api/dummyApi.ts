@@ -98,12 +98,50 @@ export const subcriptionPlan: TypePlan[] = [
   {
     id: "1",
     description: [
-      "Renewed automatically",
+      "4k + HDR",
+      "4 mobile-only Premium account",
+      "One-time payment",
       "it can be canceled anytime",
       "Community Support",
     ],
     discount: 0.15,
     plan: "Annual Standard",
     price: 499,
+  },
+  {
+    id: "2",
+    description: [
+      "1080p",
+      "2 mobile-only Premium acc",
+      "it can be canceled anytime",
+      "Community Support",
+    ],
+    discount: 0.25,
+    plan: "Quarterly Standard",
+    price: 237,
+  },
+  {
+    id: "3",
+    description: [
+      "720p",
+      "Renewed automatically",
+      "it can be canceled anytime",
+      "Community Support",
+    ],
+    discount: 0.25,
+    plan: "Monthly Standard",
+    price: 200,
+  },
+  {
+    id: "4",
+    description: [
+      "480p",
+      "1 verified Premium account",
+      "Discount for eligible students",
+      "Subscribe or one-time payment",
+    ],
+    discount: 0.4,
+    plan: "Student",
+    price: 139,
   },
 ];

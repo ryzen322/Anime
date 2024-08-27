@@ -20,14 +20,18 @@ export function SubscriptionList({
           <p className=" text-[#FF4A80] font-bold text-sm">
             ₱<span className=" text-xl">{price}</span>
           </p>
-          <div className=" flex gap-1 text-[#FF4A80]">
-            <p className="text-stone-400 line-through text-xs">
-              ₱ {price * discount}
-            </p>
-            <div className=" bg-[#F26183]/25 px-1">
-              <p className=" text-xs text-[#FF4A80]">{discount}% OFF</p>
+          {!discount ? (
+            ""
+          ) : (
+            <div className=" flex gap-1 text-[#FF4A80]">
+              <p className="text-stone-400 line-through text-xs">
+                ₱ {price * discount}
+              </p>
+              <div className=" bg-[#F26183]/25 px-1">
+                <p className=" text-xs text-[#FF4A80]">{discount}% OFF</p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <ul className=" flex flex-col mt-auto text-xs text-stone-500 font-semibold list-disc list-inside">
           {description?.map((item, index) => (
