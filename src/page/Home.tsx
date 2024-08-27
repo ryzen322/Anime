@@ -2,6 +2,7 @@ import Article from "../components/Article";
 import SectionCart from "../components/SectionCart";
 import Subscription from "../components/Subscription";
 import CardAnime from "../components/CardAnime";
+import MostView from "../components/MostView";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <Article typeList="Trending" />
 
       <CardAnime />
+      <MostView />
       <Subscription />
     </main>
   );
