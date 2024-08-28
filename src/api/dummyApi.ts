@@ -93,6 +93,11 @@ export const dummyLoadingData = Array.from({ length: 20 }, (_, index) => {
     id: index + 1,
   };
 });
+export const dummyLoadingItem = Array.from({ length: 4 }, (_, index) => {
+  return {
+    id: index + 1,
+  };
+});
 
 export const subcriptionPlan: TypePlan[] = [
   {

@@ -2,14 +2,22 @@ import { Link } from "react-router-dom";
 import CardsAnime from "./CardsAnime";
 import { useQuery } from "@tanstack/react-query";
 import { getPrimiumAnime } from "../services/api";
+import { dummyLoadingItem } from "../api/dummyApi";
+import CardsAnimeLoading from "./common/search/loadingComponents/CardsAnimeLoading";
 
 const CardAnime = () => {
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["premium-anime"],
     queryFn: getPrimiumAnime,
   });
 
   console.log(data?.results);
+
+  const loading = dummyLoadingItem.map((item) => (
+    <CardsAnimeLoading key={item.id} className="bg-[#333333] animate-pulse">
+      <div className=""></div>
+    </CardsAnimeLoading>
+  ));
 
   return (
     <section className=" flex flex-col bg-[#202024] rounded-md">
@@ -27,9 +35,12 @@ const CardAnime = () => {
         </div>
       </div>
       <ul className=" grid grid-cols-2  py-2 px-2 rounded-md gap-2 mb-5 md:gap-4 lg:grid-cols-4">
-        {data?.results.map((item) => (
+        {/* {data?.results.map((item) => (
           <CardsAnime key={item.id} {...item} />
-        ))}
+        ))} */}
+        {isLoading
+          ? loading
+          : data?.results.map((item) => <CardsAnime key={item.id} {...item} />)}
       </ul>
     </section>
   );

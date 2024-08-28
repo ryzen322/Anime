@@ -1,11 +1,12 @@
 import { PremiumAccObject } from "../types";
 import Image from "./common/search/Image";
+import CardsAnimeLoading from "./common/search/loadingComponents/CardsAnimeLoading";
 
 const CardsAnime = (props: PremiumAccObject) => {
   const { title, image, episodeTitle } = props;
 
   return (
-    <li className=" h-[300.78px] rounded-md  relative cursor-pointer overflow-hidden group  flex flex-col sm:h-[400px] lg:h-[350px] xl:h-[400px]">
+    <CardsAnimeLoading className="">
       <div className=" w-full h-full bg-stone-800 rounded-sm overflow-hidden relative">
         <Image
           src={image}
@@ -19,7 +20,7 @@ const CardsAnime = (props: PremiumAccObject) => {
           </p>
         </div>
       </div>
-    </li>
+    </CardsAnimeLoading>
   );
 };
 
