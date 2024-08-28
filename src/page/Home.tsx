@@ -3,6 +3,7 @@ import SectionCart from "../components/SectionCart";
 import Subscription from "../components/Subscription";
 import CardAnime from "../components/CardAnime";
 import MostView from "../components/MostView";
+import { OfferComponent } from "../components/OfferComponent";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <CardAnime />
       <MostView />
       <Subscription />
+      <OfferComponent />
     </main>
   );
 };
