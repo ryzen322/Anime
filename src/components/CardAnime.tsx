@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import CardsAnime from "./CardsAnime";
 import { useQuery } from "@tanstack/react-query";
 import { getPrimiumAnime } from "../services/api";
-import { dummyLoadingItem } from "../api/dummyApi";
+import { dummyData } from "../api/dummyApi";
 import CardsAnimeLoading from "./common/search/loadingComponents/CardsAnimeLoading";
 
 const CardAnime = () => {
@@ -11,9 +11,7 @@ const CardAnime = () => {
     queryFn: getPrimiumAnime,
   });
 
-  console.log(data?.results);
-
-  const loading = dummyLoadingItem.map((item) => (
+  const loading = dummyData(4).map((item) => (
     <CardsAnimeLoading key={item.id} className="bg-[#333333] animate-pulse">
       <div className=""></div>
     </CardsAnimeLoading>

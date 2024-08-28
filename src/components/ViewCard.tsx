@@ -1,13 +1,14 @@
+import CardViewBox from "./common/search/loadingComponents/CardViewBox";
 import { ViewCardsBox } from "./ViewCardsBox";
 
 export function ViewCard() {
   return (
-    <div className=" grid grid-rows-5 h-[447px] 2xl:h-[749px]">
+    <CardViewBox className="">
       <ViewCardsBox />
       <ViewCardsBox />
       <ViewCardsBox />
       <ViewCardsBox />
       <ViewCardsBox />
-    </div>
+    </CardViewBox>
   );
 }
