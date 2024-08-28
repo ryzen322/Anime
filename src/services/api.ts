@@ -90,3 +90,19 @@ export const getPrimiumAnime = async () => {
     throw new Error("Try Again");
   }
 };
+
+export const getTrendingAnime = async () => {
+  try {
+    const { data } = await instance.get(`meta/anilist/trending`, {
+      params: { page: 2, perPage: 15 },
+    });
+    const validatedAnime = popularAnimeSchema.safeParse(data);
+
+    if (!validatedAnime.success) {
+      throw new Error(`${validatedAnime.error}`);
+    }
+    return validatedAnime.data;
+  } catch (error) {
+    throw new Error("Try Again");
+  }
+};
