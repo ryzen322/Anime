@@ -1,9 +1,9 @@
-import { PremiumAccObject } from "../types";
+import { AnimeObj } from "../types";
 import Image from "./common/search/Image";
 import CardsAnimeLoading from "./common/search/loadingComponents/CardsAnimeLoading";
 
-const CardsAnime = (props: PremiumAccObject) => {
-  const { title, image, episodeTitle } = props;
+const CardsAnime = (props: AnimeObj) => {
+  const { title, image, releaseDate } = props;
 
   return (
     <CardsAnimeLoading className="">
@@ -15,9 +15,7 @@ const CardsAnime = (props: PremiumAccObject) => {
         <div className=" h-full w-full absolute bg-gradient-to-b from-black/10 to-black/65 z-20 rounded-md top-0 left-0"></div>
         <div className=" absolute h-full w-full z-30 top-0 left-0 flex flex-col justify-end items-center p-2 text-stone-300 font-semibold">
           <h1 className=" text-lg text-center leading-5">{title.english}</h1>
-          <p className=" text-stone-300 text-sm font-semibold">
-            {episodeTitle}
-          </p>
+          <p className=" text-stone-300 text-sm font-semibold">{releaseDate}</p>
         </div>
       </div>
     </CardsAnimeLoading>
