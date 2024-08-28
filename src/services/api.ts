@@ -76,7 +76,6 @@ export const getPrimiumAnime = async () => {
       params: {
         page: 1,
         perPage: 4,
-        provider: "gogoanime",
       },
     });
 
@@ -94,7 +93,7 @@ export const getPrimiumAnime = async () => {
 export const getTrendingAnime = async () => {
   try {
     const { data } = await instance.get(`meta/anilist/trending`, {
-      params: { page: 2, perPage: 15 },
+      params: { page: 1, perPage: 15 },
     });
     const validatedAnime = popularAnimeSchema.safeParse(data);
 
