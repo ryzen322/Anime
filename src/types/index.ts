@@ -65,6 +65,24 @@ export const searchAnimeSchema = z.object({
   results: z.array(searchObjectSchema).nonempty(),
 });
 
+export const PremiumAnimeObject = z.object({
+  episodeId: z.string(),
+  episodeNumber: z.number(),
+  episodeTitle: z.string(),
+  id: z.string(),
+  image: z.string(),
+  imageHash: z.string(),
+  malId: z.optional(z.string()),
+  title: titleObjectSchema.omit({ userPreferred: true }),
+  type: z.string(),
+});
+
+export const PremiumAnimeSchema = z.object({
+  currentPage: z.string(),
+  results: z.array(PremiumAnimeObject).nonempty(),
+});
+
+export type PremiumAccObject = z.infer<typeof PremiumAnimeObject>;
 export type AnimeObj = z.infer<typeof animeObjectSchema>;
 export type Genres = z.infer<typeof genresObjectSchema>;
 export type SearchAnime = z.infer<typeof searchAnimeSchema>;

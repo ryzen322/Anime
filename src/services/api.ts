@@ -1,4 +1,8 @@
-import { popularAnimeSchema, searchAnimeSchema } from "../types";
+import {
+  popularAnimeSchema,
+  PremiumAnimeSchema,
+  searchAnimeSchema,
+} from "../types";
 import { instance } from "./instance";
 
 export const popularAnime = async () => {
@@ -56,7 +60,27 @@ export const queryAnimeType = async (animeTypeList: listAnime) => {
       }
     );
     const validatedAnime = popularAnimeSchema.safeParse(data);
-    console.log(validatedAnime);
+
+    if (!validatedAnime.success) {
+      throw new Error(`${validatedAnime.error}`);
+    }
+    return validatedAnime.data;
+  } catch (error) {
+    throw new Error("Try Again");
+  }
+};
+
+export const getPrimiumAnime = async () => {
+  try {
+    const { data } = await instance.get("/meta/anilist/recent-episodes", {
+      params: {
+        page: 1,
+        perPage: 4,
+        provider: "gogoanime",
+      },
+    });
+
+    const validatedAnime = PremiumAnimeSchema.safeParse(data);
 
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);

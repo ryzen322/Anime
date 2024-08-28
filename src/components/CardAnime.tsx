@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
 import CardsAnime from "./CardsAnime";
+import { useQuery } from "@tanstack/react-query";
+import { getPrimiumAnime } from "../services/api";
 
 const CardAnime = () => {
+  const { data } = useQuery({
+    queryKey: ["premium-anime"],
+    queryFn: getPrimiumAnime,
+  });
+
+  console.log(data?.results);
+
   return (
     <section className=" flex flex-col bg-[#202024] rounded-md">
       <div className=" w-full h-[5rem] flex items-center justify-between gap-2 p-2 rounded-md">
@@ -18,10 +27,9 @@ const CardAnime = () => {
         </div>
       </div>
       <ul className=" grid grid-cols-2  py-2 px-2 rounded-md gap-2 mb-5 md:gap-4 lg:grid-cols-4">
-        <CardsAnime />
-        <CardsAnime />
-        <CardsAnime />
-        <CardsAnime />
+        {data?.results.map((item) => (
+          <CardsAnime key={item.id} {...item} />
+        ))}
       </ul>
     </section>
   );
