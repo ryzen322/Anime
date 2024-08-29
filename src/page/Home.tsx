@@ -4,13 +4,11 @@ import Subscription from "../components/Subscription";
 import CardAnime from "../components/CardAnime";
 import MostView from "../components/MostView";
 import { OfferComponent } from "../components/OfferComponent";
+import Layout from "../components/Layout";
 
 const Home = () => {
   return (
-    <main
-      className=" container mx-auto flex flex-col gap-8 px-4 mt-[6rem] mb-[3rem]"
-      id="main"
-    >
+    <Layout>
       <div>
         <SectionCart />
       </div>
@@ -21,7 +19,7 @@ const Home = () => {
       <MostView />
       <Subscription />
       <OfferComponent />
-    </main>
+    </Layout>
   );
 };
 

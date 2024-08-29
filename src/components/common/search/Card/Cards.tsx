@@ -6,14 +6,16 @@ const Cards = ({
   title,
   genres,
   type,
+  id,
 }: {
   image: string;
   title: string;
   genres: string[];
   type: string;
+  id: string;
 }) => {
   return (
-    <CardsUI className=" ">
+    <CardsUI className=" " detailId={id}>
       <div className=" h-[310px] w-full  relative ">
         <Image
           src={image}

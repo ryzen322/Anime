@@ -5,7 +5,7 @@ export const OfferComponent = () => {
   return (
     <section className=" flex flex-col gap-4">
       <Link to={"/"} className=" text-white font-semibold text-2xl">
-        Anime
+        Limited Offer Item
       </Link>
       <ul className=" flex h-[356.3px] overflow-x-scroll no-scrollbar lg:grid lg:grid-cols-3">
         <Sales />

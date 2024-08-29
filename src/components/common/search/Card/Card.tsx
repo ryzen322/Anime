@@ -12,6 +12,7 @@ const Card = ({ listAnime }: { listAnime: popularAnimeType }) => {
           title={item.title.english ?? item.title.userPreferred}
           genres={item.genres}
           type={item.type}
+          id={item.id}
         />
       ))}
     </CardUI>

@@ -96,3 +96,13 @@ export const getPrimiumAnime = async () => {
     throw new Error("Try Again");
   }
 };
+
+export const getDetailAnime = async (id: string | undefined) => {
+  try {
+    const { data } = await instance.get(`meta/anilist/info/${id}`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw new Error("Try Again");
+  }
+};
