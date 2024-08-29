@@ -82,6 +82,60 @@ export const PremiumAnimeSchema = z.object({
   results: z.array(PremiumAnimeObject).nonempty(),
 });
 
+export const Artwork = z.object({
+  img: z.string().nullable(),
+  proivderId: z.string().nullish(),
+  type: z.string(),
+});
+export const Name = z.object({
+  first: z.string(),
+  full: z.string(),
+  last: z.string().nullable(),
+  native: z.string(),
+  userPreferred: z.string(),
+});
+export const VoiceActors = z.object({
+  id: z.number(),
+  image: z.string(),
+  imageHash: z.string(),
+  language: z.string(),
+  name: Name,
+});
+export const Characters = z.object({
+  id: z.number(),
+  image: z.string(),
+  imageHash: z.string(),
+  role: z.string(),
+  name: Name,
+  voiceActors: z.array(VoiceActors),
+});
+
+export const DetailSchema = z.object({
+  // artwork: z.array(Artwork).nullish(),
+  // characters: z.array(Characters),
+  color: z.string().optional(),
+  countryOfOrigin: z.string().optional(),
+  cover: z.string().optional(),
+  coverHash: z.string().optional(),
+  currentEpisode: z.number().optional(),
+  description: z.string().optional(),
+  duration: z.number().optional(),
+  id: z.string().optional(),
+  image: z.string().optional(),
+  imageHash: z.string().optional(),
+  isAdult: z.boolean().optional(),
+  isLicensed: z.boolean().optional(),
+  malId: z.number().optional(),
+  popularity: z.number().optional(),
+  rating: z.number().optional(),
+  releaseDate: z.number().optional(),
+  season: z.string().optional(),
+  subOrDub: z.string().optional(),
+  totalEpisodes: z.number().optional(),
+  type: z.string().optional(),
+});
+
+export type DetailAnimeObj = z.infer<typeof DetailSchema>;
 export type PremiumAccObject = z.infer<typeof PremiumAnimeObject>;
 export type AnimeObj = z.infer<typeof animeObjectSchema>;
 export type Genres = z.infer<typeof genresObjectSchema>;

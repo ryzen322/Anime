@@ -7,19 +7,21 @@ import { ArticleDetail } from "./ArticleDetail";
 const Detail = () => {
   const { id } = useParams();
 
-  const data = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["detail-anime", id],
     queryFn: async () => getDetailAnime(id),
   });
 
-  console.log(data);
+  if (isLoading) {
+    return "Loading...";
+  }
 
   return (
     <Layout>
       <h1 className=" text-white font-bold text-2xl">
         RAWMEN: Food Figher Arena
       </h1>
-      <ArticleDetail />
+      <ArticleDetail {...data} />
     </Layout>
   );
 };

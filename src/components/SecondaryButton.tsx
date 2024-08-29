@@ -3,16 +3,21 @@ import { FC, HtmlHTMLAttributes } from "react";
 import { cn } from "../utils/utils";
 
 const SecondaryButtonVariants = cva(
-  "w-full h-[48px] rounded-md font-semibold transition-all duration-200 ",
+  " w-full rounded-md font-semibold transition-all duration-200 ",
   {
     variants: {
       variants: {
         default: " bg-[#26BBFF]  hover:bg-[#61cdff] text-black",
         secondary: " bg-[#333337] hover:bg-[#ffffff59] text-white",
       },
+      size: {
+        default: " h-[48px]",
+        secondary: " h-[32px]",
+      },
     },
     defaultVariants: {
       variants: "default",
+      size: "default",
     },
   }
 );
@@ -27,11 +32,12 @@ const SecondaryButton: FC<ButtonProps> = ({
   children,
   className,
   variants,
+  size,
   ...props
 }) => {
   return (
     <button
-      className={cn(SecondaryButtonVariants({ className, variants }))}
+      className={cn(SecondaryButtonVariants({ className, variants, size }))}
       {...props}
     >
       {children}

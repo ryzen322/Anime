@@ -1,4 +1,4 @@
-import { popularAnimeSchema, searchAnimeSchema } from "../types";
+import { DetailSchema, popularAnimeSchema, searchAnimeSchema } from "../types";
 import { instance } from "./instance";
 
 export const popularAnime = async () => {
@@ -100,8 +100,16 @@ export const getPrimiumAnime = async () => {
 export const getDetailAnime = async (id: string | undefined) => {
   try {
     const { data } = await instance.get(`meta/anilist/info/${id}`);
-    console.log(data);
-    return data;
+
+    const validateDetail = DetailSchema.safeParse(data);
+
+    console.log(validateDetail);
+
+    if (!validateDetail.success) {
+      throw new Error(`${validateDetail.error}`);
+    }
+
+    return validateDetail.data;
   } catch (error) {
     throw new Error("Try Again");
   }
