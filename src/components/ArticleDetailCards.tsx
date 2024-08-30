@@ -19,8 +19,8 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
   const licensed = isLicensed ? "Licensed" : "Pirated";
 
   return (
-    <article className=" flex flex-col gap-4 items-center w-full md:max-w-[256px]">
-      <article className=" h-[530px] w-full  rounded-md overflow-hidden">
+    <article className=" flex flex-col gap-4 items-center w-full">
+      <article className=" h-[530px] w-full  rounded-md overflow-hidden phoneX:h-[550px] md:h-[400px]">
         <Image
           src={`${image}`}
           className=" w-full h-full object-cover relative"
@@ -69,19 +69,19 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
         </SecondaryButton>
       </div>
       <ul className=" flex flex-col w-full">
-        <li className=" h-[42px] w-full flex items-center justify-between border-b border-stone-400/50">
+        <li className=" h-[42px] w-full flex items-center justify-between border-b border-stone-400/50 phoneX:px-1">
           <p className=" text-stone-400 font-semibold">Current Episode</p>
           <h1 className=" text-white font-semibold">{currentEpisode}</h1>
         </li>
-        <li className=" h-[42px] w-full flex items-center justify-between border-b border-stone-400/50">
+        <li className=" h-[42px] w-full flex items-center justify-between border-b border-stone-400/50 phoneX:px-1">
           <p className=" text-stone-400 font-semibold">Release Date</p>
           <h1 className=" text-white font-semibold">{releaseDate}</h1>
         </li>
-        <li className=" h-[42px] w-full flex items-center justify-between border-b border-stone-400/50">
+        <li className=" h-[42px] w-full flex items-center justify-between border-b border-stone-400/50 phoneX:px-1">
           <p className=" text-stone-400 font-semibold">Platform</p>
           <h1 className=" text-white font-semibold">{type}</h1>
         </li>
-        <li className=" h-[42px] w-full flex items-center justify-between border-b border-stone-400/50">
+        <li className=" h-[42px] w-full flex items-center justify-between border-b border-stone-400/50 phoneX:px-1">
           <p className=" text-stone-400 font-semibold">Season</p>
           <h1 className=" text-white font-semibold">{season}</h1>
         </li>

@@ -94,8 +94,6 @@ export const getTrendingAnime = async () => {
     });
     const validatedAnime = trendingAnimeSchema.safeParse(data);
 
-    console.log(validatedAnime);
-
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }
