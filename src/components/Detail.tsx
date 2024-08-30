@@ -18,8 +18,8 @@ const Detail = () => {
 
   return (
     <Layout>
-      <h1 className=" text-white font-bold text-2xl">
-        RAWMEN: Food Figher Arena
+      <h1 className=" text-white font-bold text-4xl">
+        {data?.title?.english}{" "}
       </h1>
       <ArticleDetail {...data} />
     </Layout>

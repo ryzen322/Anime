@@ -129,7 +129,7 @@ export const Recommendation = z.object({
   id: z.number(),
   cover: z.string(),
   coverHash: z.string(),
-  episodes: z.number(),
+  episodes: z.number().nullable(),
   image: z.string(),
   imageHash: z.string(),
   malId: z.number(),
@@ -137,6 +137,13 @@ export const Recommendation = z.object({
   status: z.string(),
   type: z.string(),
   title: titleObjectSchema,
+});
+
+export const trailer = z.object({
+  id: z.string(),
+  site: z.string(),
+  thumbnail: z.string(),
+  thumbnailHash: z.string(),
 });
 
 export const DetailSchema = z.object({
@@ -165,6 +172,8 @@ export const DetailSchema = z.object({
   genres: z.array(z.string()).optional(),
   studios: z.array(z.string()).optional(),
   recommendations: z.array(Recommendation).optional(),
+  trailer: trailer.optional(),
+  title: titleObjectSchema.omit({ userPreferred: true }).optional(),
 });
 
 export type Recommendations = z.infer<typeof Recommendation>;
