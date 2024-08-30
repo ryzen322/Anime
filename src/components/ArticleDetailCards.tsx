@@ -19,8 +19,8 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
   const licensed = isLicensed ? "Licensed" : "Pirated";
 
   return (
-    <article className=" flex flex-col gap-4 items-center w-full">
-      <article className=" h-[530px] w-full  rounded-md overflow-hidden phoneX:h-[550px] md:h-[400px]">
+    <article className=" flex flex-col h-full gap-4 items-center xl:w-[320px]">
+      <article className=" h-[530px] w-full mb-auto rounded-md overflow-hidden phoneX:h-[550px] md:h-[400px] lg:h-[360px] ">
         <Image
           src={`${image}`}
           className=" w-full h-full object-cover relative"

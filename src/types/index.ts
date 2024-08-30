@@ -125,6 +125,20 @@ export const Characters = z.object({
   voiceActors: z.array(VoiceActors),
 });
 
+export const Recommendation = z.object({
+  id: z.number(),
+  cover: z.string(),
+  coverHash: z.string(),
+  episodes: z.number(),
+  image: z.string(),
+  imageHash: z.string(),
+  malId: z.number(),
+  rating: z.number(),
+  status: z.string(),
+  type: z.string(),
+  title: titleObjectSchema,
+});
+
 export const DetailSchema = z.object({
   artwork: z.array(Artwork).optional(),
   characters: z.array(Characters).optional(),
@@ -148,8 +162,12 @@ export const DetailSchema = z.object({
   subOrDub: z.string().optional(),
   totalEpisodes: z.number().optional(),
   type: z.string().optional(),
+  genres: z.array(z.string()).optional(),
+  studios: z.array(z.string()).optional(),
+  recommendations: z.array(Recommendation).optional(),
 });
 
+export type Recommendations = z.infer<typeof Recommendation>;
 export type TrendingAnimeObj = z.infer<typeof animeTrendingObject>;
 export type DetailAnimeObj = z.infer<typeof DetailSchema>;
 export type PremiumAccObject = z.infer<typeof PremiumAnimeObject>;
