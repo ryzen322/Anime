@@ -101,6 +101,10 @@ export const getDetailAnime = async (id: string | undefined) => {
   try {
     const { data } = await instance.get(`meta/anilist/info/${id}`);
 
+    console.log(data);
+    // const item = data.characters.map((data) => data.name);
+    // console.log(item.map((val) => val.native));
+
     const validateDetail = DetailSchema.safeParse(data);
 
     console.log(validateDetail);

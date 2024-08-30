@@ -91,7 +91,7 @@ export const Name = z.object({
   first: z.string(),
   full: z.string(),
   last: z.string().nullable(),
-  native: z.string(),
+  native: z.string().optional().nullable(),
   userPreferred: z.string(),
 });
 export const VoiceActors = z.object({
@@ -111,8 +111,8 @@ export const Characters = z.object({
 });
 
 export const DetailSchema = z.object({
-  // artwork: z.array(Artwork).nullish(),
-  // characters: z.array(Characters),
+  artwork: z.array(Artwork).optional(),
+  characters: z.array(Characters).optional(),
   color: z.string().optional(),
   countryOfOrigin: z.string().optional(),
   cover: z.string().optional(),
