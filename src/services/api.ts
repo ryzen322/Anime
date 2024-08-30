@@ -1,4 +1,9 @@
-import { DetailSchema, popularAnimeSchema, searchAnimeSchema } from "../types";
+import {
+  DetailSchema,
+  popularAnimeSchema,
+  searchAnimeSchema,
+  trendingAnimeSchema,
+} from "../types";
 import { instance } from "./instance";
 
 export const popularAnime = async () => {
@@ -66,10 +71,10 @@ export const queryAnimeType = async (animeTypeList: listAnime) => {
   }
 };
 
-export const getTrendingAnime = async () => {
+export const getPrimiumAnime = async () => {
   try {
     const { data } = await instance.get(`meta/anilist/trending`, {
-      params: { page: 1, perPage: 15 },
+      params: { page: 1, perPage: 4 },
     });
     const validatedAnime = popularAnimeSchema.safeParse(data);
 
@@ -81,12 +86,15 @@ export const getTrendingAnime = async () => {
     throw new Error("Try Again");
   }
 };
-export const getPrimiumAnime = async () => {
+
+export const getTrendingAnime = async () => {
   try {
     const { data } = await instance.get(`meta/anilist/trending`, {
-      params: { page: 1, perPage: 4 },
+      params: { page: 1, perPage: 15 },
     });
-    const validatedAnime = popularAnimeSchema.safeParse(data);
+    const validatedAnime = trendingAnimeSchema.safeParse(data);
+
+    console.log(validatedAnime);
 
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);

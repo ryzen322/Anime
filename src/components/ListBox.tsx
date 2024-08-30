@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { ViewCard } from "./ViewCard";
 import CardListBoxLoading from "./common/search/loadingComponents/CardListBoxLoading";
-import { AnimeObj } from "../types";
+import { TrendingAnimeObj } from "../types";
 
 interface AnimeObject {
   title: string;
   id: string;
-  item: AnimeObj[];
+  item: TrendingAnimeObj[];
 }
 
 export function ListBox(props: AnimeObject) {

@@ -1,8 +1,8 @@
-import { AnimeObj } from "../types";
+import { TrendingAnimeObj } from "../types";
 import Image from "./common/search/Image";
 import CardsViewBox from "./common/search/loadingComponents/CardsViewBox";
 
-export function ViewCardsBox(props: AnimeObj) {
+export function ViewCardsBox(props: TrendingAnimeObj) {
   const { image, title, status } = props;
 
   return (

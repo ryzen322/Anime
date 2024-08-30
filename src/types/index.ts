@@ -41,6 +41,21 @@ export const popularAnimeSchema = z.object({
   results: z.array(animeObjectSchema),
 });
 
+//   const { image, title, status } = props;
+
+export const animeTrendingObject = z.object({
+  id: z.string(),
+  image: z.string(),
+  status: z.string(),
+  title: titleObjectSchema,
+});
+
+export const trendingAnimeSchema = z.object({
+  currentPage: z.number(),
+  hasNextPage: z.boolean(),
+  results: z.array(animeTrendingObject),
+});
+
 export const searchObjectSchema = z.object({
   id: z.string(),
   color: z.string().nullable(),
@@ -135,6 +150,7 @@ export const DetailSchema = z.object({
   type: z.string().optional(),
 });
 
+export type TrendingAnimeObj = z.infer<typeof animeTrendingObject>;
 export type DetailAnimeObj = z.infer<typeof DetailSchema>;
 export type PremiumAccObject = z.infer<typeof PremiumAnimeObject>;
 export type AnimeObj = z.infer<typeof animeObjectSchema>;
