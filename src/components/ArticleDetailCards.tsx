@@ -26,12 +26,12 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
           className=" w-full h-full object-cover relative"
         />
       </article>
-      <article className=" w-full h-[119px] border border-stone-400/50 rounded-md p-4 flex items-center gap-4">
+      <article className=" w-full h-[119px] border border-stone-400/50 rounded-md p-4 flex items-center gap-4 hover:border-white">
         <div className=" h-full rounded-md flex items-center justify-center border border-stone-400/50 p-1 ">
           <h1 className=" text-white font-bold text-4xl">{parental}</h1>
         </div>
         <div className=" h-full w-full grid grid-rows-2 ">
-          <div className=" border-b border-stone-400/60 w-full flex flex-col gap-1">
+          <div className=" border-b border-stone-400/60 w-full flex flex-col gap-1 ">
             <h1 className=" text-white font-bold text-xs">{parental}</h1>
             <p className=" text-stone-400 text-xs font-bold">
               Rating : {rating}

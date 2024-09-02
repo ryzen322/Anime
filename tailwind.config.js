@@ -8,6 +8,7 @@ export default {
       },
       backgroundColor: {
         Primary: "#101014",
+        Loading: "#202024",
       },
       screens: {
         phoneX: "500px",
