@@ -57,7 +57,7 @@ export const queryAnimeType = async (animeTypeList: listAnime) => {
     const { data } = await instance.get(
       `meta/anilist/${animeTypeList.toLowerCase()}`,
       {
-        params: { page: 1, perPage: 6 },
+        params: { page: 2, perPage: 6 },
       }
     );
     const validatedAnime = popularAnimeSchema.safeParse(data);

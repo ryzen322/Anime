@@ -20,7 +20,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
 
   return (
     <article className=" flex flex-col h-full gap-4 w-full">
-      <article className=" h-[500px] w-full mb-auto rounded-md overflow-hidden md:h-[400px]">
+      <article className=" h-[500px] w-full mb-auto rounded-md overflow-hidden md:h-[400px] lg:h-[500px]">
         <Image
           src={`${image}`}
           className=" w-full h-full object-cover relative"

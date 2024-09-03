@@ -15,15 +15,11 @@ const Detail = () => {
 
   console.log(isLoading);
 
-  const loading = true;
-
   return (
     <Layout>
-      {/* <h1 className=" text-white font-bold text-4xl">
-        {data?.title?.english}{" "}
-      </h1> */}
+      <h1 className=" text-white font-bold text-4xl">{data?.title?.english}</h1>
 
-      {loading ? <DetailLoading /> : <ArticleDetail {...data} />}
+      {isLoading ? <DetailLoading /> : <ArticleDetail {...data} />}
     </Layout>
   );
 };
