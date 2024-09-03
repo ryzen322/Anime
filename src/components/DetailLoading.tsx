@@ -1,33 +1,47 @@
+import { ArticleLoading } from "./ArticleLoading";
+
 export function DetailLoading() {
   return (
     <section className=" flex flex-col gap-2 w-full ">
-      <div className="flex flex-col items-center gap-4 h-auto  sm:flex-col-reverse md:flex-row-reverse md:items-start xl:gap-16">
+      <div className="flex flex-col items-center gap-8 h-auto md:flex-row-reverse md:items-start">
         <ArticleLoading />
+        <LoadingArticle />
       </div>
     </section>
   );
 }
 
-export function ArticleLoading() {
+export function LoadingArticle() {
   return (
-    <article className=" flex flex-col h-full gap-4 w-full">
-      <article className=" h-[500px] w-full mb-auto rounded-md overflow-hidden md:h-[400px] bg-Loading animate-pulse"></article>
-      <article className=" w-full h-[119px] border border-stone-400/50 rounded-md p-4 flex items-center gap-4 hover:border-white">
-        <div className=" h-full rounded-md flex items-center justify-center  p-1 w-20 bg-Loading shrink-0"></div>
-        <div className=" w-full h-full flex flex-col">
-          <div className=" h-[60%] grid grid-rows-2 gap-1 py-1 ">
-            <div className=" bg-Loading rounded-sm"></div>
-            <div className=" bg-Loading rounded-sm"></div>
-          </div>
-          <div className=" h-[1px] bg-stone-400/50"></div>
-          <div className=" flex-1 flex items-center justify-center py-1">
-            <div className=" h-full bg-Loading flex-1  rounded-sm"></div>
-          </div>
+    <article className=" w-full flex flex-col gap-8 h-full ">
+      <article className="  w-full bg-Loading rounded-md overflow-hidden cursor-pointer  aspect-video"></article>
+      <div className=" w-full flex items-center justify-center gap-2">
+        <div className=" bg-Loading h-[3rem] w-[4rem] rounded-sm"></div>
+        <div className=" bg-Loading h-[3rem] w-[4rem] rounded-sm"></div>
+        <div className=" bg-Loading h-[3rem] w-[4rem] rounded-sm"></div>
+      </div>
+      <div className=" flex flex-col gap-6 mt-4">
+        <div className=" h-[1.5rem] w-full bg-Loading"></div>
+        <div className=" h-[1.5rem] w-full bg-Loading"></div>
+        <div className=" h-[1.5rem] w-full bg-Loading"></div>
+      </div>
+      <div className=" w-full grid grid-cols-2 h-[10rem] ">
+        <div className=" flex flex-col h-full w-full justify-between border-r border-stone-500/50">
+          <div className=" h-[1.5rem] w-[80%] bg-Loading rounded-sm"></div>
+          <div className=" h-[1.5rem] w-[50%] bg-Loading rounded-sm"></div>
+          <div className=" h-[1.5rem] w-[80%] bg-Loading rounded-sm"></div>
+          <div className=" h-[1.5rem] w-[75%] bg-Loading rounded-sm"></div>
         </div>
-      </article>
-      <article className=" w-full h-[26px] flex items-center justify-center">
-        <button className=" text-stone-200 bg-Loading px-2 font-semibold rounded-md py-2"></button>
-      </article>
+        <div className=" flex flex-col h-full w-full justify-evenly pl-4">
+          <div className=" h-[1.5rem] w-[80%] bg-Loading rounded-sm"></div>
+          <div className=" h-[1.5rem] w-[75%] bg-Loading rounded-sm"></div>
+        </div>
+      </div>
+      <div className=" flex flex-col gap-4 ">
+        <div className=" w-full h-[1.5rem] rounded-sm bg-Loading "></div>
+        <div className=" w-full h-[1.5rem] rounded-sm bg-Loading "></div>
+        <div className=" w-full h-[1.5rem] rounded-sm bg-Loading "></div>
+      </div>
     </article>
   );
 }
