@@ -13,8 +13,6 @@ const Detail = () => {
     queryFn: async () => getDetailAnime(id),
   });
 
-  console.log(isLoading);
-
   return (
     <Layout>
       <h1 className=" text-white font-bold text-4xl">{data?.title?.english}</h1>
