@@ -13,7 +13,7 @@ const Home = () => {
         <SectionCart />
       </div>
       <Article typeList="Popular" />
-      <Article typeList="Trending" />
+      {/* <Article typeList="Trending" /> */}
 
       <CardAnime />
       <MostView />

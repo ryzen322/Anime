@@ -52,12 +52,6 @@ export const searchAnime = async (search: string | undefined) => {
 
 export type listAnime = "Trending" | "Popular";
 
-export interface listAnimeObj {
-  routes: listAnime;
-  page: number;
-  perPage: number;
-}
-
 export const queryAnimeType = async (animeTypeList: listAnime) => {
   try {
     const { data } = await instance.get(
