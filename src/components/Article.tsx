@@ -6,17 +6,17 @@ import { MdOutlineNavigateNext } from "react-icons/md";
 
 import { LoadingCardUI } from "./common/search/loadingComponents/LoadingCardUI";
 
-const Article = ({ typeList }: { typeList: listAnime }) => {
+const Article = ({ animeProps }: { animeProps: listAnime }) => {
   const { data, isLoading } = useQuery({
-    queryKey: ["animelist", typeList],
-    queryFn: async () => queryAnimeType(typeList),
+    queryKey: ["animelist", animeProps],
+    queryFn: async () => queryAnimeType(animeProps),
   });
 
   return (
     <article className=" w-full  mb-4 px-1 flex flex-col gap-3 mt-6">
       <div className=" flex items-center gap-2 hover:gap-4 transition-all duration-200 ease-in-out">
         <Link to={"/"} className=" text-white font-semibold text-2xl">
-          {typeList} Anime
+          {animeProps.routes} Anime
         </Link>
         <MdOutlineNavigateNext className=" text-white text-4xl font-bold" />
       </div>

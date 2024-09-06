@@ -50,14 +50,18 @@ export const searchAnime = async (search: string | undefined) => {
   }
 };
 
-export type listAnime = "Trending" | "Popular";
+export interface listAnime {
+  routes: "Trending" | "Popular";
+  page: number;
+  perPage: number;
+}
 
 export const queryAnimeType = async (animeTypeList: listAnime) => {
   try {
     const { data } = await instance.get(
-      `meta/anilist/${animeTypeList.toLowerCase()}`,
+      `meta/anilist/${animeTypeList.routes.toLowerCase()}`,
       {
-        params: { page: 2, perPage: 6 },
+        params: { page: animeTypeList.page, perPage: animeTypeList.perPage },
       }
     );
     const validatedAnime = popularAnimeSchema.safeParse(data);

@@ -12,8 +12,8 @@ const Home = () => {
       <div>
         <SectionCart />
       </div>
-      <Article typeList="Popular" />
-      {/* <Article typeList="Trending" /> */}
+      <Article animeProps={{ page: 1, perPage: 6, routes: "Popular" }} />
+      <Article animeProps={{ page: 1, perPage: 6, routes: "Trending" }} />
 
       <CardAnime />
       <MostView />
