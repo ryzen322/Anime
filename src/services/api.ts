@@ -120,6 +120,8 @@ export const getDetailAnime = async (id: string | undefined) => {
       throw new Error(`${validateDetail.error}`);
     }
 
+    console.log(validateDetail.data);
+
     return validateDetail.data;
   } catch (error) {
     throw new Error("Try Again");

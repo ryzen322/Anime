@@ -176,6 +176,7 @@ export const DetailSchema = z.object({
   title: titleObjectSchema.omit({ userPreferred: true }).optional(),
 });
 
+export type CharacterObj = z.infer<typeof Characters>;
 export type Recommendations = z.infer<typeof Recommendation>;
 export type TrendingAnimeObj = z.infer<typeof animeTrendingObject>;
 export type DetailAnimeObj = z.infer<typeof DetailSchema>;
