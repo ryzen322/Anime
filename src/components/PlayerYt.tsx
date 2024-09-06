@@ -6,6 +6,7 @@ import {
   MediaErrorDetail,
   MediaErrorEvent,
   MediaPlayer,
+  MediaPlayerInstance,
   MediaProvider,
   MediaProviderAdapter,
   Poster,
@@ -15,8 +16,10 @@ import {
   DefaultVideoLayout,
   defaultLayoutIcons,
 } from "@vidstack/react/player/layouts/default";
+import { useEffect, useRef } from "react";
 
 const PlayerYt = ({ src, poster, title }: MediaPlayerProps) => {
+  const player = useRef<MediaPlayerInstance>(null);
   function onProviderChange(provider: MediaProviderAdapter | null) {
     if (isYouTubeProvider(provider)) {
       provider.cookies = true;
@@ -27,6 +30,12 @@ const PlayerYt = ({ src, poster, title }: MediaPlayerProps) => {
     console.log(nativeEvent);
     console.log("hello");
   }
+
+  useEffect(() => {
+    player.current!.startLoading();
+
+    player.current!.startLoadingPoster();
+  }, []);
 
   return (
     <MediaPlayer
@@ -42,6 +51,7 @@ const PlayerYt = ({ src, poster, title }: MediaPlayerProps) => {
       onError={onError}
       load="visible"
       posterLoad="visible"
+      ref={player}
     >
       <MediaProvider>
         <Poster className="vds-poster" src={poster} alt="" />
