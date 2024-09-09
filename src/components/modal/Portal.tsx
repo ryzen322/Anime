@@ -9,8 +9,6 @@ interface PortalType {
 const Portal = ({ children, togglePortal }: PortalType) => {
   function closePortal() {
     togglePortal();
-
-    console.log("clicked");
   }
 
   return createPortal(

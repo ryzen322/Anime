@@ -4,6 +4,7 @@ import { SecondaryButton } from "./SecondaryButton";
 import { FaPlay } from "react-icons/fa";
 import Watch from "./Watch";
 import { useState } from "react";
+import { togglePortal } from "../utils/togglePortal";
 
 export const ArticleDetailCards = (props: DetailAnimeObj) => {
   const [watchPortal, setWatchPortal] = useState(false);
@@ -25,13 +26,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
   function watchModal() {
     setWatchPortal(!watchPortal);
 
-    const portalEl = document.querySelector("#portal");
-
-    if (portalEl?.className === "hidden") {
-      portalEl?.classList.remove("hidden");
-    } else {
-      portalEl?.classList.add("hidden");
-    }
+    togglePortal();
   }
 
   return (

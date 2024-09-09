@@ -4,6 +4,7 @@ import { IoSearch } from "react-icons/io5";
 import NavigationMenu from "./NavigationMenu";
 import NavigationBox from "./NavigationBox";
 import SearchModal from "../modal/SearchModal";
+import { togglePortal } from "../../utils/togglePortal";
 
 const Navigation = () => {
   const [chevState, setCheState] = useState(false);
@@ -30,13 +31,8 @@ const Navigation = () => {
 
   function searchModalToggle() {
     setModal(!modal);
-    const portalEl = document.querySelector("#portal");
-
-    if (portalEl?.className === "hidden") {
-      portalEl?.classList.remove("hidden");
-    } else {
-      portalEl?.classList.add("hidden");
-    }
+    console.log("clicked");
+    togglePortal();
   }
 
   return (
