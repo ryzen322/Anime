@@ -15,6 +15,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
     releaseDate,
     season,
     currentEpisode,
+    episodes,
   } = props;
 
   const parental = isAdult ? "18plus" : "13+";
@@ -29,7 +30,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
         />
         <div className=" absolute w-full h-full top-0 left-0 bg-gradient-to-b from-black/10 to-black/65 flex items-center justify-center ">
           <Link
-            to={""}
+            to={`/watch/${episodes?.[0].id}`}
             className=" h-[5rem] w-[5rem] bg-black/50 rounded-full flex items-center justify-center pl-2 shadow-md group-hover:bg-black"
           >
             <FaPlay className=" text-white text-4xl font-semibold" />

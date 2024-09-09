@@ -146,6 +146,12 @@ export const trailer = z.object({
   thumbnailHash: z.string(),
 });
 
+export const episodes = z.object({
+  id: z.string(),
+  image: z.string(),
+  title: z.string(),
+});
+
 export const DetailSchema = z.object({
   artwork: z.array(Artwork).optional(),
   characters: z.array(Characters).optional(),
@@ -174,6 +180,7 @@ export const DetailSchema = z.object({
   recommendations: z.array(Recommendation).optional(),
   trailer: trailer.optional(),
   title: titleObjectSchema.omit({ userPreferred: true }).optional(),
+  episodes: z.array(episodes).optional(),
 });
 
 export type CharacterObj = z.infer<typeof Characters>;

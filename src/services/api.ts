@@ -127,3 +127,15 @@ export const getDetailAnime = async (id: string | undefined) => {
     throw new Error("Try Again");
   }
 };
+
+export const getStreaming = async (mailId: string | undefined) => {
+  try {
+    const { data } = await instance.get(`meta/anilist/watch/${mailId}`);
+
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    throw new Error("Try Again");
+  }
+};
