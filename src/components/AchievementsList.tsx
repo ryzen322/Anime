@@ -5,7 +5,7 @@ const AchievementsList = (props: CharacterObj) => {
   const { image, name, role } = props;
 
   return (
-    <li className=" h-[13rem] min-h-[13rem] w-[7.6rem] min-w-[7.6rem] rounded-sm flex flex-col gap-1 overflow-hidden shadow-md cursor-pointer">
+    <li className=" h-[13rem] min-h-[13rem] w-[7.6rem] min-w-[7.6rem] rounded-sm flex flex-col gap-1 overflow-hidden shadow-md cursor-pointer z-30">
       <div className=" h-[75%] w-full bg-stone-500 rounded-md overflow-hidden">
         <Image src={image} className=" w-full h-full object-cover" />
       </div>
