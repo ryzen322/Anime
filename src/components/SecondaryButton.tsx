@@ -3,12 +3,13 @@ import { FC, HtmlHTMLAttributes } from "react";
 import { cn } from "../utils/utils";
 
 const SecondaryButtonVariants = cva(
-  " w-full rounded-md font-semibold transition-all duration-200 ",
+  " w-full rounded-md font-semibold transition-all duration-200",
   {
     variants: {
       variants: {
         default: " bg-[#26BBFF]  hover:bg-[#61cdff] text-black",
         secondary: " bg-[#333337] hover:bg-[#ffffff59] text-white",
+        play: " bg-white text-black",
       },
       size: {
         default: " h-[48px]",
