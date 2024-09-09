@@ -1,4 +1,3 @@
-import { createPortal } from "react-dom";
 import { IoSearch } from "react-icons/io5";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useSearchAnime } from "../../hooks/useSearchAnime";
@@ -6,23 +5,13 @@ import SearchUl from "../common/search/SearchUl";
 import SearchComp from "../SearchComp";
 import SearchList from "../SearchList";
 import SearchError from "../common/search/Error/SearchError";
+import Portal from "./Portal";
 
 const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
   const { queries, setFilter } = useSearchAnime();
 
-  function closeModal() {
-    modalToggle();
-    document.body.removeAttribute("style");
-    const portalEl = document.querySelector("#portal");
-
-    portalEl?.classList.add("hidden");
-  }
-
-  return createPortal(
-    <div
-      className=" h-dvh w-full flex  justify-center items-center relative z-40"
-      onClick={() => closeModal()}
-    >
+  return (
+    <Portal togglePortal={modalToggle}>
       <div
         className=" w-[24.5rem] min-h-[31rem]  flex flex-col  rounded-md bg-[#181818] sm:w-[30rem]"
         onClick={(event) => {
@@ -68,8 +57,7 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
           {queries.isLoading && <SearchComp isLoading={!queries.isLoading} />}
         </>
       </div>
-    </div>,
-    document.getElementById("portal")!
+    </Portal>
   );
 };
 

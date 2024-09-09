@@ -1,24 +1,15 @@
-import { useParams } from "react-router-dom";
-import Layout from "./Layout";
-import { useQuery } from "@tanstack/react-query";
-import { getStreaming } from "../services/api";
+import Portal from "./modal/Portal";
 
-const Watch = () => {
-  const { id } = useParams();
-
-  console.log(id);
-
-  const { data } = useQuery({
-    queryKey: ["watch", id],
-    queryFn: async () => getStreaming(id),
-  });
-
-  console.log(data);
-
+const Watch = (props: { closePortal: () => void }) => {
   return (
-    <Layout>
-      <div className=""></div>
-    </Layout>
+    <Portal togglePortal={props.closePortal}>
+      <div
+        className=" w-[90%] h-[15rem] bg-stone-600 text-white z-50 rounded-md"
+        onClick={(event) => {
+          event.stopPropagation();
+        }}
+      ></div>
+    </Portal>
   );
 };
 

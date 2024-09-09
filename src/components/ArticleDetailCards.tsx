@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
 import { DetailAnimeObj } from "../types";
 import Image from "./common/search/Image";
 import { SecondaryButton } from "./SecondaryButton";
 import { FaPlay } from "react-icons/fa";
+import Watch from "./Watch";
+import { useState } from "react";
 
 export const ArticleDetailCards = (props: DetailAnimeObj) => {
+  const [watchPortal, setWatchPortal] = useState(false);
   const {
     image,
     isAdult,
@@ -15,11 +17,22 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
     releaseDate,
     season,
     currentEpisode,
-    episodes,
   } = props;
 
   const parental = isAdult ? "18plus" : "13+";
   const licensed = isLicensed ? "Licensed" : "Pirated";
+
+  function watchModal() {
+    setWatchPortal(!watchPortal);
+
+    const portalEl = document.querySelector("#portal");
+
+    if (portalEl?.className === "hidden") {
+      portalEl?.classList.remove("hidden");
+    } else {
+      portalEl?.classList.add("hidden");
+    }
+  }
 
   return (
     <article className=" flex flex-col h-full gap-4 w-full">
@@ -29,12 +42,12 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
           className=" w-full h-full object-cover relative group-hover:scale-110 transition-all duration-200 ease-in-out"
         />
         <div className=" absolute w-full h-full top-0 left-0 bg-gradient-to-b from-black/10 to-black/65 flex items-center justify-center ">
-          <Link
-            to={`/watch/${episodes?.[0].id}`}
+          <button
             className=" h-[5rem] w-[5rem] bg-black/50 rounded-full flex items-center justify-center pl-2 shadow-md group-hover:bg-black"
+            onClick={watchModal}
           >
             <FaPlay className=" text-white text-4xl font-semibold" />
-          </Link>
+          </button>
         </div>
       </article>
       <SecondaryButton
@@ -111,6 +124,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
           Report
         </SecondaryButton>
       </div>
+      {watchPortal && <Watch closePortal={watchModal} />}
     </article>
   );
 };
