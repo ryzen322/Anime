@@ -1,5 +1,6 @@
 import Portal from "./modal/Portal";
 import { MdClose } from "react-icons/md";
+import { SecondaryButton } from "./SecondaryButton";
 
 const Watch = (props: { closePortal: () => void }) => {
   return (
@@ -36,7 +37,16 @@ export function PlayerHeader() {
             <MdClose className=" text-3xl" />
           </div>
         </div>
-        <div className=" mt-auto w-full"></div>
+        <div className=" mt-auto w-full flex flex-col p-4 gap-2">
+          <h1 className=" text-2xl font-semibold">One Piece</h1>
+          <div className=" flex items-center gap-2">
+            <div className=" h-[4rem] flex items-center">
+              <SecondaryButton variants={"play"} className=" px-3 font-bold">
+                <h1>Next Episodes</h1>
+              </SecondaryButton>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
