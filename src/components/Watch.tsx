@@ -1,53 +1,22 @@
 import Portal from "./modal/Portal";
-import { MdClose } from "react-icons/md";
-import { SecondaryButton } from "./SecondaryButton";
+import { PlayerHeader } from "./PlayerHeader";
 
 const Watch = (props: { closePortal: () => void }) => {
   return (
     <Portal togglePortal={props.closePortal}>
       <div
-        className=" w-[95%] h-[85dvh] text-white z-50 rounded-md bg-Primary"
+        className=" w-[98%] h-dvh mt-14 text-white z-50 rounded-md bg-Primary md:w-[90%] lg:w-[80%] xl:w-[60%] xl:mt-10 2xl:w-[980px]"
         onClick={(event) => {
           event.stopPropagation();
         }}
       >
-        <div className=" aspect-video rounded-t-sm overflow-hidden relative ">
+        <div className=" aspect-video rounded-t-md overflow-hidden relative">
           <PlayerHeader />
         </div>
+        <div className=" flex flex-col w-full"></div>
       </div>
     </Portal>
   );
 };
 
 export default Watch;
-
-export function PlayerHeader() {
-  return (
-    <div className=" w-full h-full">
-      <div className=" relative w-full h-full overflow-hidden  border border-black/20">
-        <img
-          src="https://s4.anilist.co/file/anilistcdn/media/anime/banner/101922-YfZhKBUDDS6L.jpg"
-          alt=""
-          className=" w-full h-full object-cover"
-        />
-      </div>
-      <div className=" absolute top-0 left-0 bottom-0 w-full h-full z-20 bg-gradient-to-b from-[#101014]/20 to-[#101014] flex flex-col">
-        <div className="w-full p-2">
-          <div className=" h-10 w-10 rounded-full bg-[#181818] ml-auto flex items-center justify-center cursor-pointer">
-            <MdClose className=" text-3xl" />
-          </div>
-        </div>
-        <div className=" mt-auto w-full flex flex-col p-4 gap-2">
-          <h1 className=" text-2xl font-semibold">One Piece</h1>
-          <div className=" flex items-center gap-2">
-            <div className=" h-[4rem] flex items-center">
-              <SecondaryButton variants={"play"} className=" px-3 font-bold">
-                <h1>Next Episodes</h1>
-              </SecondaryButton>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
