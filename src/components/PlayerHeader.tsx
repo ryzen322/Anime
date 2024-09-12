@@ -19,7 +19,7 @@ export function PlayerHeader() {
             <MdClose className=" text-3xl text-stone-300" />
           </div>
         </div>
-        <div className=" mt-auto w-full flex flex-col py-6 px-8 gap-4">
+        <div className=" mt-auto w-full flex flex-col py-8 px-8 gap-4">
           <h1 className=" text-2xl font-semibold md:text-4xl">One Piece</h1>
           <div className=" flex items-center gap-2">
             <div className="  flex items-center gap-3">

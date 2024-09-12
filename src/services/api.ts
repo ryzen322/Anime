@@ -114,13 +114,13 @@ export const getDetailAnime = async (id: string | undefined) => {
     // const item = data.characters.map((data) => data.name);
     // console.log(item.map((val) => val.native));
 
+    console.log(data);
+
     const validateDetail = DetailSchema.safeParse(data);
 
     if (!validateDetail.success) {
       throw new Error(`${validateDetail.error}`);
     }
-
-    console.log(validateDetail.data);
 
     return validateDetail.data;
   } catch (error) {
