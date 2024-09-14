@@ -20,7 +20,7 @@ const Watch = (props: { closePortal: () => void }) => {
             <h1 className=" font-semibold text-xl">Episodes</h1>
           </div>
           <div
-            className={` w-full h-[30rem] overflow-y-scroll no-scrollbar grid grid-cols-7 gap-1 bgston`}
+            className={` w-full h-[50.3dvh] overflow-y-scroll no-scrollbar grid grid-cols-7 gap-1 bgston`}
           >
             {fakeArray.map((_, index) => (
               <div
