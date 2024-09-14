@@ -1,7 +1,7 @@
 import Portal from "./modal/Portal";
 import { PlayerHeader } from "./PlayerHeader";
 
-const fakeArray = Array.from({ length: 100 }, (_, index) => index + 1);
+const fakeArray = Array.from({ length: 48 }, (_, index) => index + 1);
 
 const Watch = (props: { closePortal: () => void }) => {
   return (
@@ -20,7 +20,7 @@ const Watch = (props: { closePortal: () => void }) => {
             <h1 className=" font-semibold text-xl">Episodes</h1>
           </div>
           <div
-            className={` w-full h-[50.3dvh] overflow-y-scroll no-scrollbar grid grid-cols-7 gap-1 bgston`}
+            className={` w-full overflow-y-scroll no-scrollbar grid grid-cols-7 gap-1 md:grid-cols-10 lg:grid-cols-12`}
           >
             {fakeArray.map((_, index) => (
               <div
