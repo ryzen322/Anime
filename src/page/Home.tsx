@@ -16,6 +16,7 @@ const Home = () => {
       <Article animeProps={{ page: 1, perPage: 6, routes: "Trending" }} />
 
       <CardAnime />
+
       <MostView />
       <Subscription />
       <OfferComponent />
