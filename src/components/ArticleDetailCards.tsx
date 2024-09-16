@@ -5,6 +5,7 @@ import { FaPlay } from "react-icons/fa";
 import Watch from "./Watch";
 import { useState } from "react";
 import { togglePortal } from "../utils/togglePortal";
+import { useEpisodes } from "../hooks/useEpisdes";
 
 export const ArticleDetailCards = (props: DetailAnimeObj) => {
   const [watchPortal, setWatchPortal] = useState(false);
@@ -18,6 +19,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
     releaseDate,
     season,
     currentEpisode,
+    episodes,
   } = props;
 
   const parental = isAdult ? "18plus" : "13+";
@@ -28,6 +30,10 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
 
     togglePortal();
   }
+
+  const { episodesArray } = useEpisodes(episodes!);
+
+  console.log(episodesArray);
 
   return (
     <article className=" flex flex-col h-full gap-4 w-full">

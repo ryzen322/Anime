@@ -183,6 +183,7 @@ export const DetailSchema = z.object({
   episodes: z.array(episodes).optional(),
 });
 
+export type Episodes = z.infer<typeof episodes>;
 export type CharacterObj = z.infer<typeof Characters>;
 export type Recommendations = z.infer<typeof Recommendation>;
 export type TrendingAnimeObj = z.infer<typeof animeTrendingObject>;
