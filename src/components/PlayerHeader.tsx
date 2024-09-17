@@ -3,7 +3,7 @@ import { FaPlay } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 
-export function PlayerHeader() {
+export function PlayerHeader(props: { closeModal: () => void }) {
   return (
     <div className=" w-full h-full rounded-md">
       <div className=" relative w-full h-full overflow-hidden  border border-black/20 rounded-t-md">
@@ -15,7 +15,10 @@ export function PlayerHeader() {
       </div>
       <div className=" absolute top-0 left-0 bottom-0 w-full h-full z-20 bg-gradient-to-b from-[#101014]/20 to-[#101014] flex flex-col">
         <div className="w-full p-2">
-          <div className=" h-10 w-10 rounded-full bg-[#181818] ml-auto flex items-center justify-center cursor-pointer">
+          <div
+            className=" h-10 w-10 rounded-full bg-[#181818] ml-auto flex items-center justify-center cursor-pointer"
+            onClick={() => props.closeModal()}
+          >
             <MdClose className=" text-3xl text-stone-300" />
           </div>
         </div>

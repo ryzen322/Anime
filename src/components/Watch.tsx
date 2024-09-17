@@ -23,7 +23,7 @@ const Watch = (props: WatchType) => {
         }}
       >
         <div className=" aspect-video rounded-t-md overflow-hidden relative">
-          <PlayerHeader />
+          <PlayerHeader closeModal={closePortal} />
         </div>
         <div className=" flex flex-col px-6 gap-6">
           <div className=" w-full flex justify-between items-center">
