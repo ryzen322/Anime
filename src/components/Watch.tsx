@@ -1,5 +1,4 @@
 import { EpisodesArray } from "../hooks/useEpisdes";
-import { episodesString } from "../utils";
 import Portal from "./modal/Portal";
 import { PlayerHeader } from "./PlayerHeader";
 
@@ -51,11 +50,7 @@ const Watch = (props: WatchType) => {
             {filteredEpisodes?.episodesAnime?.map((item) => (
               <div
                 key={item.id}
-                className={` h-[3.5rem] ${
-                  episodesString(item.id) === item.id
-                    ? "bg-stone-500"
-                    : "bg-stone-800"
-                } rounded-sm cursor-pointer flex justify-center items-center`}
+                className={` h-[3.5rem] bg-stone-800 rounded-sm cursor-pointer flex justify-center items-center`}
               >
                 <span className=" text-white text-xs font-semibold">
                   {item.title}
