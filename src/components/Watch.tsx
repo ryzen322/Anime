@@ -1,4 +1,5 @@
 import { EpisodesArray } from "../hooks/useEpisdes";
+import { episodesString } from "../utils";
 import Portal from "./modal/Portal";
 import { PlayerHeader } from "./PlayerHeader";
 
@@ -33,7 +34,11 @@ const Watch = (props: WatchType) => {
             {episodesItems.map((item) => (
               <div
                 key={item?.id}
-                className=" w-[20%] min-w-[20%] h-full rounded-sm bg-stone-700 flex  items-center justify-center md:min-w-[15%]"
+                className={` w-[25%] min-w-[25%] h-full rounded-sm ${
+                  item?.id === filteredEpisodes?.id
+                    ? " bg-stone-500"
+                    : "bg-stone-800"
+                } flex  items-center justify-center md:min-w-[15%] font-semibold cursor-pointer`}
                 onClick={() => changeEpisodes(item?.id)}
               >
                 {item?.pagePrev} - {item?.pageNext}
@@ -46,9 +51,15 @@ const Watch = (props: WatchType) => {
             {filteredEpisodes?.episodesAnime?.map((item) => (
               <div
                 key={item.id}
-                className=" h-[3.5rem] bg-stone-500 rounded-sm cursor-pointer flex justify-center items-center"
+                className={` h-[3.5rem] ${
+                  episodesString(item.id) === item.id
+                    ? "bg-stone-500"
+                    : "bg-stone-800"
+                } rounded-sm cursor-pointer flex justify-center items-center`}
               >
-                <span className=" text-white text-xs">{item.title}</span>
+                <span className=" text-white text-xs font-semibold">
+                  {item.title}
+                </span>
               </div>
             ))}
           </div>
@@ -59,3 +70,4 @@ const Watch = (props: WatchType) => {
 };
 
 export default Watch;
+// episodesString();

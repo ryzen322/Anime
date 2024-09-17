@@ -31,7 +31,10 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
     togglePortal();
   }
 
+  console.log(currentEpisode);
+
   const { filter, episodesArray, nextPages } = useEpisodes(episodes!);
+  console.log(filter);
 
   return (
     <article className=" flex flex-col h-full gap-4 w-full">
