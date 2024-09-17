@@ -12,46 +12,51 @@ const episodesList = z
   .optional();
 
 const EpisodesSchema = z.array(episodesList);
-type EpisodesArray = z.infer<typeof EpisodesSchema>;
+export type EpisodesArray = z.infer<typeof EpisodesSchema>;
 // type EpisodeObject = z.infer<typeof episodesList>;
 
 export const useEpisodes = (episodeType: Episodes[]) => {
-  const [episodeNum, setEpisodeNumb] = useState(1);
+  const [pages, setPages] = useState(1);
 
-  const changeEpisode = (id: number): void => {
-    setEpisodeNumb(id);
-  };
+  const animeNext = episodeType.length < 30 ? 1 : episodeType.length / 30 + 1;
 
-  const episodeSlice =
-    episodeType.length < 48 ? 1 : episodeType.length / 48 + 1;
-
-  const array = Array.from({ length: episodeSlice }, (_, index) => {
+  const array = Array.from({ length: animeNext }, (_, index) => {
     return {
       id: index + 1,
-      pagePrev: index + 1 === 1 ? 0 : (index + 1) * 48 - 48,
-      pageNext: (index + 1) * 48,
+      pagePrev: index + 1 === 1 ? 0 : (index + 1) * 30 - 30,
+      pageNext: (index + 1) * 30,
     };
   });
 
-  const episodesArray: EpisodesArray = useMemo(() => [], []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const episodesArray: EpisodesArray = [];
 
   for (const arr of array) {
     const episode = {
       episodesAnime: episodeType.slice(arr.pagePrev, arr.pageNext),
       id: arr.id,
-      pagePrev: arr.pagePrev,
-      pageNext: episodeType.length < 48 ? episodeType.length : arr.pageNext,
+      pagePrev: arr.pagePrev + 1,
+      pageNext: episodeType.length < 29 ? episodeType.length : arr.pageNext,
     };
+
     episodesArray.push(episode);
   }
 
-  const filterEpisode = useMemo(() => {
-    return episodesArray.filter((item) => item?.id === episodeNum);
-  }, [episodeNum, episodesArray]);
+  const filter = useMemo(
+    () => episodesArray?.filter((item) => item?.id === pages),
+    [episodesArray, pages]
+  );
+
+  function nextPages(pageNumber: number | undefined) {
+    if (pageNumber) {
+      setPages(pageNumber);
+    }
+  }
 
   return {
-    filterEpisode,
-    changeEpisode,
+    pages,
+    nextPages,
+    filter,
     episodesArray,
   };
 };

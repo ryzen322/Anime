@@ -31,9 +31,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
     togglePortal();
   }
 
-  const { episodesArray } = useEpisodes(episodes!);
-
-  console.log(episodesArray);
+  const { filter, episodesArray, nextPages } = useEpisodes(episodes!);
 
   return (
     <article className=" flex flex-col h-full gap-4 w-full">
@@ -125,7 +123,14 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
           Report
         </SecondaryButton>
       </div>
-      {watchPortal && <Watch closePortal={watchModal} />}
+      {watchPortal && (
+        <Watch
+          closePortal={watchModal}
+          changeEpisodes={nextPages}
+          filteredEp={filter}
+          episodesItems={episodesArray}
+        />
+      )}
     </article>
   );
 };
