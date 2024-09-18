@@ -129,6 +129,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
           changeEpisodes={nextPages}
           filteredEp={filter}
           episodesItems={episodesArray}
+          currentEpi={currentEpisode}
         />
       )}
     </article>

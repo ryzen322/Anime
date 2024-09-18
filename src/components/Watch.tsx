@@ -1,18 +1,32 @@
+import { useQuery } from "@tanstack/react-query";
 import { EpisodesArray } from "../hooks/useEpisdes";
 import Portal from "./modal/Portal";
-import { PlayerHeader } from "./PlayerHeader";
+import Player from "./player";
+// import { PlayerHeader } from "./PlayerHeader";
+import { getStreaming } from "../services/api";
 
 interface WatchType {
   closePortal: () => void;
   filteredEp: EpisodesArray;
   episodesItems: EpisodesArray;
   changeEpisodes: (id: number | undefined) => void;
+  currentEpi?: number;
 }
 
 const Watch = (props: WatchType) => {
   const { closePortal, filteredEp, episodesItems, changeEpisodes } = props;
-
   const filteredEpisodes = filteredEp[0];
+
+  const { data } = useQuery({
+    queryKey: ["watch"],
+    queryFn: async () => getStreaming("kimetsu-no-yaiba-episode-1"),
+  });
+  const stream = data?.sources.map((item) => {
+    return {
+      url: item.url,
+    };
+  });
+  console.log(stream);
 
   return (
     <Portal togglePortal={closePortal}>
@@ -23,7 +37,17 @@ const Watch = (props: WatchType) => {
         }}
       >
         <div className=" aspect-video rounded-t-md overflow-hidden relative">
-          <PlayerHeader closeModal={closePortal} />
+          {/* <PlayerHeader closeModal={closePortal} /> */}
+          <Player
+            src={data?.sources[0].url}
+            viewType="video"
+            streamType="on-demand"
+            logLevel="warn"
+            load="visible"
+            posterLoad="visible"
+          >
+            <div className=""></div>
+          </Player>
         </div>
         <div className=" flex flex-col px-6 gap-6">
           <div className=" w-full flex justify-between items-center">

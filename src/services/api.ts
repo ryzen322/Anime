@@ -2,6 +2,7 @@ import {
   DetailSchema,
   popularAnimeSchema,
   searchAnimeSchema,
+  StreamingSchema,
   trendingAnimeSchema,
 } from "../types";
 import { instance } from "./instance";
@@ -132,9 +133,13 @@ export const getStreaming = async (mailId: string | undefined) => {
   try {
     const { data } = await instance.get(`meta/anilist/watch/${mailId}`);
 
-    console.log(data);
+    const validate = StreamingSchema.safeParse(data);
 
-    return data;
+    if (!validate.success) {
+      throw new Error(`${validate.error}`);
+    }
+
+    return validate.data;
   } catch (error) {
     throw new Error("Try Again");
   }
