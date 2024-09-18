@@ -20,6 +20,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
     season,
     currentEpisode,
     episodes,
+    trailer,
   } = props;
 
   const parental = isAdult ? "18plus" : "13+";
@@ -125,6 +126,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
       </div>
       {watchPortal && (
         <Watch
+          coverImage={trailer?.thumbnail}
           closePortal={watchModal}
           changeEpisodes={nextPages}
           filteredEp={filter}

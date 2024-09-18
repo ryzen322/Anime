@@ -11,22 +11,18 @@ interface WatchType {
   episodesItems: EpisodesArray;
   changeEpisodes: (id: number | undefined) => void;
   currentEpi?: number;
+  coverImage?: string;
 }
 
 const Watch = (props: WatchType) => {
-  const { closePortal, filteredEp, episodesItems, changeEpisodes } = props;
+  const { closePortal, filteredEp, episodesItems, changeEpisodes, coverImage } =
+    props;
   const filteredEpisodes = filteredEp[0];
 
   const { data } = useQuery({
     queryKey: ["watch"],
     queryFn: async () => getStreaming("kimetsu-no-yaiba-episode-1"),
   });
-  const stream = data?.sources.map((item) => {
-    return {
-      url: item.url,
-    };
-  });
-  console.log(stream);
 
   return (
     <Portal togglePortal={closePortal}>
@@ -45,6 +41,13 @@ const Watch = (props: WatchType) => {
             logLevel="warn"
             load="visible"
             posterLoad="visible"
+            title="kimetsu-no-yaiba-episode-1"
+            poster={`${
+              coverImage
+                ? coverImage
+                : "https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/12/Featured-Image-Shonen-Jump-wrong-better-Cropped.jpg?q=50&fit=crop&w=1100&h=618&dpr=1.5"
+            }`}
+            fullscreenOrientation="landscape"
           >
             <div className=""></div>
           </Player>
