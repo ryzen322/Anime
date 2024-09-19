@@ -12,7 +12,7 @@ import { ContextEpisode } from "./store/store";
 type Player = "youtube" | "anime";
 
 export const ArticleSubDetail = (props: DetailAnimeObj) => {
-  const { episode, context } = useContext(ContextEpisode);
+  const { context, episode } = useContext(ContextEpisode);
   const [playerState, setPlayerState] = useState<Player>("anime");
 
   const {
@@ -23,9 +23,10 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
     trailer,
     title,
     characters,
+    episodes,
   } = props;
 
-  console.log(episode);
+  setPlayerState;
 
   return (
     <article className=" w-full flex flex-col gap-8 h-full md:w-[60%] lg:w-[70%]">
@@ -41,7 +42,8 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
           <Player
             children=""
             src={context?.sources[3].url}
-            title="kimetsu-no-yaiba-episode-1"
+            title={`${episode}`}
+            autoPlay
             poster={`${
               trailer?.thumbnail
                 ? trailer?.thumbnail
@@ -51,7 +53,7 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
         )}
       </article>
 
-      <Episodes className="" />
+      <Episodes className="  md:hidden" episodes={episodes!} />
 
       {/* <div className=" w-full rounded-sm relative flex flex-col items-center justify-end gap-1">
         <h1 className=" text-white font-semibold">

@@ -2,10 +2,8 @@ import { DetailAnimeObj } from "../types";
 import Image from "./common/search/Image";
 import { SecondaryButton } from "./SecondaryButton";
 import { FaPlay } from "react-icons/fa";
-import Watch from "./Watch";
 import { useState } from "react";
 import { togglePortal } from "../utils/togglePortal";
-import { useEpisodes } from "../hooks/useEpisdes";
 import Episodes from "./Series/Episodes";
 
 export const ArticleDetailCards = (props: DetailAnimeObj) => {
@@ -21,7 +19,6 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
     season,
     currentEpisode,
     episodes,
-    trailer,
   } = props;
 
   const parental = isAdult ? "18plus" : "13+";
@@ -33,11 +30,10 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
     togglePortal();
   }
 
-  const { filter, episodesArray, nextPages } = useEpisodes(episodes!);
-
   return (
     <article className=" flex flex-col h-full gap-4 w-full">
-      <Episodes />
+      <Episodes className=" hidden md:block" episodes={episodes!} />
+
       <article className=" h-[500px] w-full mb-auto rounded-md overflow-hidden relative cursor-pointer group md:h-[400px] lg:h-[500px]">
         <Image
           src={`${image}`}
@@ -127,16 +123,6 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
           Report
         </SecondaryButton>
       </div>
-      {watchPortal && (
-        <Watch
-          coverImage={trailer?.thumbnail}
-          closePortal={watchModal}
-          changeEpisodes={nextPages}
-          filteredEp={filter}
-          episodesItems={episodesArray}
-          currentEpi={currentEpisode}
-        />
-      )}
     </article>
   );
 };
