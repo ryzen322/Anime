@@ -6,6 +6,7 @@ import Watch from "./Watch";
 import { useState } from "react";
 import { togglePortal } from "../utils/togglePortal";
 import { useEpisodes } from "../hooks/useEpisdes";
+import Episodes from "./Series/Episodes";
 
 export const ArticleDetailCards = (props: DetailAnimeObj) => {
   const [watchPortal, setWatchPortal] = useState(false);
@@ -36,6 +37,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
 
   return (
     <article className=" flex flex-col h-full gap-4 w-full">
+      <Episodes />
       <article className=" h-[500px] w-full mb-auto rounded-md overflow-hidden relative cursor-pointer group md:h-[400px] lg:h-[500px]">
         <Image
           src={`${image}`}
@@ -50,6 +52,7 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
           </button>
         </div>
       </article>
+
       <SecondaryButton
         variants={"play"}
         className=" flex justify-center items-center gap-2"

@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { DetailAnimeObj } from "../types";
 import { Achievements } from "./Achievements";
 import { ChannelSocial } from "./ChannelSocial";
 import { Description } from "./Description";
 import { DetailGenre } from "./DetailGenre";
-import PlayerYt from "./PlayerYt";
 import Recommendation from "./Recommendation";
+import Player from "./player";
+import Episodes from "./Series/Episodes";
+import { ContextEpisode } from "./store/store";
 
 type Player = "youtube" | "anime";
 
 export const ArticleSubDetail = (props: DetailAnimeObj) => {
-  const [playerState, setPlayerState] = useState<Player>("youtube");
+  const { episode, context } = useContext(ContextEpisode);
+  const [playerState, setPlayerState] = useState<Player>("anime");
 
   const {
     description,
@@ -22,22 +25,35 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
     characters,
   } = props;
 
+  console.log(episode);
+
   return (
     <article className=" w-full flex flex-col gap-8 h-full md:w-[60%] lg:w-[70%]">
       <article className="  w-full rounded-md overflow-hidden cursor-pointer  aspect-video">
         {playerState === "youtube" ? (
-          <PlayerYt
+          <Player
             children=""
-            src={trailer?.id}
-            poster={trailer?.thumbnail}
+            src={`youtube/${trailer?.id}`}
             title={title?.english ? title.english : ""}
+            poster={trailer?.thumbnail}
           />
         ) : (
-          ""
+          <Player
+            children=""
+            src={context?.sources[3].url}
+            title="kimetsu-no-yaiba-episode-1"
+            poster={`${
+              trailer?.thumbnail
+                ? trailer?.thumbnail
+                : "https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/12/Featured-Image-Shonen-Jump-wrong-better-Cropped.jpg?q=50&fit=crop&w=1100&h=618&dpr=1.5"
+            }`}
+          />
         )}
       </article>
 
-      <div className=" w-full rounded-sm relative flex flex-col items-center justify-end gap-1">
+      <Episodes className="" />
+
+      {/* <div className=" w-full rounded-sm relative flex flex-col items-center justify-end gap-1">
         <h1 className=" text-white font-semibold">
           Free to Watch to any Device
         </h1>
@@ -50,10 +66,7 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
         >
           Watch Now
         </button>
-        {/* <span className=" text-[11px] text-gray-500 font-semibold">
-          Dont forget to subscribe
-        </span> */}
-      </div>
+      </div> */}
 
       <Recommendation recommend={recommendations} />
       <div className=" grid grid-cols-2">

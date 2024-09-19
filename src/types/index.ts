@@ -194,6 +194,7 @@ export const StreamingSchema = z.object({
   sources: z.array(SourceSchema),
 });
 
+export type ContextObject = z.infer<typeof StreamingSchema>;
 export type Episodes = z.infer<typeof episodes>;
 export type CharacterObj = z.infer<typeof Characters>;
 export type Recommendations = z.infer<typeof Recommendation>;

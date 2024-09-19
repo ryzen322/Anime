@@ -35,7 +35,9 @@ const CardAnime = () => {
       <ul className=" grid grid-cols-2  py-2 px-2 rounded-md gap-2 mb-5 md:gap-4 lg:grid-cols-4">
         {isLoading
           ? loading
-          : data?.results.map((item) => <CardsAnime key={item.id} {...item} />)}
+          : data?.results?.map((item) => (
+              <CardsAnime key={item.id} {...item} />
+            ))}
       </ul>
     </section>
   );
