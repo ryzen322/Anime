@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { ContextEpisode } from "./store";
+import { ContextEpisode, Player } from "./store";
 import { useQuery } from "@tanstack/react-query";
 import { getStreaming } from "../../services/api";
 
 const EpisodeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [ep, setEp] = useState("kimetsu-no-yaiba-episode-1");
+  const [ep, setEp] = useState("");
+  const [chooseStream, setChooseStream] = useState<Player>("youtube");
 
   const { data, isLoading } = useQuery({
     queryKey: ["watch", ep],
@@ -12,13 +13,23 @@ const EpisodeProvider = ({ children }: { children: React.ReactNode }) => {
   });
 
   const changeEpisode = (episodeString: string) => {
-    console.log(episodeString);
     setEp(episodeString);
+  };
+
+  const changePlayer = (playerState: Player) => {
+    setChooseStream(playerState);
   };
 
   return (
     <ContextEpisode.Provider
-      value={{ episode: ep, context: data, changeEpisode, loading: isLoading }}
+      value={{
+        episode: ep,
+        context: data,
+        changeEpisode,
+        loading: isLoading,
+        playerState: chooseStream,
+        changePlayer,
+      }}
     >
       {children}
     </ContextEpisode.Provider>

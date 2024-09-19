@@ -2,11 +2,13 @@ import { DetailAnimeObj } from "../types";
 import Image from "./common/search/Image";
 import { SecondaryButton } from "./SecondaryButton";
 import { FaPlay } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { togglePortal } from "../utils/togglePortal";
 import Episodes from "./Series/Episodes";
+import { ContextEpisode } from "./store/store";
 
 export const ArticleDetailCards = (props: DetailAnimeObj) => {
+  const { playerState } = useContext(ContextEpisode);
   const [watchPortal, setWatchPortal] = useState(false);
   const {
     image,
@@ -32,7 +34,9 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
 
   return (
     <article className=" flex flex-col h-full gap-4 w-full">
-      <Episodes className=" hidden md:block" episodes={episodes!} />
+      {playerState === "anime" && (
+        <Episodes className=" hidden md:block" episodes={episodes!} />
+      )}
 
       <article className=" h-[500px] w-full mb-auto rounded-md overflow-hidden relative cursor-pointer group md:h-[400px] lg:h-[500px]">
         <Image

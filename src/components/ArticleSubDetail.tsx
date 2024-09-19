@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { DetailAnimeObj } from "../types";
 import { Achievements } from "./Achievements";
 import { ChannelSocial } from "./ChannelSocial";
@@ -12,8 +12,8 @@ import { ContextEpisode } from "./store/store";
 type Player = "youtube" | "anime";
 
 export const ArticleSubDetail = (props: DetailAnimeObj) => {
-  const { context, episode } = useContext(ContextEpisode);
-  const [playerState, setPlayerState] = useState<Player>("anime");
+  const { context, episode, changeEpisode, playerState, changePlayer } =
+    useContext(ContextEpisode);
 
   const {
     description,
@@ -24,9 +24,22 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
     title,
     characters,
     episodes,
+    currentEpisode,
   } = props;
 
-  setPlayerState;
+  function activeEpisode(activeEp: string | undefined): string {
+    if (activeEp) {
+      const titleEpisode = episodes && episodes[0].id; // onepiece-episode-1
+      const splitEpisode = titleEpisode?.split("-"); // ['onepiece', 'episode', '1']
+      const convertString = splitEpisode?.slice(0, splitEpisode.length - 1); // slice remove the last element of the array
+      const joinArryToSTring = [...(convertString as string[]), activeEp].join(
+        "-"
+      );
+      return joinArryToSTring;
+    } else {
+      return "";
+    }
+  }
 
   return (
     <article className=" w-full flex flex-col gap-8 h-full md:w-[60%] lg:w-[70%]">
@@ -53,22 +66,32 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
         )}
       </article>
 
-      <Episodes className="  md:hidden" episodes={episodes!} />
+      {playerState === "anime" && (
+        <Episodes className="  md:hidden" episodes={episodes!} />
+      )}
 
-      {/* <div className=" w-full rounded-sm relative flex flex-col items-center justify-end gap-1">
-        <h1 className=" text-white font-semibold">
-          Free to Watch to any Device
-        </h1>
-        <p className=" text-white/80 text-xs font-semibold">
-          To improve this Webisite we accept donation via Gcash
-        </p>
-        <button
-          className=" bg-white text-black flex items-center justify-center rounded-md px-7 py-1 font-bold text-sm mt-2 cursor-pointer"
-          onClick={() => setPlayerState("anime")}
-        >
-          Watch Now
-        </button>
-      </div> */}
+      {playerState === "youtube" && (
+        <div className=" w-full rounded-sm relative flex flex-col items-center justify-end gap-1">
+          <h1 className=" text-white font-semibold">
+            Free to Watch to any Device
+          </h1>
+          <p className=" text-white/80 text-xs font-semibold">
+            To improve this Webisite we accept donation via Gcash
+          </p>
+          <p className=" text-stone-400 text-xs font-semibold">
+            {activeEpisode(currentEpisode + "")}
+          </p>
+          <button
+            className=" bg-white text-black flex items-center justify-center rounded-md px-7 py-1 font-bold text-sm mt-2 cursor-pointer"
+            onClick={() => {
+              changePlayer("anime");
+              changeEpisode(activeEpisode(currentEpisode + ""));
+            }}
+          >
+            Watch Now
+          </button>
+        </div>
+      )}
 
       <Recommendation recommend={recommendations} />
       <div className=" grid grid-cols-2">
@@ -81,7 +104,3 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
     </article>
   );
 };
-
-export function Watch() {
-  return <div className=" h-full w-full bg-stone-500"></div>;
-}

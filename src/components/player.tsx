@@ -40,7 +40,7 @@ const Player = (props: MediaPlayerProps) => {
   return (
     <MediaPlayer
       {...props}
-      fullscreenOrientation="none"
+      fullscreenOrientation="landscape"
       viewType="video"
       logLevel="warn"
       onError={onError}
