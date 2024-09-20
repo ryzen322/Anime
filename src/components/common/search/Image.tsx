@@ -5,7 +5,7 @@ interface CustomImageProps extends ComponentPropsWithoutRef<"img"> {
 }
 
 const Image: FC<CustomImageProps> = ({ src, ...rest }) => {
-  return <img {...rest} src={src} loading="lazy" />;
+  return <img {...rest} src={src} loading="lazy" decoding="async" />;
 };
 
 export default Image;

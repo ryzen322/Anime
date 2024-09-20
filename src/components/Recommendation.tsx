@@ -12,11 +12,12 @@ const Recommendation = (props: {
         {recommend?.map((item) => (
           <li
             key={item.id}
-            className=" h-[50px] w-[88px] min-w-[88px] rounded-md  sm:h-[200px] sm:min-w-[150px] cursor-pointer overflow-hidden"
+            className=" h-[7] w-[8rem] min-w-[8rem] rounded-md  sm:h-[200px] sm:min-w-[150px] cursor-pointer overflow-hidden"
           >
             <Image
               src={item.image}
               className=" w-full h-full object-cover rounded-md hover:scale-110 transition-all duration-200 ease-in-out"
+              decoding="async"
             />
           </li>
         ))}

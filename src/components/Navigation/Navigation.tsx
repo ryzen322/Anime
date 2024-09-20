@@ -87,7 +87,9 @@ const Navigation = () => {
         <div className=" ml-auto ">
           <IoSearch
             className=" text-2xl cursor-pointer"
-            onClick={searchModalToggle}
+            onClick={() => {
+              searchModalToggle();
+            }}
           />
           {modal && <SearchModal modalToggle={searchModalToggle} />}
         </div>
