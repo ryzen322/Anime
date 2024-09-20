@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { z } from "zod";
 import { episodes, Episodes } from "../types";
+import stringEpConvert from "../utils/stringEpConvert";
 
 const episodesList = z
   .object({
@@ -16,9 +17,9 @@ export type EpisodesArray = z.infer<typeof EpisodesSchema>;
 // type EpisodeObject = z.infer<typeof episodesList>;
 
 export const useEpisodes = (episodeType: Episodes[]) => {
-  const [pages, setPages] = useState(1);
-  const lastEpisode = episodeType[episodeType.length - 1].id;
-  // console.log(lastEpisode);
+  const { activeEp, lastEpisode } = stringEpConvert(episodeType);
+
+  const [pages, setPages] = useState(activeEp);
   const animeNext = episodeType.length < 30 ? 1 : episodeType.length / 30 + 1;
 
   const array = Array.from({ length: animeNext }, (_, index) => {
@@ -47,14 +48,12 @@ export const useEpisodes = (episodeType: Episodes[]) => {
           ? episodeType.length
           : arr.pageNext,
     };
-    // console.log(arr.pageNext);
-    // console.log(episode);
 
     episodesArray.push(episode);
   }
 
   const filter = useMemo(
-    () => episodesArray?.filter((item) => item?.id === pages),
+    () => episodesArray?.filter((item) => item?.pageNext === pages),
     [episodesArray, pages]
   );
 
@@ -63,6 +62,8 @@ export const useEpisodes = (episodeType: Episodes[]) => {
       setPages(pageNumber);
     }
   }
+
+  console.log(pages);
 
   return {
     pages,

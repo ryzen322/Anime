@@ -31,21 +31,17 @@ const Episodes = ({
           className=" bg-neutral-800 w-full text-white text-sm font-semibold rounded-lg p-2.5 min-h-[2rem]"
           onChange={(e) => nextPages(Number(e.target.value))}
         >
+          <option value="dog">{episode}</option>
           {episodesArray.map((item) => (
             <option
               key={item?.id}
               defaultValue={pages}
-              value={item?.id}
+              value={item?.pageNext}
               className=" mt-1"
             >
               {item?.pagePrev} - {item?.pageNext}
             </option>
           ))}
-          {/* <option selected>View Episodes</option>
-          <option value="US">United States</option>
-          <option value="CA">Canada</option>
-          <option value="FR">France</option>
-          <option value="DE">Germany</option> */}
         </select>
       </form>
 
