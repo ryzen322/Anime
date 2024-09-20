@@ -17,7 +17,8 @@ export type EpisodesArray = z.infer<typeof EpisodesSchema>;
 
 export const useEpisodes = (episodeType: Episodes[]) => {
   const [pages, setPages] = useState(1);
-
+  const lastEpisode = episodeType[episodeType.length - 1].id;
+  // console.log(lastEpisode);
   const animeNext = episodeType.length < 30 ? 1 : episodeType.length / 30 + 1;
 
   const array = Array.from({ length: animeNext }, (_, index) => {
@@ -32,12 +33,22 @@ export const useEpisodes = (episodeType: Episodes[]) => {
   const episodesArray: EpisodesArray = [];
 
   for (const arr of array) {
+    const sliceEp = episodeType.slice(arr.pagePrev, arr.pageNext);
+    const checkedLastEp = sliceEp.some((t) => t.id === lastEpisode);
+
     const episode = {
-      episodesAnime: episodeType.slice(arr.pagePrev, arr.pageNext),
+      episodesAnime: sliceEp,
       id: arr.id,
       pagePrev: arr.pagePrev + 1,
-      pageNext: episodeType.length < 29 ? episodeType.length : arr.pageNext,
+      pageNext:
+        episodeType.length < 29
+          ? episodeType.length
+          : checkedLastEp
+          ? episodeType.length
+          : arr.pageNext,
     };
+    // console.log(arr.pageNext);
+    // console.log(episode);
 
     episodesArray.push(episode);
   }
