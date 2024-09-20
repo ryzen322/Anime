@@ -1,15 +1,13 @@
 import { DetailAnimeObj } from "../types";
 import Image from "./common/search/Image";
 import { SecondaryButton } from "./SecondaryButton";
-import { FaPlay } from "react-icons/fa";
-import { useContext, useState } from "react";
-import { togglePortal } from "../utils/togglePortal";
+import { useContext } from "react";
 import Episodes from "./Series/Episodes";
 import { ContextEpisode } from "./store/store";
 
 export const ArticleDetailCards = (props: DetailAnimeObj) => {
   const { playerState } = useContext(ContextEpisode);
-  const [watchPortal, setWatchPortal] = useState(false);
+
   const {
     image,
     isAdult,
@@ -26,12 +24,6 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
   const parental = isAdult ? "18plus" : "13+";
   const licensed = isLicensed ? "Licensed" : "Pirated";
 
-  function watchModal() {
-    setWatchPortal(!watchPortal);
-
-    togglePortal();
-  }
-
   return (
     <article className=" flex flex-col h-full gap-4 w-full">
       {playerState === "anime" && (
@@ -43,22 +35,9 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
           src={`${image}`}
           className=" w-full h-full object-cover relative group-hover:scale-110 transition-all duration-200 ease-in-out"
         />
-        <div className=" absolute w-full h-full top-0 left-0 bg-gradient-to-b from-black/10 to-black/65 flex items-center justify-center ">
-          <button
-            className=" h-[5rem] w-[5rem] bg-black/50 rounded-full flex items-center justify-center pl-2 shadow-md group-hover:bg-black"
-            onClick={watchModal}
-          >
-            <FaPlay className=" text-white text-4xl font-semibold" />
-          </button>
-        </div>
+        <div className=" absolute w-full h-full top-0 left-0 bg-gradient-to-b from-black/10 to-black/65 flex items-center justify-center "></div>
       </article>
 
-      <SecondaryButton
-        variants={"play"}
-        className=" flex justify-center items-center gap-2"
-      >
-        <FaPlay className=" text-black text-xl font-semibold" />
-      </SecondaryButton>
       <article className=" w-full h-[119px] border border-stone-400/50 rounded-md p-4 flex items-center gap-4 hover:border-white">
         <div className=" h-full rounded-md flex items-center justify-center border border-stone-400/50 p-1 ">
           <h1 className=" text-white font-bold text-4xl">{parental}</h1>

@@ -49,7 +49,11 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
             children=""
             src={`youtube/${trailer?.id}`}
             title={title?.english ? title.english : ""}
-            poster={trailer?.thumbnail}
+            poster={`${
+              trailer?.thumbnail
+                ? trailer?.thumbnail
+                : "https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/12/Featured-Image-Shonen-Jump-wrong-better-Cropped.jpg?q=50&fit=crop&w=1100&h=618&dpr=1.5"
+            }`}
           />
         ) : (
           <Player

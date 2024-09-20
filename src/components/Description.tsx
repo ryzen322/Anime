@@ -8,8 +8,8 @@ export const Description = ({ description }: { description: string }) => {
   return (
     <article
       className={`w-full ${
-        showmore ? "h-auto pb-10" : ""
-      } flex flex-col gap-2 relative overflow-hidden`}
+        showmore ? "h-auto pb-10" : "h-[5rem]"
+      } flex flex-col gap-2 relative overflow-hidden `}
     >
       <p
         className=" text-stone-300 font-semibold text-sm relative"
