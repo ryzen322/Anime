@@ -15,7 +15,10 @@ const Article = ({ animeProps }: { animeProps: listAnime }) => {
   return (
     <article className=" w-full  mb-4 px-1 flex flex-col gap-3 mt-6">
       <div className=" flex items-center gap-2 hover:gap-4 transition-all duration-200 ease-in-out">
-        <Link to={"/"} className=" text-white font-semibold text-2xl">
+        <Link
+          to={`/collection/${animeProps.routes}`}
+          className=" text-white font-semibold text-2xl cursor-pointer"
+        >
           {animeProps.routes} Anime
         </Link>
         <MdOutlineNavigateNext className=" text-white text-4xl font-bold" />
