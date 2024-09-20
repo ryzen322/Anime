@@ -63,8 +63,6 @@ export const useEpisodes = (episodeType: Episodes[]) => {
     }
   }
 
-  console.log(pages);
-
   return {
     pages,
     nextPages,

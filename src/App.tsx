@@ -1,21 +1,26 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./page/Home";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer";
-import DetailePage from "./page/DetailePage";
-import Detail from "./components/Detail";
+import { lazy, Suspense } from "react";
+const Main = lazy(() => import("./page/Home"));
+const DetailPage = lazy(() => import("./page/DetailePage"));
+const DetailID = lazy(() => import("./components/Detail"));
 
 function App() {
   return (
     <>
       <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/detail">
-          <Route index element={<DetailePage />} />
-          <Route path=":id" element={<Detail />} />
-        </Route>
-      </Routes>
+      <Suspense
+        fallback={<div className=" h-dvh w-full bg-Primary">loading...</div>}
+      >
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/detail">
+            <Route index element={<DetailPage />} />
+            <Route path=":id" element={<DetailID />} />
+          </Route>
+        </Routes>
+      </Suspense>
       <Footer />
     </>
   );

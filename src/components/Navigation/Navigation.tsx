@@ -5,6 +5,7 @@ import NavigationMenu from "./NavigationMenu";
 import NavigationBox from "./NavigationBox";
 import SearchModal from "../modal/SearchModal";
 import { togglePortal } from "../../utils/togglePortal";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const [chevState, setCheState] = useState(false);
@@ -67,13 +68,14 @@ const Navigation = () => {
             />
           </div>
         </div>
-        <h1
+        <Link
+          to={"/"}
           className={`text-xl font-semibold uppercase relative ${
             chevState ? " opacity-0" : " opacity-100"
           } transition-all  duration-200`}
         >
           My-Anime
-        </h1>
+        </Link>
         <h1 className=" hidden lg:flex  text-base font-normal mt-1 ">
           Support
         </h1>
