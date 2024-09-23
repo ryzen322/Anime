@@ -81,6 +81,7 @@ export const getPrimiumAnime = async () => {
     const { data } = await instance.get(`meta/anilist/trending`, {
       params: { page: 1, perPage: 4 },
     });
+
     const validatedAnime = popularAnimeSchema.safeParse(data);
 
     if (!validatedAnime.success) {
@@ -115,7 +116,7 @@ export const getDetailAnime = async (id: string | undefined) => {
     // const item = data.characters.map((data) => data.name);
     // console.log(item.map((val) => val.native));
 
-    console.log(data);
+    // console.log(data);
 
     const validateDetail = DetailSchema.safeParse(data);
 
@@ -129,7 +130,7 @@ export const getDetailAnime = async (id: string | undefined) => {
   }
 };
 
-export const getStreaming = async (mailId: string | undefined) => {
+export const getStreaming = async (mailId: string) => {
   try {
     const { data } = await instance.get(`meta/anilist/watch/${mailId}`);
 
