@@ -9,7 +9,7 @@ const SlideCardAction = ({
 }: {
   active: boolean;
   current: number;
-  image: string;
+  image?: string;
   title: string;
   showSlide: React.Dispatch<React.SetStateAction<number>>;
 }) => {

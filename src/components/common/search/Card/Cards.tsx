@@ -8,7 +8,7 @@ const Cards = ({
   type,
   id,
 }: {
-  image: string;
+  image?: string;
   title: string;
   genres: string[];
   type: string;

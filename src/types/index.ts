@@ -21,7 +21,7 @@ export const animeObjectSchema = z.object({
   coverHash: z.string().optional(),
   description: z.string().optional(),
   duration: z.number().optional(),
-  id: z.string().optional(),
+  id: z.string(),
   image: z.string().optional(),
   imageHash: z.string().optional(),
   malId: z.number().optional(),

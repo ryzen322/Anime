@@ -6,12 +6,12 @@ import { IoAlertCircle } from "react-icons/io5";
 import { Button } from "../../../Button";
 
 interface ListItemProps {
-  src: string;
-  description: string;
+  src?: string;
+  description?: string;
   coverImage: string | null;
   active: boolean;
   title: string;
-  rating: number;
+  rating?: number;
   genre: string[];
 }
 
@@ -19,8 +19,8 @@ const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
   ({ active, coverImage, description, src, genre, rating, title }, ref) => {
     const [toggleText, setToggleText] = useState(true);
 
-    const text = description.split(" ").slice(0, 6);
-    const textSTring = [...text].toString().replaceAll(",", " ");
+    const text = description?.split(" ").slice(0, 6);
+    const textSTring = [...(text as string[])].toString().replaceAll(",", " ");
     return (
       <li
         ref={ref}

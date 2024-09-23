@@ -49,6 +49,9 @@ const Player = (props: MediaPlayerProps) => {
       crossOrigin
       playsInline
       onProviderChange={onProviderChange}
+      onStarted={(e) => {
+        console.log(e);
+      }}
       onEnded={(e) => {
         console.log(e);
       }}
