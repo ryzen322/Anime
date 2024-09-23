@@ -117,6 +117,7 @@ export const getDetailAnime = async (id: string | undefined) => {
     // console.log(item.map((val) => val.native));
 
     // console.log(data);
+    console.log(data);
 
     const validateDetail = DetailSchema.safeParse(data);
 

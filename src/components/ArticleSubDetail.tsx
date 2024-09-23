@@ -40,6 +40,7 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
       return "";
     }
   }
+  // console.log(episode.split("-").slice(episode.split("-").length - 1));
 
   return (
     <article className=" w-full flex flex-col gap-8 h-full md:w-[60%] lg:w-[70%]">
@@ -61,6 +62,14 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
             src={context?.sources[3].url}
             title={`${episode}`}
             autoPlay
+            onEnd={() => {
+              const nextEp = episode.split("-");
+              const nextSubEp = nextEp.slice(0, nextEp.length - 1);
+              const [changeEpisodeEp] = nextEp.slice(nextEp.length - 1);
+              const addnumber = Number(changeEpisodeEp) + 1;
+              const nextChangeEp = [...nextSubEp, addnumber].join("-");
+              changeEpisode(nextChangeEp);
+            }}
             poster={`${
               trailer?.thumbnail
                 ? trailer?.thumbnail
