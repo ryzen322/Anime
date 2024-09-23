@@ -13,7 +13,6 @@ const EpisodeProvider = ({ children }: { children: React.ReactNode }) => {
   });
 
   const changeEpisode = (episodeString: string) => {
-    console.log(episodeString);
     setEp(episodeString);
   };
 

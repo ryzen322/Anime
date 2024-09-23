@@ -8,6 +8,8 @@ import Recommendation from "./Recommendation";
 import Player from "./player";
 import Episodes from "./Series/Episodes";
 import { ContextEpisode } from "./store/store";
+import { nextStringEpisode } from "../utils/nextStringEpisode";
+import { activeEpisode } from "../utils/activeEpisode";
 
 type Player = "youtube" | "anime";
 
@@ -27,20 +29,13 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
     currentEpisode,
   } = props;
 
-  function activeEpisode(activeEp: string | undefined): string {
-    if (activeEp) {
-      const titleEpisode = episodes && episodes[0].id; // onepiece-episode-1
-      const splitEpisode = titleEpisode?.split("-"); // ['onepiece', 'episode', '1']
-      const convertString = splitEpisode?.slice(0, splitEpisode.length - 1); // slice remove the last element of the array
-      const joinArryToSTring = [...(convertString as string[]), activeEp].join(
-        "-"
-      );
-      return joinArryToSTring;
-    } else {
-      return "";
-    }
+  const activeEp = activeEpisode({ activeEp: currentEpisode + "", episodes });
+
+  if (activeEp === episode) {
+    console.log("first");
+  } else {
+    changePlayer("youtube");
   }
-  // console.log(episode.split("-").slice(episode.split("-").length - 1));
 
   return (
     <article className=" w-full flex flex-col gap-8 h-full md:w-[60%] lg:w-[70%]">
@@ -63,12 +58,7 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
             title={`${episode}`}
             autoPlay
             onEnd={() => {
-              const nextEp = episode.split("-");
-              const nextSubEp = nextEp.slice(0, nextEp.length - 1);
-              const [changeEpisodeEp] = nextEp.slice(nextEp.length - 1);
-              const addnumber = Number(changeEpisodeEp) + 1;
-              const nextChangeEp = [...nextSubEp, addnumber].join("-");
-              changeEpisode(nextChangeEp);
+              changeEpisode(nextStringEpisode(episode));
             }}
             poster={`${
               trailer?.thumbnail
@@ -91,14 +81,12 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
           <p className=" text-white/80 text-xs font-semibold">
             To improve this Webisite we accept donation via Gcash
           </p>
-          <p className=" text-stone-400 text-xs font-semibold">
-            {activeEpisode(currentEpisode + "")}
-          </p>
+          <p className=" text-stone-400 text-xs font-semibold">{activeEp}</p>
           <button
             className=" bg-white text-black flex items-center justify-center rounded-md px-7 py-1 font-bold text-sm mt-2 cursor-pointer"
             onClick={() => {
               changePlayer("anime");
-              changeEpisode(activeEpisode(currentEpisode + ""));
+              changeEpisode(activeEp);
             }}
           >
             Watch Now
