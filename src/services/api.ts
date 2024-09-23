@@ -113,12 +113,6 @@ export const getDetailAnime = async (id: string | undefined) => {
   try {
     const { data } = await instance.get(`meta/anilist/info/${id}`);
 
-    // const item = data.characters.map((data) => data.name);
-    // console.log(item.map((val) => val.native));
-
-    // console.log(data);
-    console.log(data);
-
     const validateDetail = DetailSchema.safeParse(data);
 
     if (!validateDetail.success) {
@@ -142,6 +136,22 @@ export const getStreaming = async (mailId: string) => {
     }
 
     return validate.data;
+  } catch (error) {
+    throw new Error("Try Again");
+  }
+};
+
+export const getInfinite = async ({ pages }: { pages: number }) => {
+  try {
+    const { data } = await instance.get(`meta/anilist/trending`, {
+      params: { page: 1, perPage: pages },
+    });
+    const validatedAnime = trendingAnimeSchema.safeParse(data);
+
+    if (!validatedAnime.success) {
+      throw new Error(`${validatedAnime.error}`);
+    }
+    return validatedAnime.data;
   } catch (error) {
     throw new Error("Try Again");
   }

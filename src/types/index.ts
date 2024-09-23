@@ -29,10 +29,10 @@ export const animeObjectSchema = z.object({
   releaseDate: z.number().optional(),
   status: z.string().optional(),
   totalEpisodes: z.number().nullable(),
-  type: z.string(),
-  genres: genresObjectSchema,
-  trailer: trailerObjectSchema,
-  title: titleObjectSchema,
+  // type: z.string(),
+  // genres: genresObjectSchema,
+  // trailer: trailerObjectSchema,
+  // title: titleObjectSchema,
 });
 
 export const popularAnimeSchema = z.object({
@@ -205,3 +205,18 @@ export type AnimeObj = z.infer<typeof animeObjectSchema>;
 export type Genres = z.infer<typeof genresObjectSchema>;
 export type SearchAnime = z.infer<typeof searchAnimeSchema>;
 export type popularAnimeType = z.infer<typeof popularAnimeSchema>;
+
+export type GetPreviousPageParamFunction<TQueryFnData = unknown> = (
+  firstPage: TQueryFnData,
+  allPages: TQueryFnData[]
+) => unknown;
+
+export type GetNextPageParamFunction<TQueryFnData = unknown> = (
+  lastPage: TQueryFnData,
+  allPages: TQueryFnData[]
+) => unknown;
+
+export interface InfiniteData<TData> {
+  pages: TData[];
+  pageParams: unknown[];
+}
