@@ -141,17 +141,17 @@ export const getStreaming = async (mailId: string) => {
   }
 };
 
-export const getInfinite = async ({ pages }: { pages: number }) => {
+export const getInfinite = async ({ pageParam }: { pageParam: number }) => {
   try {
     const { data } = await instance.get(`meta/anilist/trending`, {
-      params: { page: 1, perPage: pages },
+      params: { page: pageParam, perPage: 20 },
     });
     const validatedAnime = trendingAnimeSchema.safeParse(data);
 
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }
-    return validatedAnime.data;
+    return validatedAnime.data.results;
   } catch (error) {
     throw new Error("Try Again");
   }

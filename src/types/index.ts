@@ -29,10 +29,10 @@ export const animeObjectSchema = z.object({
   releaseDate: z.number().optional(),
   status: z.string().optional(),
   totalEpisodes: z.number().nullable(),
-  // type: z.string(),
-  // genres: genresObjectSchema,
-  // trailer: trailerObjectSchema,
-  // title: titleObjectSchema,
+  type: z.string(),
+  genres: genresObjectSchema,
+  trailer: trailerObjectSchema,
+  title: titleObjectSchema,
 });
 
 export const popularAnimeSchema = z.object({
