@@ -146,11 +146,13 @@ export const getInfinite = async ({ pageParam }: { pageParam: number }) => {
     const { data } = await instance.get(`meta/anilist/trending`, {
       params: { page: pageParam, perPage: 20 },
     });
-    const validatedAnime = trendingAnimeSchema.safeParse(data);
 
+    const validatedAnime = trendingAnimeSchema.safeParse(data);
+    console.log(validatedAnime);
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }
+
     return validatedAnime.data.results;
   } catch (error) {
     throw new Error("Try Again");
