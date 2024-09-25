@@ -8,7 +8,7 @@ export function CollectionList({ inneRef, image, title }: ColletionList) {
   return (
     <li
       ref={inneRef}
-      className=" h-[175px] w-[123px] flex items-center bg-stone-500 rounded-md overflow-hidden relative phoneX:w-[150px] sm:w-[146px] md:w-[175px] md:h-[250px]"
+      className=" h-[175px] w-[115px] flex items-center bg-stone-500 rounded-md overflow-hidden relative phoneX:w-[150px] sm:w-[146px] md:w-[175px] md:h-[250px]"
     >
       <img
         src={`${image}`}
