@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
 import NavigationMenu from "./NavigationMenu";
-import NavigationBox from "./NavigationBox";
+
 import SearchModal from "../modal/SearchModal";
 import { togglePortal } from "../../utils/togglePortal";
 import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const [chevState, setCheState] = useState(false);
-  const [cartBox, setCartBox] = useState(false);
+
   const [modal, setModal] = useState(false);
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -17,7 +17,7 @@ const Navigation = () => {
     if (divRef) {
       const divEl = divRef.current?.getBoundingClientRect();
       if (divEl?.width) {
-        divEl.width >= 1024 ? setCheState(false) : setCartBox(false);
+        divEl.width >= 1024 ? setCheState(false) : "setCartBox(false)";
       }
     }
   }
@@ -32,7 +32,6 @@ const Navigation = () => {
 
   function searchModalToggle() {
     setModal(!modal);
-    console.log("clicked");
     togglePortal();
   }
 
@@ -53,20 +52,6 @@ const Navigation = () => {
             } cursor-pointer transition-all duration-200 lg:hidden`}
             onClick={(): void => setCheState(!chevState)}
           />
-
-          <div
-            className=" hidden  lg:flex  h-[8dvh]items-center justify-center "
-            onMouseOver={(e): void => {
-              setCartBox(true);
-              e.preventDefault();
-            }}
-          >
-            <IoChevronDownOutline
-              className={` ${
-                chevState ? "rotate-180" : "rotate-0"
-              } cursor-pointer transition-all duration-200 hidden  lg:block`}
-            />
-          </div>
         </div>
         <Link
           to={"/"}
@@ -95,7 +80,6 @@ const Navigation = () => {
         </div>
       </nav>
       <NavigationMenu showMenu={chevState} />
-      {cartBox && <NavigationBox />}
     </header>
   );
 };
