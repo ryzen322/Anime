@@ -5,6 +5,8 @@ import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { CollectionList } from "./CollectionList";
 import { LoadingSpinner } from "./common/search/loadingComponents/LoadingSpinner";
+import { CollectionUL } from "./CollectionUL";
+import CollectionLoading from "./common/search/loadingComponents/CollectionLoading";
 
 const Collection = () => {
   const { ref, inView } = useInView();
@@ -27,15 +29,15 @@ const Collection = () => {
   }, [inView, fetchNextPage]);
 
   if (isLoading) {
-    return <div className=" h-[15rem] w-full bg-stone-600"></div>;
+    return <CollectionLoading />;
   }
 
   return (
     <Layout>
-      <section className=" w-full h-[72.3dvh] relative flex flex-col gap-2">
+      <section className=" w-full h-[72.3dvh] relative flex flex-col gap-2 phoneX:h-[74.3dvh]">
         <h1 className=" text-white font-semibold text-2xl">Trending</h1>
         <div className=" flex flex-col overflow-hidden">
-          <ul className=" flex flex-wrap gap-2 w-full h-full justify-center overflow-y-scroll no-scrollbar relative">
+          <CollectionUL>
             {animeList?.map((item) => {
               return (
                 <CollectionList
@@ -47,7 +49,7 @@ const Collection = () => {
               );
             })}
             {isFetchingNextPage && <LoadingSpinner />}
-          </ul>
+          </CollectionUL>
         </div>
       </section>
     </Layout>
