@@ -9,6 +9,7 @@ const DetailPage = lazy(() => import("./page/DetailePage"));
 const DetailID = lazy(() => import("./components/Detail"));
 const CollectionPage = lazy(() => import("./page/CollectionPage"));
 const Collection = lazy(() => import("./components/Collection"));
+const NotFoundPage = lazy(() => import("./page/NotFoundPage"));
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route index element={<CollectionPage />} />
             <Route path=":title" element={<Collection />} />
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
       <Footer />
