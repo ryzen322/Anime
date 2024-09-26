@@ -10,7 +10,7 @@ const CollectionLoading = () => {
           {loadingItem.map((_, index) => (
             <li
               key={index + 1}
-              className=" h-[165px] w-[123px] flex items-center bg-stone-500 rounded-md overflow-hidden relative phoneX:w-[150px] sm:w-[146px] md:w-[175px] md:h-[250px]"
+              className=" h-[165px] w-[115px] flex items-center bg-stone-500 rounded-md overflow-hidden relative phoneX:w-[150px] sm:w-[146px] md:w-[175px] md:h-[250px]"
             />
           ))}
         </CollectionUL>

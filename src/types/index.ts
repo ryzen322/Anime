@@ -48,6 +48,7 @@ export const animeTrendingObject = z.object({
   image: z.string(),
   status: z.string(),
   releaseDate: z.number().nullable(),
+  genres: z.array(z.string()).nullable(),
   title: titleObjectSchema,
 });
 

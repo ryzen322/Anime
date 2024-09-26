@@ -16,12 +16,11 @@ export function CollectionList({ inneRef, image, title }: ColletionList) {
         alt=""
       />
       <div
-        className={`relative w-full h-full top-0 left-0 bottom-0  flex flex-col justify-end items-start bg-gradient-to-b from-[#101014]/10 to-[#16161b] p-2`}
+        className={`relative w-full h-full top-0 left-0 bottom-0 flex flex-col justify-end items-start bg-gradient-to-b from-[#101014]/10 to-[#16161b] p-2`}
       >
-        <h1 className=" text-stone-300 text-xs font-semibold">{title}</h1>
-        <div className=" flex items-start flex-wrap clear-start text-[11px] font-medium text-stone-400">
-          <p>Action</p>
-        </div>
+        <h1 className=" text-stone-300 text-xs font-semibold text-center w-full">
+          {title}
+        </h1>
       </div>
     </li>
   );
