@@ -112,7 +112,7 @@ export const getTrendingAnime = async () => {
 
 export const getDetailAnime = async (id: string | undefined) => {
   try {
-    const { data } = await instance.get(`meta/anilist/info/${id}e`);
+    const { data } = await instance.get(`meta/anilist/info/${id}`);
 
     const validateDetail = DetailSchema.safeParse(data);
 
