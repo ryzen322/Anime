@@ -1,5 +1,6 @@
 import {
   DetailSchema,
+  ErrorSchema,
   popularAnimeSchema,
   searchAnimeSchema,
   StreamingSchema,
@@ -111,7 +112,7 @@ export const getTrendingAnime = async () => {
 
 export const getDetailAnime = async (id: string | undefined) => {
   try {
-    const { data } = await instance.get(`meta/anilist/info/${id}`);
+    const { data } = await instance.get(`meta/anilist/info/${id}e`);
 
     const validateDetail = DetailSchema.safeParse(data);
 
@@ -121,7 +122,9 @@ export const getDetailAnime = async (id: string | undefined) => {
 
     return validateDetail.data;
   } catch (error) {
-    throw new Error("Try Again");
+    const { data } = ErrorSchema.safeParse(error);
+
+    throw new Error(`${data?.message} code:${data?.code}`);
   }
 };
 

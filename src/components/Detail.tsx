@@ -4,14 +4,23 @@ import { useQuery } from "@tanstack/react-query";
 import { getDetailAnime } from "../services/api";
 import { ArticleDetail } from "./ArticleDetail";
 import { DetailLoading } from "./DetailLoading";
+import RequestError from "./RequestError";
 
 const Detail = () => {
   const { id } = useParams();
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["detail-anime", id],
     queryFn: async () => getDetailAnime(id),
   });
+
+  if (!isLoading && error) {
+    return (
+      <Layout>
+        <RequestError message={error.message} />
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
