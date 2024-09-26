@@ -4,8 +4,6 @@ import NavigationList from "./NavigationList";
 const NavigationMenu = ({ showMenu }: { showMenu: boolean }) => {
   const { user } = useUser();
 
-  console.log(user);
-
   return (
     <div
       className={` container mx-auto absolute w-full min-h-[93dvh] overflow-y-scroll no-scrollbar bg-Primary  left-0 right-0 bottom-0  z-40  ${

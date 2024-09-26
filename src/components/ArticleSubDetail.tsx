@@ -10,10 +10,13 @@ import Episodes from "./Series/Episodes";
 import { ContextEpisode } from "./store/store";
 import { nextStringEpisode } from "../utils/nextStringEpisode";
 import { activeEpisode } from "../utils/activeEpisode";
+import { SignInButton, useUser } from "@clerk/clerk-react";
 
 type Player = "youtube" | "anime";
 
 export const ArticleSubDetail = (props: DetailAnimeObj) => {
+  const { user } = useUser();
+  const resolution = user ? 3 : 0;
   const { context, episode, changeEpisode, playerState, changePlayer } =
     useContext(ContextEpisode);
 
@@ -32,7 +35,7 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
   const activeEp = activeEpisode({ activeEp: currentEpisode + "", episodes });
 
   if (activeEp === episode) {
-    console.log("first");
+    console.log();
   } else {
     changePlayer("youtube");
   }
@@ -54,7 +57,7 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
         ) : (
           <Player
             children=""
-            src={context?.sources[3].url}
+            src={context?.sources[resolution].url}
             title={`${episode}`}
             autoPlay
             onEnd={() => {
@@ -68,6 +71,27 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
           />
         )}
       </article>
+      <div className="flex flex-col items-center gap-1">
+        <h1 className=" text-white text-xs font-semibold">
+          {!user ? "Sign in to Watch HD" : "Enjoy You're Full HD"}
+        </h1>
+        <div className=" py-1 px-1 text-black bg-stone-100 font-semibold w-[15%] text-xs rounded-sm flex items-center justify-center cursor-pointer hover:bg-stone-300">
+          {!user ? (
+            <SignInButton>
+              <button
+                onClick={() => {
+                  changePlayer("anime");
+                  changeEpisode(activeEp);
+                }}
+              >
+                Click to Watch HD
+              </button>
+            </SignInButton>
+          ) : (
+            <p className=" text-center font-bold text-xs">1080p60</p>
+          )}
+        </div>
+      </div>
 
       {playerState === "anime" && (
         <Episodes className="  md:hidden" episodes={episodes!} />
