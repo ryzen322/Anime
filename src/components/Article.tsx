@@ -7,12 +7,10 @@ import { MdOutlineNavigateNext } from "react-icons/md";
 import { LoadingCardUI } from "./common/search/loadingComponents/LoadingCardUI";
 
 const Article = ({ animeProps }: { animeProps: listAnime }) => {
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["animelist", animeProps],
     queryFn: async () => queryAnimeType(animeProps),
   });
-
-  console.log(error);
 
   return (
     <article className=" w-full  mb-4 px-1 flex flex-col gap-3 mt-6">

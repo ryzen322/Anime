@@ -13,10 +13,23 @@ interface ListItemProps {
   title: string;
   rating?: number;
   genre: string[];
+  stopScrolling: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
-  ({ active, coverImage, description, src, genre, rating, title }, ref) => {
+  (
+    {
+      active,
+      coverImage,
+      description,
+      src,
+      genre,
+      rating,
+      title,
+      stopScrolling,
+    },
+    ref
+  ) => {
     const [toggleText, setToggleText] = useState(true);
 
     const text = description?.split(" ").slice(0, 6);
@@ -28,6 +41,12 @@ const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
           active ? "opacity-100" : "opacity-0"
         } transition-all duration-700 flex items-center justify-center md:p-0`}
         id={"child"}
+        onMouseEnter={() => {
+          stopScrolling(false);
+        }}
+        onMouseLeave={() => {
+          stopScrolling(true);
+        }}
       >
         <div className=" h-[30rem] w-full rounded-md relative phoneX:h-[35rem] sm:h-[45rem] md:h-[20rem]  lg:h-[25rem] xl:h-[33rem]">
           <div className=" w-full h-full right-0 left-0 bg-gradient-to-b from-black/10 to-black/65 p-4 rounded-md flex flex-col phoneX:p-2">

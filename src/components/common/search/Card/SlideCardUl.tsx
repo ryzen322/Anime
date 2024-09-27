@@ -6,7 +6,7 @@ import SlideCard from "./SlideCard";
 
 const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
   const [viewScroll, setViewScroll] = useState(0);
-
+  const [stopScroll, setStopScroll] = useState(true);
   const [increment, setIncrement] = useState(true);
   const intervalRef = useRef<HTMLLIElement | null>(null);
   const refEl = useRef<HTMLUListElement | null>(null);
@@ -30,24 +30,23 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
   }, [viewScroll]);
 
   useEffect(() => {
-    const timex = setInterval(() => {
-      setViewScroll((prevCount) => {
-        if (prevCount === 5) {
-          setIncrement(false);
-          return prevCount - 1;
-        } else if (prevCount === 0) {
-          setIncrement(true);
-          return prevCount + 1;
-        } else {
-          return increment ? prevCount + 1 : prevCount - 1;
-        }
-      });
-    }, 6000);
-
-    return () => {
-      clearInterval(timex);
-    };
-  }, [viewScroll, increment]);
+    if (stopScroll) {
+      const timex = setInterval(() => {
+        setViewScroll((prevCount) => {
+          if (prevCount === 5) {
+            setIncrement(false);
+            return prevCount - 1;
+          } else if (prevCount === 0) {
+            setIncrement(true);
+            return prevCount + 1;
+          } else {
+            return increment ? prevCount + 1 : prevCount - 1;
+          }
+        });
+      }, 6000);
+      return () => clearInterval(timex);
+    }
+  }, [viewScroll, increment, stopScroll]);
 
   return (
     <>
@@ -67,6 +66,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
             genre={data.genres}
             rating={data.rating}
             title={data.title.english ?? data.title.userPreferred}
+            stopScrolling={setStopScroll}
           />
         ))}
       </ul>
@@ -80,6 +80,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
             showSlide={setViewScroll}
             image={data.image}
             title={data.title.userPreferred}
+            stopScrolling={setStopScroll}
           />
         ))}
       </ul>
