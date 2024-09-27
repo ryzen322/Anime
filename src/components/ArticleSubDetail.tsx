@@ -17,7 +17,7 @@ type Player = "youtube" | "anime";
 export const ArticleSubDetail = (props: DetailAnimeObj) => {
   const { user } = useUser();
   const resolution = user ? 3 : 0;
-  const { episode, changeEpisode, playerState, changePlayer } =
+  const { changeEpisode, playerState, changePlayer } =
     useContext(ContextEpisode);
 
   const {
@@ -33,12 +33,6 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
   } = props;
 
   const activeEp = activeEpisode({ activeEp: currentEpisode + "", episodes });
-
-  if (activeEp === episode) {
-    console.log("anime");
-  } else {
-    console.log("youtube");
-  }
 
   return (
     <article className=" w-full flex flex-col gap-8 h-full md:w-[60%] lg:w-[70%]">
@@ -95,7 +89,9 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
           <p className=" text-white/80 text-xs font-semibold">
             To improve this Webisite we accept donation via Gcash
           </p>
-          <p className=" text-stone-400 text-xs font-semibold">{activeEp}</p>
+          <p className=" text-stone-400 text-xs font-semibold text-center">
+            {activeEp}
+          </p>
           <button
             className=" bg-white text-black flex items-center justify-center rounded-md px-7 py-1 font-bold text-sm mt-2 cursor-pointer"
             onClick={() => {

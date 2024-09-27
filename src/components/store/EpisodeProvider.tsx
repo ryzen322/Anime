@@ -6,7 +6,7 @@ const EpisodeProvider = ({ children }: { children: React.ReactNode }) => {
   const [chooseStream, setChooseStream] = useState<Player>("youtube");
 
   const changeEpisode = (episodeString: string) => {
-    console.log(episodeString);
+    changePlayer("anime");
     setEp(episodeString);
   };
 

@@ -5,13 +5,19 @@ import { getDetailAnime } from "../services/api";
 import { ArticleDetail } from "./ArticleDetail";
 import { DetailLoading } from "./DetailLoading";
 import RequestError from "./RequestError";
+import { ContextEpisode } from "./store/store";
+import { useContext } from "react";
 
 const Detail = () => {
   const { id } = useParams();
+  const { changePlayer } = useContext(ContextEpisode);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["detail-anime", id],
-    queryFn: async () => getDetailAnime(id),
+    queryFn: async () => {
+      changePlayer("youtube");
+      return getDetailAnime(id);
+    },
   });
 
   if (!isLoading && error) {
