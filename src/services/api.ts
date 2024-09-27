@@ -24,7 +24,9 @@ export const popularAnime = async () => {
     }
     return validatedAnime.data;
   } catch (error) {
-    throw new Error("error nigga");
+    const { data } = ErrorSchema.safeParse(error);
+
+    throw new Error(`${data?.message} code:${data?.code}`);
   }
 };
 
@@ -48,7 +50,9 @@ export const searchAnime = async (search: string | undefined) => {
 
     return validatedAnime.data;
   } catch (error) {
-    throw new Error("We couldn't find the anime you like :-(");
+    const { data } = ErrorSchema.safeParse(error);
+
+    throw new Error(`${data?.message} code:${data?.code}`);
   }
 };
 
@@ -73,7 +77,9 @@ export const queryAnimeType = async (animeTypeList: listAnime) => {
     }
     return validatedAnime.data;
   } catch (error) {
-    throw new Error("Try Again");
+    const { data } = ErrorSchema.safeParse(error);
+
+    throw new Error(`${data?.message} code:${data?.code}`);
   }
 };
 
@@ -90,7 +96,9 @@ export const getPrimiumAnime = async () => {
     }
     return validatedAnime.data;
   } catch (error) {
-    throw new Error("Try Again");
+    const { data } = ErrorSchema.safeParse(error);
+
+    throw new Error(`${data?.message} code:${data?.code}`);
   }
 };
 
@@ -106,7 +114,9 @@ export const getTrendingAnime = async () => {
     }
     return validatedAnime.data;
   } catch (error) {
-    throw new Error("Try Again");
+    const { data } = ErrorSchema.safeParse(error);
+
+    throw new Error(`${data?.message} code:${data?.code}`);
   }
 };
 
@@ -140,7 +150,9 @@ export const getStreaming = async (mailId: string) => {
 
     return validate.data;
   } catch (error) {
-    throw new Error("Try Again");
+    const { data } = ErrorSchema.safeParse(error);
+
+    throw new Error(`${data?.message} code:${data?.code}`);
   }
 };
 
@@ -158,6 +170,8 @@ export const getInfinite = async ({ pageParam }: { pageParam: number }) => {
 
     return validatedAnime.data.results;
   } catch (error) {
-    throw new Error("Try Again");
+    const { data } = ErrorSchema.safeParse(error);
+
+    throw new Error(`${data?.message} code:${data?.code}`);
   }
 };
