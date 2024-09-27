@@ -75,28 +75,22 @@ const Navigation = () => {
 
           <Link
             to={`collection/${"Trending"}`}
-            className=" hidden lg:flex  text-base font-normal mt-1 "
+            className=" hidden md:flex  text-base font-semibold text-stone-300 hover:underline mt-1"
           >
             Collection
           </Link>
 
           <Link
             to={"/"}
-            className=" hidden lg:flex  text-base font-normal mt-1 "
+            className=" hidden md:flex  text-base font-semibold text-stone-300 hover:underline mt-1"
           >
             Store
           </Link>
           <Link
             to={"/"}
-            className=" hidden lg:flex  text-base font-normal mt-1 "
+            className=" hidden md:flex  text-base font-semibold text-stone-300 hover:underline mt-1"
           >
             News
-          </Link>
-          <Link
-            to={"/"}
-            className=" hidden lg:flex  text-base font-normal mt-1 "
-          >
-            Likes
           </Link>
 
           <div className=" ml-auto flex items-center">
