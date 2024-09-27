@@ -8,16 +8,16 @@ import Recommendation from "./Recommendation";
 import Player from "./player";
 import Episodes from "./Series/Episodes";
 import { ContextEpisode } from "./store/store";
-import { nextStringEpisode } from "../utils/nextStringEpisode";
 import { activeEpisode } from "../utils/activeEpisode";
 import { SignInButton, useUser } from "@clerk/clerk-react";
+import MovieComponent from "./MovieComponent";
 
 type Player = "youtube" | "anime";
 
 export const ArticleSubDetail = (props: DetailAnimeObj) => {
   const { user } = useUser();
   const resolution = user ? 3 : 0;
-  const { context, episode, changeEpisode, playerState, changePlayer } =
+  const { episode, changeEpisode, playerState, changePlayer } =
     useContext(ContextEpisode);
 
   const {
@@ -35,9 +35,9 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
   const activeEp = activeEpisode({ activeEp: currentEpisode + "", episodes });
 
   if (activeEp === episode) {
-    console.log();
+    console.log("anime");
   } else {
-    changePlayer("youtube");
+    console.log("youtube");
   }
 
   return (
@@ -55,19 +55,9 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
             }`}
           />
         ) : (
-          <Player
-            children=""
-            src={context?.sources[resolution].url}
-            title={`${episode}`}
-            autoPlay
-            onEnd={() => {
-              changeEpisode(nextStringEpisode(episode));
-            }}
-            poster={`${
-              trailer?.thumbnail
-                ? trailer?.thumbnail
-                : "https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/12/Featured-Image-Shonen-Jump-wrong-better-Cropped.jpg?q=50&fit=crop&w=1100&h=618&dpr=1.5"
-            }`}
+          <MovieComponent
+            resolution={resolution}
+            thumbnail={trailer?.thumbnail}
           />
         )}
       </article>
