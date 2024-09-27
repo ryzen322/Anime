@@ -87,7 +87,7 @@ const Navigation = () => {
             Store
           </Link>
           <Link
-            to={"/"}
+            to={"/news"}
             className=" hidden md:flex  text-base font-semibold text-stone-300 hover:underline mt-1"
           >
             News

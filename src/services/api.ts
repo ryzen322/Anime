@@ -175,3 +175,16 @@ export const getInfinite = async ({ pageParam }: { pageParam: number }) => {
     throw new Error(`${data?.message} code:${data?.code}`);
   }
 };
+
+export const getNews = async () => {
+  try {
+    const { data } = await instance.get(`meta/anilist/trending`, {
+      params: { page: 1 },
+    });
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    throw new Error("error");
+  }
+};
