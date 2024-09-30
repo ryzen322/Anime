@@ -7,12 +7,12 @@ import { Button } from "../../../Button";
 
 interface ListItemProps {
   src?: string;
-  description?: string;
+  description?: string | null;
   coverImage: string | null;
   active: boolean;
   title: string;
-  rating?: number;
-  genre: string[];
+  rating?: number | null;
+  genre: string[] | null;
   stopScrolling: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -64,7 +64,7 @@ const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
                 <span className=" text-xs font-semibold text-stone-300 phoneX:text-sm sm:text-base md:text-sm xl:text-2xl">
                   Genre:
                 </span>
-                {genre.map((gen, index) =>
+                {genre?.map((gen, index) =>
                   index === genre.length - 1 ? (
                     <span
                       key={index}

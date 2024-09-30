@@ -59,7 +59,6 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
           <SlideCard
             ref={intervalRef}
             key={data.id}
-            src={data.image}
             description={data.description}
             coverImage={data.cover}
             active={index === viewScroll ? true : false}
@@ -78,7 +77,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
             current={index}
             active={index === viewScroll}
             showSlide={setViewScroll}
-            image={data.image}
+            image={data.image ? data.image : ""}
             title={data.title.userPreferred}
             stopScrolling={setStopScroll}
           />
