@@ -124,7 +124,7 @@ const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
 
           <Image
             className=" w-full h-full absolute top-0 left-0 -z-20 object-cover rounded-md scale-95 phoneX:scale-100 md:hidden"
-            src={src}
+            src={src ? src : ""}
           />
           <Image
             className=" hidden md:block w-full absolute top-0 left-0 -z-20 h-full object-cover rounded-md scale-95 phoneX:scale-100"

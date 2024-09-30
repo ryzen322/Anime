@@ -21,7 +21,7 @@ const NewsPage = () => {
           />
           <div className=" absolute top-0 left-0 bg-gradient-to-b from-[#101014]/10 to-[#101014] z-20 h-full w-full"></div>
         </div>
-        <div className=" grid grid-cols-5 w-full h-[7rem] relative -top-[2.75rem] z-20 gap-1 px-2 phoneX:h-[9rem] sm:gap-2 sm:h-[11rem]">
+        <div className=" grid grid-cols-5 w-full h-[7rem] relative -top-[2.75rem] z-20 gap-2 px-2 phoneX:h-[9rem] sm:gap-2 sm:h-[11rem]">
           {fakeArray.map((_, index) => (
             <div
               key={index}
@@ -32,7 +32,7 @@ const NewsPage = () => {
                 alt=""
                 className=" w-full h-full object-cover relative"
               />
-              {/* <div className=" absolute top-0 left-0 bg-gradient-to-b from-[#101014]/10 to-[#101014] z-20 h-full w-full" /> */}
+              <div className=" absolute top-0 left-0 bg-gradient-to-b from-[#101014]/10 to-[#101014] z-20 h-full w-full" />
             </div>
           ))}
         </div>
