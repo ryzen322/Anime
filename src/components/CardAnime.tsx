@@ -32,7 +32,7 @@ const CardAnime = () => {
           </Link>
         </div>
       </div>
-      {/*  */}
+
       {isLoading && loading}
       {!isLoading && error && loading}
       {!isLoading && !error && (

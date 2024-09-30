@@ -70,6 +70,7 @@ export const queryAnimeType = async (animeTypeList: listAnime) => {
         params: { page: animeTypeList.page, perPage: animeTypeList.perPage },
       }
     );
+
     const validatedAnime = popularAnimeSchema.safeParse(data);
 
     if (!validatedAnime.success) {

@@ -6,30 +6,32 @@ export const titleObjectSchema = z.object({
   romaji: z.string(),
   userPreferred: z.string(),
 });
-export const trailerObjectSchema = z.object({
-  id: z.string().optional(),
-  site: z.string().optional(),
-  thumbnail: z.string().optional(),
-  thumbnailHash: z.string(),
-});
+export const trailerObjectSchema = z
+  .object({
+    id: z.string().optional(),
+    site: z.string().optional(),
+    thumbnail: z.string().optional(),
+    thumbnailHash: z.string(),
+  })
+  .nullable();
 
-export const genresObjectSchema = z.string().array();
+export const genresObjectSchema = z.string().array().nullable();
 
 export const animeObjectSchema = z.object({
   color: z.string().nullable(),
   cover: z.string().nullable(),
-  coverHash: z.string().optional(),
-  description: z.string().optional(),
-  duration: z.number().optional(),
+  coverHash: z.string().nullable(),
+  description: z.string().nullable(),
+  duration: z.number().nullable(),
   id: z.string(),
-  image: z.string().optional(),
-  imageHash: z.string().optional(),
-  malId: z.number().optional(),
-  rating: z.number().optional(),
-  releaseDate: z.number().optional(),
-  status: z.string().optional(),
+  image: z.string().nullable(),
+  imageHash: z.string().nullable(),
+  malId: z.number().nullable(),
+  rating: z.number().nullable(),
+  releaseDate: z.number().nullable(),
+  status: z.string().nullable(),
   totalEpisodes: z.number().nullable(),
-  type: z.string(),
+  type: z.string().nullable(),
   genres: genresObjectSchema,
   trailer: trailerObjectSchema,
   title: titleObjectSchema,
@@ -202,6 +204,7 @@ export const ErrorSchema = z.object({
   name: z.string(),
 });
 
+export type ErroType = z.infer<typeof ErrorSchema>;
 export type ContextObject = z.infer<typeof StreamingSchema>;
 export type Episodes = z.infer<typeof episodes>;
 export type CharacterObj = z.infer<typeof Characters>;
