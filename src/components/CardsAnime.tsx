@@ -9,7 +9,7 @@ const CardsAnime = (props: AnimeObj) => {
     <CardsAnimeLoading className="">
       <div className=" w-full h-full bg-stone-800 rounded-sm overflow-hidden relative">
         <Image
-          src={image}
+          src={image ? image : ""}
           className=" relative h-full w-full object-cover group-hover:scale-105 transition-all duration-200 ease-in-out"
         />
         <div className=" h-full w-full absolute bg-gradient-to-b from-black/10 to-black/65 z-20 rounded-md top-0 left-0"></div>
