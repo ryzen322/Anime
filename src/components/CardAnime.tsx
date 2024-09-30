@@ -6,7 +6,7 @@ import { dummyData } from "../api/dummyApi";
 import CardsAnimeLoading from "./common/search/loadingComponents/CardsAnimeLoading";
 
 const CardAnime = () => {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["premium-anime"],
     queryFn: getPrimiumAnime,
   });
@@ -32,13 +32,18 @@ const CardAnime = () => {
           </Link>
         </div>
       </div>
-      <ul className=" grid grid-cols-2  py-2 px-2 rounded-md gap-2 mb-5 md:gap-4 lg:grid-cols-4">
-        {isLoading
-          ? loading
-          : data?.results?.map((item) => (
-              <CardsAnime key={item.id} {...item} />
-            ))}
-      </ul>
+      {/*  */}
+      {isLoading && loading}
+      {!isLoading && error && loading}
+      {!isLoading && !error && (
+        <ul className=" grid grid-cols-2  py-2 px-2 rounded-md gap-2 mb-5 md:gap-4 lg:grid-cols-4">
+          {isLoading
+            ? loading
+            : data?.results?.map((item) => (
+                <CardsAnime key={item.id} {...item} />
+              ))}
+        </ul>
+      )}
     </section>
   );
 };

@@ -7,7 +7,7 @@ import { MdOutlineNavigateNext } from "react-icons/md";
 import { LoadingCardUI } from "./common/search/loadingComponents/LoadingCardUI";
 
 const Article = ({ animeProps }: { animeProps: listAnime }) => {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["animelist", animeProps],
     queryFn: async () => queryAnimeType(animeProps),
   });
@@ -23,8 +23,9 @@ const Article = ({ animeProps }: { animeProps: listAnime }) => {
         </Link>
         <MdOutlineNavigateNext className=" text-white text-4xl font-bold" />
       </div>
-
-      {isLoading ? <LoadingCardUI /> : <Card listAnime={data!} />}
+      {isLoading && <LoadingCardUI />}
+      {!isLoading && error && <LoadingCardUI />}
+      {!isLoading && !error && <Card listAnime={data!} />}
     </article>
   );
 };
