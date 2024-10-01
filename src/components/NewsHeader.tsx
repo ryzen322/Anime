@@ -1,6 +1,6 @@
 const NewsHeader = () => {
   return (
-    <div className=" bg-stone-400 overflow-hidden w-full h-[60dvh] relative phoneX:h-[65dvh] sm:rounded-t-md sm:h-[20rem] md:h-[23rem] md:rounded-none lg:rounded-t-md lg:h-[20rem]">
+    <div className="  overflow-hidden w-full px-6 relative phoneX:px-0 sm:rounded-t-md sm:h-[20rem] md:h-[23rem] md:rounded-none lg:rounded-t-md lg:h-[20rem]">
       <picture>
         <source
           media="(max-width: 640px)"

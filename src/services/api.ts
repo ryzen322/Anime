@@ -182,9 +182,13 @@ export const getNews = async () => {
     const { data } = await instance.get(`meta/anilist/trending`, {
       params: { page: 1 },
     });
-    console.log(data);
+    const validatedAnime = popularAnimeSchema.safeParse(data);
 
-    return data;
+    if (!validatedAnime.success) {
+      throw new Error(`${validatedAnime.error}`);
+    }
+
+    return validatedAnime.data;
   } catch (error) {
     throw new Error("error");
   }
