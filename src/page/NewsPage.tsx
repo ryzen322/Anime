@@ -3,17 +3,21 @@ import { getNews } from "../services/api";
 import NewsHeader from "../components/NewsHeader";
 
 const NewsPage = () => {
-  const { data } = useQuery({
+  const randomAnime = Math.trunc(Math.random() * 7);
+
+  const { data, isLoading } = useQuery({
     queryKey: ["news"],
     queryFn: getNews,
   });
 
-  data;
+  if (isLoading) {
+    return <div className=" h-[10rem] w-full bg-stone-50"></div>;
+  }
 
   return (
     <main className=" container mx-auto mt-[4.5rem] ">
       <section className=" w-full flex flex-col">
-        <NewsHeader />
+        <NewsHeader anime={data?.results[randomAnime]} />
         <div className=" flex flex-col relative -top-[3.75rem] z-20 gap-3">
           <h1 className=" text-white text-sm font-semibold text-center sm:text-lg ">
             Special For You
