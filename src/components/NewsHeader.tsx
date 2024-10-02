@@ -18,12 +18,12 @@ const NewsHeader = ({ anime }: { anime: AnimeObj | undefined }) => {
         />
       </picture>
       <div className=" absolute top-0 left-0 bg-gradient-to-b from-[#101014]/10 to-[#101014] z-20 h-full w-full flex flex-col items-center gap-2 text-center justify-end pb-[5rem] md:items-start md:pl-6 lg:pb-[4.5rem]">
-        <h1 className=" text-stone-300 text-2xl font-bold leading-6 max-w-[20rem] phoneX:text-4xl phoneX:leading-7 phoneX:max-w-[30rem] md:max-w-[31rem] lg:max-w-[40rem]">
+        <h1 className=" text-stone-300 text-2xl font-bold leading-6 max-w-[20rem] phoneX:text-4xl phoneX:leading-7 phoneX:max-w-[30rem] md:max-w-[31rem] lg:max-w-[40rem] xl:leading-9">
           {anime?.title.english}
         </h1>
 
         <div
-          className={`h-[5rem] w-full relative flex overflow-y-scroll no-scrollbar  justify-center px-[2rem] sm:px-[1rem] phoneX:h-auto sm:h-[9rem] md:px-0 md:max-w-[30rem] lg:max-w-[40rem]`}
+          className={`h-[5rem] w-full relative flex overflow-y-scroll no-scrollbar  justify-center px-[2rem] sm:px-[1rem] phoneX:h-auto sm:h-[9rem] md:px-0 md:max-w-[30rem] lg:max-w-[40rem] 2xl:h-[5rem]`}
         >
           <p
             className={`text-stone-300 font-medium text-sm leading-4 relative phoneX:text-base phoneX:leading-[18px] md:text-xs lg:text-sm`}
