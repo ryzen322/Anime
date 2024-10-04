@@ -5,8 +5,6 @@ import SubNews from "../components/SubNews";
 import NewsItem from "../components/NewsItem";
 
 const NewsPage = () => {
-  const randomAnime = Math.trunc(Math.random() * 7);
-
   const { data, isLoading } = useQuery({
     queryKey: ["news"],
     queryFn: getNews,
@@ -19,7 +17,7 @@ const NewsPage = () => {
   return (
     <main className=" container mx-auto mt-[4.5rem]">
       <section className=" w-full flex flex-col">
-        <NewsHeader anime={data?.results[randomAnime]} />
+        <NewsHeader />
         <SubNews anime={data?.results.slice(4)} />
       </section>
       <section className=" flex flex-col gap-3 mb-4">
