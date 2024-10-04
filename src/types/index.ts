@@ -204,6 +204,31 @@ export const ErrorSchema = z.object({
   name: z.string(),
 });
 
+export const AiringAnimeSchemaObj = z.object({
+  airingAt: z.number(),
+  color: z.string().nullable(),
+  country: z.string().optional(),
+  cover: z.string().optional(),
+  coverHash: z.string().optional(),
+  description: z.string().nullable(),
+  episode: z.number().optional(),
+  genres: z.array(z.string()).optional(),
+  id: z.string().optional(),
+  image: z.string().optional(),
+  imageHash: z.string().optional(),
+  malId: z.number().nullable(),
+  rating: z.string().nullable(),
+  // title: titleObjectSchema.omit({ userPreferred: true }),
+  type: z.string().optional(),
+});
+
+export const AiringAnimeSchema = z.object({
+  currentPage: z.number(),
+  hasNextPage: z.boolean(),
+  results: z.array(AiringAnimeSchemaObj).optional(),
+});
+
+export type AiringObj = z.infer<typeof AiringAnimeSchemaObj>;
 export type ErroType = z.infer<typeof ErrorSchema>;
 export type ContextObject = z.infer<typeof StreamingSchema>;
 export type Episodes = z.infer<typeof episodes>;

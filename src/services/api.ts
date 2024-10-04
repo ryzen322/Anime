@@ -1,4 +1,5 @@
 import {
+  AiringAnimeSchema,
   DetailSchema,
   ErrorSchema,
   popularAnimeSchema,
@@ -164,7 +165,7 @@ export const getInfinite = async ({ pageParam }: { pageParam: number }) => {
     });
 
     const validatedAnime = trendingAnimeSchema.safeParse(data);
-    console.log(validatedAnime);
+
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }
@@ -200,6 +201,23 @@ export const getRadomAnime = async () => {
 
     const validatedAnime = DetailSchema.safeParse(data);
 
+    if (!validatedAnime.success) {
+      throw new Error(`${validatedAnime.error}`);
+    }
+    return validatedAnime.data;
+  } catch (error) {
+    throw new Error("error");
+  }
+};
+
+export const getGetAiringAnime = async () => {
+  try {
+    const { data } = await instance.get(`meta/anilist/airing-schedule`, {
+      params: { page: 1 },
+    });
+
+    const validatedAnime = AiringAnimeSchema.safeParse(data);
+    console.log(validatedAnime);
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }
