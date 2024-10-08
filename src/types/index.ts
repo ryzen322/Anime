@@ -174,6 +174,7 @@ export const DetailSchema = z.object({
   malId: z.number().optional(),
   popularity: z.number().optional(),
   rating: z.number().optional(),
+  status: z.string().optional(),
   releaseDate: z.number().optional(),
   season: z.string().optional(),
   subOrDub: z.string().optional(),

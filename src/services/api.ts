@@ -183,6 +183,7 @@ export const getNews = async () => {
     const { data } = await instance.get(`meta/anilist/trending`, {
       params: { page: 1 },
     });
+
     const validatedAnime = popularAnimeSchema.safeParse(data);
 
     if (!validatedAnime.success) {
@@ -198,7 +199,7 @@ export const getNews = async () => {
 export const getRadomAnime = async () => {
   try {
     const { data } = await instance.get(`meta/anilist/random-anime`);
-
+    console.log(data);
     const validatedAnime = DetailSchema.safeParse(data);
 
     if (!validatedAnime.success) {
@@ -217,7 +218,7 @@ export const getGetAiringAnime = async () => {
     });
 
     const validatedAnime = AiringAnimeSchema.safeParse(data);
-    console.log(validatedAnime);
+
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }

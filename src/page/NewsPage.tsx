@@ -16,13 +16,11 @@ const NewsPage = () => {
 
   return (
     <main className=" container mx-auto mt-[4.5rem]">
-      <section className=" w-full flex flex-col">
-        <NewsHeader />
-        <SubNews anime={data?.results.slice(4)} />
-      </section>
-      <section className=" flex flex-col gap-3 mb-4">
+      <NewsHeader />
+
+      {/* <section className=" flex flex-col gap-3 mb-4">
         <NewsItem />
-      </section>
+      </section> */}
     </main>
   );
 };
