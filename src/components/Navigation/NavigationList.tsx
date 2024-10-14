@@ -13,7 +13,7 @@ const NavigationList = ({
       {list.map((item, index) => (
         <Link
           key={index}
-          to={"/"}
+          to={`/${item}`}
           className=" flex items-center h-[2.5rem] px-4 rounded-md cursor-pointer hover:bg-slate-600"
         >
           <h1 className=" text-sm"> {item}</h1>
