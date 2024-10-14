@@ -218,8 +218,8 @@ export const AiringAnimeSchemaObj = z.object({
   image: z.string().optional(),
   imageHash: z.string().optional(),
   malId: z.number().nullable(),
-  rating: z.string().nullable(),
-  // title: titleObjectSchema.omit({ userPreferred: true }),
+  rating: z.number().nullable(),
+  title: titleObjectSchema.omit({ userPreferred: true }),
   type: z.string().optional(),
 });
 

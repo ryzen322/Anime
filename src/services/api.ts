@@ -205,7 +205,7 @@ export const getRadomAnime = async () => {
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }
-    console.log(validatedAnime);
+
     return validatedAnime.data;
   } catch (error) {
     throw new Error("error");

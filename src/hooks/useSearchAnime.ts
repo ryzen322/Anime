@@ -18,5 +18,3 @@ export const useSearchAnime = () => {
     setFilter,
   };
 };
-
-export const item = [];
