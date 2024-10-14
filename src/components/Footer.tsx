@@ -15,7 +15,7 @@ const Footer = () => {
         </li>
         <li className=" text-stone-500 font-bold  hover:underline">Contacts</li>
       </ul>
-      <ul className=" h-full grid grid-cols-4 gap-2 py-4 phoneX:py-3">
+      {/* <ul className=" h-full grid grid-cols-4 gap-2 py-4 phoneX:py-3">
         <li className=" bg-stone-200 rounded-md w-10 flex items-center justify-center cursor-pointer">
           <FaTelegramPlane size={32} />
         </li>
@@ -27,6 +27,20 @@ const Footer = () => {
         </li>
         <li className=" bg-stone-200 rounded-md w-10 flex items-center justify-center cursor-pointer">
           <FaInstagram size={32} />
+        </li>
+      </ul> */}
+      <ul className=" flex items-center gap-2">
+        <li className=" bg-stone-200 rounded-md w-10 flex items-center justify-center cursor-pointer">
+          <FaTelegramPlane size={28} />
+        </li>
+        <li className=" bg-stone-200 rounded-md w-10 flex items-center justify-center cursor-pointer">
+          <FaDiscord size={28} />
+        </li>
+        <li className=" bg-stone-200 rounded-md w-10 flex items-center justify-center cursor-pointer">
+          <FaYoutube size={28} />
+        </li>
+        <li className=" bg-stone-200 rounded-md w-10 flex items-center justify-center cursor-pointer">
+          <FaInstagram size={28} />
         </li>
       </ul>
     </footer>
