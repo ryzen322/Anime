@@ -59,10 +59,11 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
         <h1 className=" text-white text-xs font-semibold">
           {!user ? "Sign in to Watch HD" : "Enjoy You're Full HD"}
         </h1>
-        <div className=" py-1 px-1 text-black bg-stone-100 font-semibold w-[15%] text-xs rounded-sm flex items-center justify-center cursor-pointer hover:bg-stone-300">
+        <div className=" py-1 px-1 text-black bg-stone-100 font-bold w-[25%] text-sm rounded-sm flex items-center justify-center cursor-pointer hover:bg-stone-300">
           {!user ? (
             <SignInButton>
               <button
+                className=" "
                 onClick={() => {
                   changePlayer("anime");
                   changeEpisode(activeEp);
