@@ -199,12 +199,13 @@ export const getNews = async () => {
 export const getRadomAnime = async () => {
   try {
     const { data } = await instance.get(`meta/anilist/random-anime`);
-    console.log(data);
+
     const validatedAnime = DetailSchema.safeParse(data);
 
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }
+    console.log(validatedAnime);
     return validatedAnime.data;
   } catch (error) {
     throw new Error("error");
