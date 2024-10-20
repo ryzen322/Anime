@@ -32,7 +32,7 @@ const Detail = () => {
     <Layout>
       <h1 className=" text-white font-bold text-2xl">{data?.title?.english}</h1>
 
-      {isLoading ? <DetailLoading /> : <ArticleDetail {...data} />}
+      {isLoading ? <DetailLoading /> : <ArticleDetail {...data!} />}
     </Layout>
   );
 };

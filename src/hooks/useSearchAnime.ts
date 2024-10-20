@@ -4,7 +4,7 @@ import { useState } from "react";
 import { searchAnime } from "../services/api";
 
 export const useSearchAnime = () => {
-  const [filter, setFilter] = useState<string | undefined>("one piece");
+  const [filter, setFilter] = useState<string | undefined>("dragon");
   const debouncedFilter = useDebounce(filter, 500);
 
   const queries = useQuery({

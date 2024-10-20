@@ -43,11 +43,13 @@ const SearchModal = ({ modalToggle }: { modalToggle: () => void }) => {
               <SearchUl className=" gap-0" loading={queries.isLoading}>
                 {queries.data?.results?.map((item) => (
                   <SearchList
+                    modal={modalToggle}
                     genre={item.genres}
                     key={item.id}
                     src={item.image}
                     type={item.type}
                     title={item.title.userPreferred}
+                    detailId={item.id}
                   />
                 ))}
               </SearchUl>

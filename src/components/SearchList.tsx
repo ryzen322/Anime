@@ -2,17 +2,27 @@ import { Link } from "react-router-dom";
 import Image from "./common/search/Image";
 
 interface ListSearch {
-  src?: string;
+  src?: string | null;
   type: string | null;
   title: string;
   genre: string[] | null;
+  detailId: string;
+  modal: () => void;
 }
 
-const SearchList = ({ src, type, title, genre }: ListSearch) => {
+const SearchList = ({
+  src,
+  type,
+  title,
+  genre,
+  detailId,
+  modal,
+}: ListSearch) => {
   return (
     <Link
-      to={""}
+      to={`detail/${detailId}`}
       className=" w-full min-h-[3.75rem]  rounded-md flex items-center px-3 gap-4 hover:bg-[#2F2F2F] py-2 group"
+      onClick={modal}
     >
       <div className=" h-[3rem] w-[3rem] shrink-0  rounded-md ">
         <Image
