@@ -1,5 +1,5 @@
 const Favorites = () => {
-  return <div className=" text-white">favorites</div>;
+  return <div className=" text-white"></div>;
 };
 
 export default Favorites;

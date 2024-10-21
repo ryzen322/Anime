@@ -92,6 +92,12 @@ const Navigation = () => {
           >
             News
           </Link>
+          <Link
+            to={"/dashboard/favorites"}
+            className=" hidden md:flex  text-base font-semibold text-stone-300 hover:underline mt-1"
+          >
+            Dashboard
+          </Link>
 
           <div className=" ml-auto flex items-center">
             <IoSearch
