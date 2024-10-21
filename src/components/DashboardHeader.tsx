@@ -3,7 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 export function DashboardHeader() {
   const { user } = useUser();
   return (
-    <div className=" w-full h-[25dvh] flex items-center gap-2 bg-stone-800 px-4 relative overflow-hidden rounded-md md:h-[30dvh] md:mt-3">
+    <div className=" w-full h-[20dvh] flex items-center gap-2 bg-stone-800 px-4 relative overflow-hidden rounded-md md:h-[30dvh] md:mt-3">
       <div className=" w-full h-full absolute top-0 left-0">
         <img
           src="https://timelinecovers.pro/facebook-cover/download/anime-one-piece-thousand-sunny-facebook-cover.jpg"
