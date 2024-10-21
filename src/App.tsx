@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer";
 import { lazy, Suspense } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "./lib";
 
 // lazy components
 const Main = lazy(() => import("./page/Home"));
@@ -13,6 +15,19 @@ const NotFoundPage = lazy(() => import("./page/NotFoundPage"));
 const NewsPage = lazy(() => import("./page/NewsPage"));
 
 function App() {
+  const { data } = useQuery({
+    queryKey: ["sample"],
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("my_anime")
+        .select("*")
+        .eq("email", "arteezy626@gmail.com");
+      return data;
+    },
+  });
+
+  console.log(data);
+
   return (
     <>
       <Navigation />
