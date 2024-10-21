@@ -2,8 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer";
 import { lazy, Suspense } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "./lib";
 
 // lazy components
 const Main = lazy(() => import("./page/Home"));
@@ -13,21 +11,10 @@ const CollectionPage = lazy(() => import("./page/CollectionPage"));
 const Collection = lazy(() => import("./components/Collection"));
 const NotFoundPage = lazy(() => import("./page/NotFoundPage"));
 const NewsPage = lazy(() => import("./page/NewsPage"));
+const Dashboard = lazy(() => import("./page/Dashboard"));
+const Favorites = lazy(() => import("./components/Favorites"));
 
 function App() {
-  const { data } = useQuery({
-    queryKey: ["sample"],
-    queryFn: async () => {
-      const { data } = await supabase
-        .from("my_anime")
-        .select("*")
-        .eq("email", "arteezy626@gmail.com");
-      return data;
-    },
-  });
-
-  console.log(data);
-
   return (
     <>
       <Navigation />
@@ -45,6 +32,9 @@ function App() {
             <Route path=":title" element={<Collection />} />
           </Route>
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="favorites" element={<Favorites />} />
+          </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
