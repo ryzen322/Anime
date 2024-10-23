@@ -3,7 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 export function DashboardHeader() {
   const { user } = useUser();
   return (
-    <div className=" w-full h-[20dvh] flex flex-col justify-end gap-2 bg-[#272727] p-4 relative overflow-hidden rounded-t-md mt-2">
+    <div className=" w-full h-[20dvh] flex flex-col justify-end gap-2 bg-[#272727] p-4 relative overflow-hidden rounded-t-md mt-2 sm:h-[23dvh]">
       <div className=" flex flex-col">
         <p className=" text-stone-500 text-sm font-semibold leading-5">
           Base On

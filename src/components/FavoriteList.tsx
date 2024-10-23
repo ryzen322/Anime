@@ -2,7 +2,7 @@ import { IoMdMore } from "react-icons/io";
 
 const FavoriteList = () => {
   return (
-    <li className=" h-[6.5rem]  rounded-sm cursor-pointer flex items-center px-2 border-stone-700 gap-3">
+    <li className=" h-[6.5rem] w-full rounded-sm cursor-pointer flex items-center px-2 border-stone-700 gap-3 md:w-1/2 lg:w-1/3 xl:w-1/4">
       <div className=" h-full w-[5rem] overflow-hidden py-2 flex-shrink-0">
         <div className=" w-full h-full bg-stone-700  rounded-sm"></div>
       </div>
