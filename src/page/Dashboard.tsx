@@ -6,7 +6,9 @@ import { useUser } from "@clerk/clerk-react";
 const Dashboard = () => {
   const { user } = useUser();
 
-  if (user) {
+  if (!user) {
+    return <div className=" w-full h-dvh bg-stone-400"></div>;
+  } else {
     return (
       <main className=" container mx-auto mt-[3.90rem] mb-2  flex flex-col  px-2 phoneX:mt-[5rem] ">
         <div className=" flex flex-col">
@@ -21,12 +23,10 @@ const Dashboard = () => {
         <div className=" w-full flex flex-col gap-3 py-2 ">
           <DashboardNavigation />
 
-          <Outlet context={user.emailAddresses[0].emailAddress} />
+          <Outlet />
         </div>
       </main>
     );
-  } else {
-    return <div className=" w-full h-dvh bg-stone-400"></div>;
   }
 };
 

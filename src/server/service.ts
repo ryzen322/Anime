@@ -1,28 +1,35 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../lib";
-import { useOutletContext } from "react-router-dom";
+
+import { useUser } from "@clerk/clerk-react";
 
 
 
 export const useFavoritesAnime = () => {
-  const user: string = useOutletContext()
+  const { user } = useUser();
+
+
 
 
     const { data, isLoading, isError, error } = useQuery({
-        queryKey: ["sample"],
+        queryKey: ["sample" ],
         queryFn: async () => {
             try {
+             
                 const { data } = await supabase
                 .from('userData')
                 .select("*")
-                .eq("email",  user );
-            
+                .eq("email",  user ? user.emailAddresses[0].emailAddress : '' );
+           
               return data;
             } catch (error) {
                 throw new Error('unable to fetch')
             }
         },
+        
       });
+
+  
     
       return {
         data, isLoading,error, isError

@@ -6,7 +6,12 @@ import { MdNavigateNext } from "react-icons/md";
 import { useFavoritesAnime } from "../server/service";
 
 export function DashboardNavigation() {
-  const { data } = useFavoritesAnime();
+  const { data, isLoading } = useFavoritesAnime();
+
+  if (isLoading) {
+    return <div className=" w-full h-[5rem] bg-stone-600"></div>;
+  }
+
   return (
     <nav className=" w-full grid grid-cols-2 gap-2 md:grid-cols-4">
       <Link
@@ -18,9 +23,7 @@ export function DashboardNavigation() {
           <h1 className=" text-sm font-semibold">Favorites</h1>
         </div>
         <div className=" flex items-center gap-2 text-stone-800">
-          <h1 className=" text-sm font-semibold">
-            {data ? data.length + 1 : ""}
-          </h1>
+          <h1 className=" text-sm font-semibold">{data ? data.length : ""}</h1>
           <MdNavigateNext className=" text-xl font-semibold " />
         </div>
       </Link>

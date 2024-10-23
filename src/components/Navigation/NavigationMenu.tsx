@@ -13,7 +13,10 @@ const NavigationMenu = ({ showMenu }: { showMenu: boolean }) => {
       <h1 className=" text-3xl font-bold">Epic Games</h1>
 
       <ul className=" flex flex-col gap-10 w-full">
-        <NavigationList category="Play" list={["News", "Store", "News"]} />
+        <NavigationList
+          category="Play"
+          list={["News", "Store", "News", "Dashboard"]}
+        />
         {/* <NavigationList
           category="Discover"
           list={["Epic Games Store", "Fab", "SketchFab", "ArtStation"]}
