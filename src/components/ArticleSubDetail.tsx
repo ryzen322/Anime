@@ -16,6 +16,7 @@ type Player = "youtube" | "anime";
 
 export const ArticleSubDetail = (props: DetailAnimeObj) => {
   const { user } = useUser();
+
   const resolution = user ? 3 : 0;
   const { changeEpisode, playerState, changePlayer } =
     useContext(ContextEpisode);

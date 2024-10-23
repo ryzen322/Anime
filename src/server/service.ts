@@ -6,7 +6,7 @@ import { useUser } from "@clerk/clerk-react";
 
 
 export const useFavoritesAnime = () => {
-  const { user } = useUser();
+  const { user  } = useUser();
 
 
 
