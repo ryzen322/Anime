@@ -1,39 +1,63 @@
 import { Link } from "react-router-dom";
+
+import { FaVideo } from "react-icons/fa6";
+import { MdNavigateNext } from "react-icons/md";
+
 export function DashboardNavigation() {
   return (
-    <nav className=" w-full grid grid-cols-4 gap-1">
-      <div className=" h-[2rem] border-b border-stone-600 flex items-center justify-center cursor-pointer hover:border-stone-100 group transition-all duration-200">
-        <Link
-          to={""}
-          className=" text-stone-400 text-xs font-medium group-hover:text-stone-100  transition-all duration-200"
-        >
-          Watching 12
-        </Link>
-      </div>
-      <div className=" h-[2rem] border-b border-stone-600 flex items-center justify-center cursor-pointer hover:border-stone-100 group transition-all duration-200">
-        <Link
-          to={""}
-          className=" text-stone-400 text-xs font-medium group-hover:text-stone-100  transition-all duration-200"
-        >
-          To Watch 24
-        </Link>
-      </div>
-      <div className=" h-[2rem] border-b border-stone-600 flex items-center justify-center cursor-pointer hover:border-stone-100 group transition-all duration-200">
-        <Link
-          to={""}
-          className=" text-stone-400 text-xs font-medium group-hover:text-stone-100  transition-all duration-200"
-        >
-          Watched 86
-        </Link>
-      </div>
-      <div className=" h-[2rem] border-b border-stone-600 flex items-center justify-center cursor-pointer hover:border-stone-100 group transition-all duration-200">
-        <Link
-          to={""}
-          className=" text-stone-400 text-xs font-medium group-hover:text-stone-100  transition-all duration-200"
-        >
-          Collection 9
-        </Link>
-      </div>
+    <nav className=" w-full grid grid-cols-2 gap-2 ">
+      <Link
+        to={"favorites"}
+        className=" h-11 bg-stone-400 rounded-md flex items-center justify-between px-2"
+      >
+        <div className=" flex items-center gap-2">
+          <FaVideo className=" text-lg" />
+          <h1 className=" text-sm font-semibold">Favorites</h1>
+        </div>
+        <div className=" flex items-center gap-2 text-stone-800">
+          <h1 className=" text-sm font-semibold">107</h1>
+          <MdNavigateNext className=" text-xl font-semibold " />
+        </div>
+      </Link>
+      <Link
+        to={"favorites"}
+        className=" h-11 bg-stone-400 rounded-md flex items-center justify-between px-2"
+      >
+        <div className=" flex items-center gap-2">
+          <FaVideo className=" text-lg" />
+          <h1 className=" text-sm font-semibold">Favorites</h1>
+        </div>
+        <div className=" flex items-center gap-2 text-stone-800">
+          <h1 className=" text-sm font-semibold">107</h1>
+          <MdNavigateNext className=" text-xl font-semibold " />
+        </div>
+      </Link>
+      <Link
+        to={"favorites"}
+        className=" h-11 bg-stone-400 rounded-md flex items-center justify-between px-2"
+      >
+        <div className=" flex items-center gap-2">
+          <FaVideo className=" text-lg" />
+          <h1 className=" text-sm font-semibold">Favorites</h1>
+        </div>
+        <div className=" flex items-center gap-2 text-stone-800">
+          <h1 className=" text-sm font-semibold">107</h1>
+          <MdNavigateNext className=" text-xl font-semibold " />
+        </div>
+      </Link>
+      <Link
+        to={"favorites"}
+        className=" h-11 bg-stone-400 rounded-md flex items-center justify-between px-2"
+      >
+        <div className=" flex items-center gap-2">
+          <FaVideo className=" text-lg" />
+          <h1 className=" text-sm font-semibold">Favorites</h1>
+        </div>
+        <div className=" flex items-center gap-2 text-stone-800">
+          <h1 className=" text-sm font-semibold">107</h1>
+          <MdNavigateNext className=" text-xl font-semibold " />
+        </div>
+      </Link>
     </nav>
   );
 }
