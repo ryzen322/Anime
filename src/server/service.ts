@@ -17,7 +17,7 @@ export const useFavoritesAnime = () => {
             try {
              
                 const { data } = await supabase
-                .from('userData')
+                .from('user')
                 .select("*")
                 .eq("email",  user ? user.emailAddresses[0].emailAddress : '' );
            

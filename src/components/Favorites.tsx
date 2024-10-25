@@ -4,8 +4,8 @@ import { listAnime, queryAnimeType } from "../services/api";
 import { useFavoritesAnime } from "../server/service";
 
 const Favorites = () => {
-  const value = useFavoritesAnime();
-  value;
+  const { data: item } = useFavoritesAnime();
+  console.log(item);
 
   const route: listAnime = { page: 1, perPage: 6, routes: "Popular" };
   const { data, isLoading } = useQuery({

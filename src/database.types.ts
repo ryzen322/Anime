@@ -9,24 +9,62 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      userData: {
+      favorites: {
+        Row: {
+          anime_id: string | null
+          client_id: string | null
+          created_at: string
+          genres: string[] | null
+          id: string
+          image: string | null
+          title: string | null
+          type: string | null
+        }
+        Insert: {
+          anime_id?: string | null
+          client_id?: string | null
+          created_at?: string
+          genres?: string[] | null
+          id?: string
+          image?: string | null
+          title?: string | null
+          type?: string | null
+        }
+        Update: {
+          anime_id?: string | null
+          client_id?: string | null
+          created_at?: string
+          genres?: string[] | null
+          id?: string
+          image?: string | null
+          title?: string | null
+          type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "user"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user: {
         Row: {
           created_at: string
           email: string
           id: string
-          user_id: string
         }
         Insert: {
           created_at?: string
           email: string
           id?: string
-          user_id?: string
         }
         Update: {
           created_at?: string
           email?: string
           id?: string
-          user_id?: string
         }
         Relationships: []
       }
