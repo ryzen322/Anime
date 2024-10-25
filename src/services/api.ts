@@ -72,7 +72,7 @@ export const queryAnimeType = async (animeTypeList: listAnime) => {
       }
     );
 
-    console.log(data)
+    
 
     const validatedAnime = popularAnimeSchema.safeParse(data);
 

@@ -12,38 +12,38 @@ export type Database = {
       favorites: {
         Row: {
           anime_id: string | null
-          client_id: string | null
           created_at: string
           genres: string[] | null
           id: string
           image: string | null
           title: string | null
           type: string | null
+          user_id: string | null
         }
         Insert: {
           anime_id?: string | null
-          client_id?: string | null
           created_at?: string
           genres?: string[] | null
           id?: string
           image?: string | null
           title?: string | null
           type?: string | null
+          user_id?: string | null
         }
         Update: {
           anime_id?: string | null
-          client_id?: string | null
           created_at?: string
           genres?: string[] | null
           id?: string
           image?: string | null
           title?: string | null
           type?: string | null
+          user_id?: string | null
         }
         Relationships: [
           {
             foreignKeyName: "favorites_client_id_fkey"
-            columns: ["client_id"]
+            columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "user"
             referencedColumns: ["id"]

@@ -1,8 +1,11 @@
 import { SignInButton, SignOutButton, useUser } from "@clerk/clerk-react";
 import NavigationList from "./NavigationList";
+import { QueryClient } from "@tanstack/react-query";
 
 const NavigationMenu = ({ showMenu }: { showMenu: boolean }) => {
   const { user } = useUser();
+
+  const queryClient = new QueryClient();
 
   return (
     <div
@@ -35,7 +38,12 @@ const NavigationMenu = ({ showMenu }: { showMenu: boolean }) => {
             <h1 className="text-lg">Welcome Back</h1>
             <p className=" text-sm">Name: {user?.fullName}</p>
             <SignOutButton>
-              <button className=" w-full py-2 rounded-md bg-stone-800">
+              <button
+                className=" w-full py-2 rounded-md bg-stone-800"
+                onClick={() => {
+                  queryClient.clear();
+                }}
+              >
                 Logout
               </button>
             </SignOutButton>
