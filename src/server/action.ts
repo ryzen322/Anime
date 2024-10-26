@@ -3,7 +3,7 @@
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import { supabase } from "../lib";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -37,7 +37,7 @@ import { useNavigate } from "react-router-dom";
    
     const [queryClient] = useState(() => new QueryClient())
 
-    const navigate = useNavigate()
+
 
       
       const mutation = useMutation({
@@ -53,7 +53,7 @@ import { useNavigate } from "react-router-dom";
         onSuccess: () => {
             queryClient.invalidateQueries({queryKey: ['userData']})
             refetchData()
-            navigate('/dashboard/project')
+        
         }
     })
 
