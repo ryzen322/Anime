@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer";
 import { lazy, Suspense } from "react";
-import { DashboardHome } from "./components/Dashboard-home";
 
 // lazy components
 const Main = lazy(() => import("./page/Home"));
@@ -14,6 +13,7 @@ const NotFoundPage = lazy(() => import("./page/NotFoundPage"));
 const NewsPage = lazy(() => import("./page/NewsPage"));
 const Dashboard = lazy(() => import("./page/Dashboard"));
 const Favorites = lazy(() => import("./components/Favorites"));
+const DashboardHome = lazy(() => import("./components/Dashboard-home"));
 
 function App() {
   return (
