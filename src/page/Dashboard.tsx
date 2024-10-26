@@ -1,12 +1,20 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { DashboardHeader } from "../components/DashboardHeader";
 import { DashboardNavigation } from "../components/DashboardNavigation";
-import { useUser } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
+import { useEffect } from "react";
 
 const Dashboard = () => {
-  const { user } = useUser();
+  const { userId, isLoaded } = useAuth();
+  const navigate = useNavigate();
 
-  if (!user) {
+  useEffect(() => {
+    if (isLoaded && !userId) {
+      navigate("/sign-in");
+    }
+  }, [isLoaded, userId, navigate]);
+
+  if (!isLoaded) {
     return <div className=" w-full h-dvh bg-stone-400"></div>;
   } else {
     return (

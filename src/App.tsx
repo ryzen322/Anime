@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer";
 import { lazy, Suspense } from "react";
+import { DashboardHome } from "./components/Dashboard-home";
 
 // lazy components
 const Main = lazy(() => import("./page/Home"));
@@ -33,6 +34,7 @@ function App() {
           </Route>
           <Route path="/news" element={<NewsPage />} />
           <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="project" element={<DashboardHome />} />
             <Route path="favorites" element={<Favorites />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
