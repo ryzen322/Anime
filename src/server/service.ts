@@ -10,7 +10,7 @@ export const useFavoritesAnime = () => {
   const { user  } = useUser();
 
 
-      const { data,  status,   }= useQuery({
+      const { data,  isLoading   }= useQuery({
       queryKey: ['userData'],
       queryFn: async () => {
         try {
@@ -26,7 +26,7 @@ export const useFavoritesAnime = () => {
       }
     })    
       return {
-        data, status,
+        data, isLoading,
       }
 
 }

@@ -1,8 +1,8 @@
 import { IoMdMore } from "react-icons/io";
-import { AnimeObj } from "../types";
 import { Link } from "react-router-dom";
+import { Row } from "../interface/database";
 
-const FavoriteList = (props: AnimeObj) => {
+const FavoriteList = (props: Row<"favorites">) => {
   const { image, title, type, genres, id } = props;
 
   return (
@@ -21,9 +21,7 @@ const FavoriteList = (props: AnimeObj) => {
       </div>
       <div className=" flex items-center w-full h-full border-b border-stone-600">
         <div className=" h-full py-2 w-full flex flex-col ">
-          <h1 className=" text-base font-semibold text-stone-300">
-            {title.english || title.native}
-          </h1>
+          <h1 className=" text-base font-semibold text-stone-300">{title}</h1>
           <div className=" flex items-center gap-1">
             {genres?.map((item) => (
               <p key={item} className=" text-stone-400 text-xs">

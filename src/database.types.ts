@@ -22,6 +22,7 @@ export type Database = {
           rating: number | null
           title: string | null
           total_Episodes: string | null
+          type: string
         }
         Insert: {
           anime_id?: string | null
@@ -35,6 +36,7 @@ export type Database = {
           rating?: number | null
           title?: string | null
           total_Episodes?: string | null
+          type: string
         }
         Update: {
           anime_id?: string | null
@@ -48,6 +50,7 @@ export type Database = {
           rating?: number | null
           title?: string | null
           total_Episodes?: string | null
+          type?: string
         }
         Relationships: []
       }

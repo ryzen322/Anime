@@ -1,13 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
 import FavoriteList from "./FavoriteList";
-import { listAnime, queryAnimeType } from "../services/api";
+
+import { useFavoritesAnime } from "../server/service";
 
 const Favorites = () => {
-  const route: listAnime = { page: 1, perPage: 6, routes: "Popular" };
-  const { data, isLoading } = useQuery({
-    queryKey: ["animelist", route],
-    queryFn: async () => queryAnimeType(route),
-  });
+  const { data, isLoading } = useFavoritesAnime();
 
   if (isLoading) {
     return <div className=" ">loading....</div>;
@@ -18,10 +14,15 @@ const Favorites = () => {
       <h1 className=" text-base font-semibold text-stone-200 phoneX:text-lg">
         Favorites
       </h1>
-      <ul className=" flex flex-wrap justify-center border-l border border-stone-600 rounded-md py-2 ">
-        {data?.results.map((item) => (
+      <ul className=" flex flex-wrap justify-center items-center border-l border border-stone-600 rounded-md py-2 ">
+        {/* {data?.map((item) => (
           <FavoriteList key={item.id} {...item} />
-        ))}
+        ))} */}
+        {data?.length === 0 ? (
+          <p className=" text-white font-semibold text-sm">No favorites list</p>
+        ) : (
+          data?.map((item) => <FavoriteList key={item.id} {...item} />)
+        )}
       </ul>
       <div className=" w-full h-[3.5rem]  flex justify-center items-center py-2">
         <button className=" bg-blue-800 text-sm h-full rounded-md w-[65%] text-stone-200 font-semibold hover:bg-blue-600">
