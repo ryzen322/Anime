@@ -7,24 +7,6 @@ import { useState } from "react";
 
 
 
-  // foreighKey;
-  // if (isLoading) {
-  //   return <div className=" w-full h-[5rem] bg-stone-600"></div>;
-  // }
-  // //  sample action
-  // // async function addFavorites() {
-  // //   console.log("clicked");
-  // //   try {
-  // //     const { data: x, error } = await supabase
-  // //       .from("favorites")
-  // //       .insert({ title: "one piece", user_id: data ? foreighKey : "" })
-  // //       .select();
-  // //     console.log(x);
-  // //     console.log(error);
-  // //   } catch (error) {
-  // //     throw new Error("unable to fetch");
-  // //   }
-  // // }
 
 
   interface userType {
@@ -43,7 +25,7 @@ import { useState } from "react";
       const mutation = useMutation({
           mutationFn: async () => {
               try {
-                   await supabase.from('user').insert({'email': user_email})
+                   await supabase.from('favorites').insert({'email': user_email})
              
 
             } catch (error) {

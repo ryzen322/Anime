@@ -14,14 +14,13 @@ const NewsPage = lazy(() => import("./page/NewsPage"));
 const Dashboard = lazy(() => import("./page/Dashboard"));
 const Favorites = lazy(() => import("./components/Favorites"));
 const DashboardHome = lazy(() => import("./components/Dashboard-home"));
+const SignIn = lazy(() => import("./page/SigninPage"));
 
 function App() {
   return (
     <>
       <Navigation />
-      <Suspense
-        fallback={<div className=" h-dvh w-full bg-Primary">loading...</div>}
-      >
+      <Suspense fallback={<div className=" h-dvh w-full bg-Primary" />}>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/detail">
@@ -37,6 +36,7 @@ function App() {
             <Route path="project" element={<DashboardHome />} />
             <Route path="favorites" element={<Favorites />} />
           </Route>
+          <Route path="/sign-in" element={<SignIn />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

@@ -27,33 +27,7 @@ export const useFavoritesAnime = () => {
           
         }
       }
-    })
-    // const foreighKey = data ? data?.[0].id : '';
-
-
-    // const {data: response} = useQuery({
-    //   queryKey: ['sample', foreighKey],
-    //   queryFn: async () => {
-    //     try {
-    //         const {data} = await supabase.from('favorites').select('*, user(*)').eq('user_id', foreighKey ? foreighKey : '')
-    //         return data
-    //     } catch (error) {
-    //       throw new Error('erro')
-    //     }
-    //   },
-    //   enabled: !!foreighKey
-    // })
-
-    // console.log(response)
-
-
-
-
-
-
-
-  
-    
+    })    
       return {
         data, status, error, email, refetch
       }

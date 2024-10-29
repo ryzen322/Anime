@@ -13,58 +13,41 @@ export type Database = {
         Row: {
           anime_id: string | null
           created_at: string
+          description: string | null
+          duration: number | null
+          email: string | null
           genres: string[] | null
           id: string
           image: string | null
+          rating: number | null
           title: string | null
-          type: string | null
-          user_id: string | null
+          total_Episodes: string | null
         }
         Insert: {
           anime_id?: string | null
           created_at?: string
+          description?: string | null
+          duration?: number | null
+          email?: string | null
           genres?: string[] | null
           id?: string
           image?: string | null
+          rating?: number | null
           title?: string | null
-          type?: string | null
-          user_id?: string | null
+          total_Episodes?: string | null
         }
         Update: {
           anime_id?: string | null
           created_at?: string
+          description?: string | null
+          duration?: number | null
+          email?: string | null
           genres?: string[] | null
           id?: string
           image?: string | null
+          rating?: number | null
           title?: string | null
-          type?: string | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "favorites_client_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "user"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      user: {
-        Row: {
-          created_at: string
-          email: string
-          id: string
-        }
-        Insert: {
-          created_at?: string
-          email: string
-          id?: string
-        }
-        Update: {
-          created_at?: string
-          email?: string
-          id?: string
+          total_Episodes?: string | null
         }
         Relationships: []
       }
