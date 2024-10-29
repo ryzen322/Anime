@@ -17,7 +17,7 @@ const NavigationList = ({
           key={index}
           to={`/${
             item.toLowerCase() === "dashboard"
-              ? "dashboard/project"
+              ? "dashboard"
               : item.toLowerCase()
           }`}
           onClick={closeModal}

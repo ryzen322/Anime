@@ -13,7 +13,7 @@ const NotFoundPage = lazy(() => import("./page/NotFoundPage"));
 const NewsPage = lazy(() => import("./page/NewsPage"));
 const Dashboard = lazy(() => import("./page/Dashboard"));
 const Favorites = lazy(() => import("./components/Favorites"));
-const DashboardHome = lazy(() => import("./components/Dashboard-home"));
+
 const SignIn = lazy(() => import("./page/SigninPage"));
 
 function App() {
@@ -33,7 +33,6 @@ function App() {
           </Route>
           <Route path="/news" element={<NewsPage />} />
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="project" element={<DashboardHome />} />
             <Route path="favorites" element={<Favorites />} />
           </Route>
           <Route path="/sign-in" element={<SignIn />} />

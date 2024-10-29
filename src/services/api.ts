@@ -237,3 +237,5 @@ export const getGetAiringAnime = async () => {
     throw new Error("error");
   }
 };
+
+
