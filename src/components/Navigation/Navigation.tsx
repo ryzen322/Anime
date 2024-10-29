@@ -16,6 +16,10 @@ const Navigation = () => {
   const [modal, setModal] = useState(false);
   const divRef = useRef<HTMLDivElement>(null);
 
+  function toggleChev(): void {
+    setCheState(!chevState);
+  }
+
   function resizeWindow() {
     if (divRef) {
       const divEl = divRef.current?.getBoundingClientRect();
@@ -108,7 +112,7 @@ const Navigation = () => {
             />
           </div>
         </nav>
-        <NavigationMenu showMenu={chevState} />
+        <NavigationMenu showMenu={chevState} toggle={toggleChev} />
       </header>
       {modal && <SearchModal modalToggle={searchModalToggle} />}
     </>

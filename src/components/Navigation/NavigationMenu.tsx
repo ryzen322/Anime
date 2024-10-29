@@ -2,7 +2,13 @@ import { SignInButton, SignOutButton, useUser } from "@clerk/clerk-react";
 import NavigationList from "./NavigationList";
 import { QueryClient } from "@tanstack/react-query";
 
-const NavigationMenu = ({ showMenu }: { showMenu: boolean }) => {
+const NavigationMenu = ({
+  showMenu,
+  toggle,
+}: {
+  showMenu: boolean;
+  toggle: () => void;
+}) => {
   const { user } = useUser();
 
   const queryClient = new QueryClient();
@@ -17,6 +23,7 @@ const NavigationMenu = ({ showMenu }: { showMenu: boolean }) => {
 
       <ul className=" flex flex-col gap-10 w-full">
         <NavigationList
+          closeModal={toggle}
           category="Play"
           list={["News", "Store", "News", "Dashboard"]}
         />
