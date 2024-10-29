@@ -12,6 +12,7 @@ const Home = () => {
       <div>
         <SectionCart />
       </div>
+
       <Article animeProps={{ page: 1, perPage: 6, routes: "Popular" }} />
       <Article animeProps={{ page: 2, perPage: 6, routes: "Trending" }} />
 

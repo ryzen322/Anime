@@ -11,7 +11,7 @@ export const useFavoritesAnime = () => {
 
 
       const { data,  isLoading   }= useQuery({
-      queryKey: ['userData'],
+      queryKey: ['likes'],
       queryFn: async () => {
         try {
           const { data = [] } = await supabase

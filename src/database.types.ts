@@ -21,8 +21,8 @@ export type Database = {
           image: string | null
           rating: number | null
           title: string | null
-          total_Episodes: string | null
-          type: string
+          total_Episodes: number | null
+          type: string | null
         }
         Insert: {
           anime_id?: string | null
@@ -35,8 +35,8 @@ export type Database = {
           image?: string | null
           rating?: number | null
           title?: string | null
-          total_Episodes?: string | null
-          type: string
+          total_Episodes?: number | null
+          type?: string | null
         }
         Update: {
           anime_id?: string | null
@@ -49,8 +49,8 @@ export type Database = {
           image?: string | null
           rating?: number | null
           title?: string | null
-          total_Episodes?: string | null
-          type?: string
+          total_Episodes?: number | null
+          type?: string | null
         }
         Relationships: []
       }

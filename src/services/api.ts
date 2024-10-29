@@ -76,8 +76,6 @@ export const queryAnimeType = async (animeTypeList: listAnime) => {
 
     const validatedAnime = popularAnimeSchema.safeParse(data);
 
-    console.log(validatedAnime.data)
-
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }
