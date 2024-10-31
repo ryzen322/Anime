@@ -15,6 +15,7 @@ const Cards = ({
   duration,
   rating,
   total_episode,
+  favorites,
 }: {
   id: string;
   image: string | null;
@@ -25,6 +26,7 @@ const Cards = ({
   description: string | null;
   total_episode: number | null;
   rating: number | null;
+  favorites: boolean;
 }) => {
   const navigate = useNavigate();
   const { mutateAsync } = useAddFavorites();
@@ -32,8 +34,10 @@ const Cards = ({
   return (
     <CardsUI className=" ">
       <div className=" h-[310px] w-full  relative ">
-        <div
-          className=" absolute top-3 right-3 w-8 h-8 rounded-full z-30 bg-stone-500 flex items-center justify-center hover:bg-white transition-all duration-200 ease-in"
+        <button
+          className={`absolute top-3 right-3 w-8 h-8 rounded-full z-30 ${
+            favorites ? "bg-green-500" : "bg-stone-500"
+          } flex items-center justify-center hover:bg-white transition-all duration-200 ease-in`}
           onClick={async () => {
             mutateAsync({
               anime_id: id,
@@ -50,9 +54,10 @@ const Cards = ({
               id: "",
             });
           }}
+          disabled={favorites}
         >
           <MdOutlineFavorite className=" text-lg" />
-        </div>
+        </button>
         <Image
           src={image ? image : ""}
           className=" w-full h-full object-cover rounded-md absolute  top-0 left-0 "

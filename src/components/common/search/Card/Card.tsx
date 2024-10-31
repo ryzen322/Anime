@@ -1,11 +1,28 @@
+import { useFavoritesAnime } from "../../../../server/service";
 import { popularAnimeType } from "../../../../types";
 import { CardUI } from "../loadingComponents/CardUI";
 import Cards from "./Cards";
 
 const Card = ({ listAnime }: { listAnime: popularAnimeType }) => {
+  const { data } = useFavoritesAnime();
+
+  const favorites = listAnime?.results?.map((item, key) => {
+    if (item.id === data?.[key]?.anime_id) {
+      return {
+        ...item,
+        favorites: true,
+      };
+    } else {
+      return {
+        ...item,
+        favorites: false,
+      };
+    }
+  });
+
   return (
     <CardUI>
-      {listAnime.results.map((item) => (
+      {favorites.map((item) => (
         <Cards
           key={item.id}
           image={item.image}
@@ -17,6 +34,7 @@ const Card = ({ listAnime }: { listAnime: popularAnimeType }) => {
           duration={item.duration}
           rating={item.rating}
           total_episode={item.totalEpisodes}
+          favorites={item.favorites}
         />
       ))}
     </CardUI>

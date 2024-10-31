@@ -1,3 +1,4 @@
+import { supabase } from "../lib";
 import {
   AiringAnimeSchema,
   DetailSchema,
@@ -237,3 +238,19 @@ export const getGetAiringAnime = async () => {
 };
 
 
+// supabase
+
+export const getFavorites = async (userEmail: string) => {
+
+  try {
+    const { data = [] } = await supabase
+    .from('favorites')
+    .select(`*`).eq('email', userEmail)
+ 
+    return data
+  } catch (error) {
+    throw new Error('unable to fetch')
+    
+  }
+  
+}

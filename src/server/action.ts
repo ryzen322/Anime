@@ -9,7 +9,6 @@ import { Row } from "../interface/database";
     const queryClient = useQueryClient();
 
 
-   
     const { user  } = useUser();
     const email = user?.emailAddresses[0].emailAddress
 
@@ -19,14 +18,15 @@ import { Row } from "../interface/database";
           mutationFn: async (favorites : Row<'favorites'>) => {
             const {anime_id, description , duration, type, title, total_Episodes, genres, image, rating, } = favorites
               try {
-                const {data} =   await supabase.from('favorites').insert({'anime_id' : anime_id, 'description' : description, 'duration': duration, 'type': type, 'title' : title, 'total_Episodes' : total_Episodes, 'genres' : genres, 'image' : image , 'rating' : rating, 'email' : email}).select()
-                console.log( data)
+             await supabase.from('favorites').insert({'anime_id' : anime_id, 'description' : description, 'duration': duration, 'type': type, 'title' : title, 'total_Episodes' : total_Episodes, 'genres' : genres, 'image' : image , 'rating' : rating, 'email' : email}).select()
+
 
 
             } catch (error) {
                 throw new Error('error')
             }
         },
+       
         onSuccess: () => {
 
    // Invalidate every query in the cache
