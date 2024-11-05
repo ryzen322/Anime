@@ -1,4 +1,5 @@
-import { TrendingAnimeObj } from "../types";
+import { Row } from "@/interface/database";
+import { AnimeObj, TrendingAnimeObj } from "../types";
 
 export const fakeArray = Array.from({ length: 10 }, (_, index) => index + 1);
 export const loadingItem = Array.from({ length: 15 }, (_, index) => {
@@ -29,3 +30,31 @@ export const divideArray = (trendingArr: TrendingAnimeObj[] | undefined) => {
     return listOfMovie;
   }
 };
+
+interface existingItem extends AnimeObj {
+  favorite: boolean;
+}
+
+export function existingItem(
+  arr1: AnimeObj[],
+  arr2: Row<"favorites">[]
+): existingItem[] {
+  if (arr2 === undefined) {
+    return arr1.map((item) => {
+      return {
+        ...item,
+        favorite: false,
+      };
+    });
+  } else {
+    const updatedArray = arr1.map((item) =>
+      arr2.some((favItem) => favItem.anime_id === item.id)
+        ? { ...item, favorite: true }
+        : {
+            ...item,
+            favorite: false,
+          }
+    );
+    return updatedArray;
+  }
+}
