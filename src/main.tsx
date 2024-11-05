@@ -8,6 +8,7 @@ import EpisodeProvider from "./components/store/EpisodeProvider.tsx";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import RootLayout from "./components/layouts/root-layout.tsx";
+import { Toaster } from "@/components/ui/toaster";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <BrowserRouter>
           <EpisodeProvider>
             <App />
+            <Toaster />
           </EpisodeProvider>
         </BrowserRouter>
         <ReactQueryDevtools initialIsOpen={false} />

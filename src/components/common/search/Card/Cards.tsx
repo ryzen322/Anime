@@ -4,6 +4,8 @@ import { CardsUI } from "../loadingComponents/CardsUI";
 import { FaPlay } from "react-icons/fa6";
 import { MdOutlineFavorite } from "react-icons/md";
 import { useAddFavorites } from "../../../../server/action";
+import { useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Cards = ({
   image,
@@ -26,10 +28,21 @@ const Cards = ({
   description: string | null;
   total_episode: number | null;
   rating: number | null;
-  favorites: boolean;
+  favorites: boolean | null;
 }) => {
   const navigate = useNavigate();
-  const { mutateAsync, isPending } = useAddFavorites();
+  const { toast } = useToast();
+
+  const { mutateAsync, isPending, status } = useAddFavorites();
+
+  useEffect(() => {
+    if (status === "success") {
+      toast({
+        title: `${title}`,
+        description: "Succes fully add to your favorite list",
+      });
+    }
+  }, [status, toast, title]);
 
   return (
     <CardsUI className=" ">
