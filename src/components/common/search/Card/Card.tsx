@@ -6,7 +6,7 @@ import Cards from "./Cards";
 const Card = ({ listAnime }: { listAnime: popularAnimeType }) => {
   const { data } = useFavoritesAnime();
 
-  const favorites = listAnime?.results?.map((item, key) => {
+  const favorites = listAnime?.results?.slice().map((item, key) => {
     if (item.id === data?.[key]?.anime_id) {
       return {
         ...item,

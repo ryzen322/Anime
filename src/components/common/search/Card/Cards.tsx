@@ -29,7 +29,7 @@ const Cards = ({
   favorites: boolean;
 }) => {
   const navigate = useNavigate();
-  const { mutateAsync } = useAddFavorites();
+  const { mutateAsync, isPending } = useAddFavorites();
 
   return (
     <CardsUI className=" ">
@@ -37,7 +37,7 @@ const Cards = ({
         <button
           className={`absolute top-3 right-3 w-8 h-8 rounded-full z-30 ${
             favorites ? "bg-green-500" : "bg-stone-500"
-          } flex items-center justify-center hover:bg-white transition-all duration-200 ease-in`}
+          } flex items-center justify-center transition-all duration-200 ease-in cursor-pointer`}
           onClick={async () => {
             mutateAsync({
               anime_id: id,
@@ -54,7 +54,7 @@ const Cards = ({
               id: "",
             });
           }}
-          disabled={favorites}
+          disabled={(favorites && !isPending) || isPending ? true : false}
         >
           <MdOutlineFavorite className=" text-lg" />
         </button>
@@ -64,7 +64,7 @@ const Cards = ({
         />
         <div className=" h-full w-full absolute bg-gradient-to-b from-black/10 to-black/65 z-20 rounded-md" />
         <div
-          className=" absolute bottom-0 left-3 bg-green-500 h-12 w-12 rounded-full z-30 opacity-0 group-hover:bottom-3 group-hover:opacity-100 transition-all duration-200 ease-in-out flex items-center justify-center pl-1 hover:bg-green-400"
+          className=" absolute bottom-0 left-3 bg-green-500 h-12 w-12 rounded-full z-30 opacity-0 group-hover:bottom-3 group-hover:opacity-100 transition-all duration-200 ease-in-out flex items-center justify-center pl-1 hover:bg-green-400 cursor-pointer"
           onClick={() => {
             navigate(`detail/${id}`);
           }}
@@ -77,7 +77,10 @@ const Cards = ({
         <h1 className=" text-white font-bold leading-5">{title}</h1>
         <div className=" flex items-start flex-wrap gap-1">
           {genres?.map((genre) => (
-            <p key={genre} className=" text-[#E1E1E1] text-xs font-semibold">
+            <p
+              key={genre}
+              className=" text-[#E1E1E1] text-xs font-semibold hover:underline cursor-pointer"
+            >
               {genre}
             </p>
           ))}
