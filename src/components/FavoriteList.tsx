@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { Row } from "../interface/database";
 
 const FavoriteList = (props: Row<"favorites">) => {
-  const { image, title, type, genres, id } = props;
+  const { image, title, type, genres, anime_id } = props;
 
   return (
     <Link
-      to={`/detail/${id}`}
+      to={`/detail/${anime_id}`}
       className=" h-[7.5rem] w-full rounded-sm cursor-pointer flex items-center px-2 border-stone-700 gap-3 md:w-1/2 lg:w-1/3 xl:w-1/4"
     >
       <div className=" h-full w-[5.5rem] overflow-hidden py-2 flex-shrink-0">
