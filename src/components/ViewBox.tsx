@@ -4,7 +4,7 @@ import CardList from "./common/search/loadingComponents/CardList";
 
 import { ListBox } from "./ListBox";
 import { getTrendingAnime } from "../services/api";
-import { divideArray } from "../utils/utils";
+import { divideArray } from "../utils";
 
 export function ViewBox() {
   const { data, isLoading } = useQuery({
