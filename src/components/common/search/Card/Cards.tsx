@@ -4,6 +4,7 @@ import { CardsUI } from "../loadingComponents/CardsUI";
 import { FaPlay } from "react-icons/fa6";
 import { MdOutlineFavorite } from "react-icons/md";
 import { useAddFavorites } from "../../../../server/action";
+import { useUser } from "@clerk/clerk-react";
 
 const Cards = ({
   image,
@@ -29,8 +30,32 @@ const Cards = ({
   favorites: boolean | null;
 }) => {
   const navigate = useNavigate();
+  const { user } = useUser();
 
   const { mutateAsync, isPending } = useAddFavorites();
+
+  const addFavorites = () => {
+    if (!user) {
+      navigate("sign-in");
+    }
+
+    if (user) {
+      mutateAsync({
+        anime_id: id,
+        description: description,
+        duration: duration,
+        genres: genres,
+        image: image,
+        rating: rating,
+        title: title,
+        total_Episodes: total_episode,
+        type: type,
+        created_at: "",
+        email: "",
+        id: "",
+      });
+    }
+  };
 
   return (
     <CardsUI className=" ">
@@ -39,22 +64,7 @@ const Cards = ({
           className={`absolute top-3 right-3 w-8 h-8 rounded-full z-30 ${
             favorites ? "bg-green-500" : "bg-stone-500"
           } flex items-center justify-center transition-all duration-200 ease-in cursor-pointer`}
-          onClick={() => {
-            mutateAsync({
-              anime_id: id,
-              description: description,
-              duration: duration,
-              genres: genres,
-              image: image,
-              rating: rating,
-              title: title,
-              total_Episodes: total_episode,
-              type: type,
-              created_at: "",
-              email: "",
-              id: "",
-            });
-          }}
+          onClick={addFavorites}
           disabled={(favorites && !isPending) || isPending ? true : false}
         >
           <MdOutlineFavorite className=" text-lg" />
