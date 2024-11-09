@@ -3,10 +3,12 @@ import {  useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "../lib";
 import { useUser } from "@clerk/clerk-react";
 import { Row } from "../interface/database";
+import { useToast } from "@/hooks/use-toast";
 
 
   export  function useAddFavorites () {
     const queryClient = useQueryClient();
+    const { toast } = useToast();
 
 
     const { user  } = useUser();
@@ -27,9 +29,13 @@ import { Row } from "../interface/database";
             }
         },
        
-        onSuccess: () => {
+        onSuccess: (_, variables) => {
 
    // Invalidate every query in the cache
+   toast({
+    title: `title: ${variables.title}`,
+    description: "Succes fully add to your favorite list",
+  });
 queryClient.invalidateQueries()
 // Invalidate every query with a key that starts with `todos`
 queryClient.invalidateQueries({ queryKey: ['likes'] })

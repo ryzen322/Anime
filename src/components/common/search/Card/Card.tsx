@@ -7,8 +7,6 @@ import { existingItem } from "@/utils";
 const Card = ({ listAnime }: { listAnime: popularAnimeType }) => {
   const { data } = useFavoritesAnime();
 
-  existingItem(listAnime?.results, data!)[0];
-
   return (
     <CardUI>
       {existingItem(listAnime?.results, data!).map((item) => (
