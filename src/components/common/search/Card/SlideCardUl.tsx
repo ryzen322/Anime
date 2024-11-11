@@ -55,7 +55,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
         className=" w-full  flex items-center rounded-md overflow-hidden relative transition-all duration-200 ease-in-out"
         id={"parent"}
       >
-        {item.results.map((data, index) => (
+        {item?.results?.map((data, index) => (
           <SlideCard
             ref={intervalRef}
             key={data.id}
@@ -72,7 +72,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
       </ul>
 
       <ul className=" flex items-center justify-center  gap-2 md:flex-col md:gap-1">
-        {item.results.map((data, index) => (
+        {item?.results?.map((data, index) => (
           <SlideCardAction
             key={data.id}
             current={index}
