@@ -1,23 +1,13 @@
 import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { useAddFavorites,  } from "./action";
-
-interface actionType {
-    id: string;
-    image: string | null;
-    title: string;
-    genres: string[] | null;
-    type: string | null;
-    duration: number | null;
-    description: string | null;
-    total_episode: number | null;
-    rating: number | null;
-
-}
+import { CardsType } from "@/types";
 
 
 
-export const useActions = (actionT: actionType) => {
+
+
+export const useActions = (actionT: CardsType) => {
 
     const {description, duration,  genres , id , image , rating , title , total_episode , type} = actionT
     const navigate = useNavigate();

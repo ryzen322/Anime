@@ -257,3 +257,19 @@ export interface InfiniteData<TData> {
   pages: TData[];
   pageParams: unknown[];
 }
+
+
+
+
+export interface CardsType {
+  id: string;
+  image: string | null;
+  title: string;
+  genres: string[] | null;
+  type: string | null;
+  duration: number | null;
+  description: string | null;
+  total_episode: number | null;
+  rating: number | null;
+  favorites: boolean | null;
+}

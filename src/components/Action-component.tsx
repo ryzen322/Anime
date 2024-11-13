@@ -8,6 +8,7 @@ interface Actions {
   actionFunction: () => void;
   anime: string;
   actionRemove: () => void;
+  about: string;
 }
 
 const ActionComponent = (props: Actions) => {
@@ -18,6 +19,7 @@ const ActionComponent = (props: Actions) => {
     actionFunction,
     actionRemove,
     anime,
+    about,
   } = props;
 
   return (
@@ -29,7 +31,7 @@ const ActionComponent = (props: Actions) => {
           <Dialog
             icon={Icon}
             itemExist={itemExist}
-            about="Add your favorite anime"
+            about={about}
             title="Favorite"
             action={actionFunction}
             actionRemove={actionRemove}

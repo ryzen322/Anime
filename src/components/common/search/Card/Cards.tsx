@@ -7,43 +7,13 @@ import { MdOutlineFavorite } from "react-icons/md";
 import ActionComponent from "@/components/Action-component";
 import { useActions } from "@/server/action-functions";
 import { useRemoveFavorites } from "@/server/action";
+import { CardsType } from "@/types";
 
-const Cards = ({
-  image,
-  title,
-  genres,
-  type,
-  id,
-  description,
-  duration,
-  rating,
-  total_episode,
-  favorites,
-}: {
-  id: string;
-  image: string | null;
-  title: string;
-  genres: string[] | null;
-  type: string | null;
-  duration: number | null;
-  description: string | null;
-  total_episode: number | null;
-  rating: number | null;
-  favorites: boolean | null;
-}) => {
+const Cards = (props: CardsType) => {
+  const { favorites, genres, id, image, title, type } = props;
   const navigate = useNavigate();
 
-  const { addFavorites } = useActions({
-    description,
-    duration,
-    genres,
-    id,
-    image,
-    rating,
-    title,
-    total_episode,
-    type,
-  });
+  const { addFavorites } = useActions(props);
 
   const { mutateAsync } = useRemoveFavorites();
 
@@ -57,6 +27,7 @@ const Cards = ({
           actionFunction={addFavorites}
           anime={title}
           actionRemove={() => mutateAsync({ id, title })}
+          about={`${favorites ? "Remove" : "Add"} your favorite anime`}
         />
         <Image
           src={image ? image : ""}

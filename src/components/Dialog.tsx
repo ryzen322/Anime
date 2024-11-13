@@ -45,14 +45,15 @@ const Dialog = (props: Actions) => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{title}</AlertDialogTitle>
-          <AlertDialogDescription>
-            {about} {anime}
-          </AlertDialogDescription>
+          <AlertDialogTitle>
+            {title} {anime}
+          </AlertDialogTitle>
+          <AlertDialogDescription>{about}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
+            className={` ${itemExist ? " bg-red-500 text-white" : ""}`}
             onClick={() => {
               itemExist ? actionRemove() : action();
             }}
