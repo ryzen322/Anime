@@ -19,6 +19,7 @@ export const popularAnime = async () => {
       }
     );
 
+ 
     const validatedAnime = popularAnimeSchema.safeParse(data);
 
     if (!validatedAnime.success) {

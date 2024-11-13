@@ -39,7 +39,7 @@ const SlideCardAction = ({
       <div
         className={` hidden md:block h-full ${
           active ? "w-full" : `w-[0%]`
-        } absolute top-0 left-0 bg-[#404044] transition-all duration-[4000ms] ease-linear`}
+        } absolute top-0 left-0 bg-[#404044] transition-all  duration-slideCart ease-linear`}
       ></div>
     </li>
   );

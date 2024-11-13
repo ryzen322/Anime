@@ -7,6 +7,9 @@ export default {
       fontFamily: {
         Roboto: ["Roboto", "sans-serif"],
       },
+      transitionDuration: {
+        slideCart: "4000ms",
+      },
       backgroundColor: {
         Primary: "#101014",
         Loading: "#202024",
