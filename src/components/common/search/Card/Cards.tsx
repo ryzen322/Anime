@@ -3,9 +3,9 @@ import Image from "../Image";
 import { CardsUI } from "../loadingComponents/CardsUI";
 import { FaPlay } from "react-icons/fa6";
 import { MdOutlineFavorite } from "react-icons/md";
-import { useAddFavorites } from "../../../../server/action";
-import { useUser } from "@clerk/clerk-react";
+
 import ActionComponent from "@/components/Action-component";
+import { useActions } from "@/server/action-functions";
 
 const Cards = ({
   image,
@@ -31,32 +31,18 @@ const Cards = ({
   favorites: boolean | null;
 }) => {
   const navigate = useNavigate();
-  const { user } = useUser();
 
-  const { mutateAsync } = useAddFavorites();
-
-  const addFavorites = () => {
-    if (!user) {
-      navigate("sign-in");
-    }
-
-    if (user) {
-      mutateAsync({
-        anime_id: id,
-        description: description,
-        duration: duration,
-        genres: genres,
-        image: image,
-        rating: rating,
-        title: title,
-        total_Episodes: total_episode,
-        type: type,
-        created_at: "",
-        email: "",
-        id: "",
-      });
-    }
-  };
+  const { addFavorites } = useActions({
+    description,
+    duration,
+    genres,
+    id,
+    image,
+    rating,
+    title,
+    total_episode,
+    type,
+  });
 
   return (
     <CardsUI className=" ">
