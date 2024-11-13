@@ -33,7 +33,6 @@ const Dialog = (props: Actions) => {
     actionRemove,
   } = props;
 
-  console.log(itemExist);
   return (
     <AlertDialog>
       <AlertDialogTrigger className=" text-white">
