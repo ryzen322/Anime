@@ -5,6 +5,7 @@ import { FaPlay } from "react-icons/fa6";
 import { MdOutlineFavorite } from "react-icons/md";
 import { useAddFavorites } from "../../../../server/action";
 import { useUser } from "@clerk/clerk-react";
+import ActionComponent from "@/components/Action-component";
 
 const Cards = ({
   image,
@@ -32,7 +33,7 @@ const Cards = ({
   const navigate = useNavigate();
   const { user } = useUser();
 
-  const { mutateAsync, isPending } = useAddFavorites();
+  const { mutateAsync } = useAddFavorites();
 
   const addFavorites = () => {
     if (!user) {
@@ -60,15 +61,13 @@ const Cards = ({
   return (
     <CardsUI className=" ">
       <div className=" h-[310px] w-full  relative ">
-        <button
-          className={`absolute top-3 right-3 w-8 h-8 rounded-full z-30 ${
-            favorites ? "bg-green-500" : "bg-stone-500"
-          } flex items-center justify-center transition-all duration-200 ease-in cursor-pointer`}
-          onClick={addFavorites}
-          disabled={(favorites && !isPending) || isPending ? true : false}
-        >
-          <MdOutlineFavorite className=" text-lg" />
-        </button>
+        <ActionComponent
+          icon={MdOutlineFavorite}
+          itemExist={favorites!}
+          text="Favorite"
+          actionFunction={addFavorites}
+          anime={title}
+        />
         <Image
           src={image ? image : ""}
           className=" w-full h-full object-cover rounded-md absolute  top-0 left-0 "
