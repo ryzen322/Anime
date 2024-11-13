@@ -7,10 +7,18 @@ interface Actions {
   text: string;
   actionFunction: () => void;
   anime: string;
+  actionRemove: () => void;
 }
 
 const ActionComponent = (props: Actions) => {
-  const { icon: Icon, itemExist, text, actionFunction, anime } = props;
+  const {
+    icon: Icon,
+    itemExist,
+    text,
+    actionFunction,
+    actionRemove,
+    anime,
+  } = props;
 
   return (
     <div className=" w-full absolute z-30 flex flex-col p-1  cursor-pointer">
@@ -24,6 +32,7 @@ const ActionComponent = (props: Actions) => {
             about="Add your favorite anime"
             title="Favorite"
             action={actionFunction}
+            actionRemove={actionRemove}
             anime={anime}
           />
 

@@ -33,7 +33,7 @@ import { useToast } from "@/hooks/use-toast";
 
    // Invalidate every query in the cache
    toast({
-    title: `title: ${variables.title}`,
+    title: `${variables.title}`,
     description: "Succes fully add to your favorite list",
   });
 queryClient.invalidateQueries()
@@ -47,4 +47,45 @@ queryClient.invalidateQueries({ queryKey: ['likes'] })
 
     return mutation
 
+  }
+
+  interface RemoveType {
+    id: string, 
+    title: string,
+  }
+
+
+  export function useRemoveFavorites () {
+    const queryClient = useQueryClient();
+    const { toast } = useToast();
+
+
+    const mutation = useMutation ( {
+      mutationFn: async (remove : RemoveType) => {
+        const {id} = remove
+        try {
+          await supabase.from('favorites').delete().eq('anime_id', id)
+          
+        } catch (error) {
+          throw new Error('error')
+        }
+      },
+      onSuccess: (_, variables) => {
+
+        // Invalidate every query in the cache
+        toast({
+          title: `${variables.title}`,
+          description: "Succesfully removed to your favorite list",
+        });
+     queryClient.invalidateQueries()
+     // Invalidate every query with a key that starts with `todos`
+     queryClient.invalidateQueries({ queryKey: ['likes'] })
+                
+             
+             }
+    })
+
+
+
+    return mutation
   }

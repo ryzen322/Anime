@@ -9,6 +9,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+
 import { IconType } from "react-icons/lib";
 
 interface Actions {
@@ -16,17 +17,28 @@ interface Actions {
   itemExist: boolean;
   title: string;
   about: string;
-  action: () => void;
   anime: string;
+  action: () => void;
+  actionRemove: () => void;
 }
 
 const Dialog = (props: Actions) => {
-  const { icon: Icon, itemExist, title, about, action, anime } = props;
+  const {
+    icon: Icon,
+    itemExist,
+    title,
+    about,
+    action,
+    anime,
+    actionRemove,
+  } = props;
+
+  console.log(itemExist);
   return (
     <AlertDialog>
       <AlertDialogTrigger className=" text-white">
         <Icon
-          className={` text-2xl text-white  ${
+          className={` text-2xl   ${
             itemExist ? " text-green-500" : "text-white"
           }`}
         />
@@ -40,7 +52,13 @@ const Dialog = (props: Actions) => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={action}>Add</AlertDialogAction>
+          <AlertDialogAction
+            onClick={() => {
+              itemExist ? actionRemove() : action();
+            }}
+          >
+            {itemExist ? "Remove" : "Add"}
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

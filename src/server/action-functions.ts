@@ -1,6 +1,6 @@
 import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
-import { useAddFavorites } from "./action";
+import { useAddFavorites,  } from "./action";
 
 interface actionType {
     id: string;
@@ -48,9 +48,12 @@ export const useActions = (actionT: actionType) => {
       }
     };
 
+  
 
     return {
-        addFavorites
+        addFavorites,
     }
 
 }
+
+

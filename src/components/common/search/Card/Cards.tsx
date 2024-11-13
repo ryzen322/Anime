@@ -6,6 +6,7 @@ import { MdOutlineFavorite } from "react-icons/md";
 
 import ActionComponent from "@/components/Action-component";
 import { useActions } from "@/server/action-functions";
+import { useRemoveFavorites } from "@/server/action";
 
 const Cards = ({
   image,
@@ -44,6 +45,8 @@ const Cards = ({
     type,
   });
 
+  const { mutateAsync } = useRemoveFavorites();
+
   return (
     <CardsUI className=" ">
       <div className=" h-[310px] w-full  relative ">
@@ -53,6 +56,7 @@ const Cards = ({
           text="Favorite"
           actionFunction={addFavorites}
           anime={title}
+          actionRemove={() => mutateAsync({ id, title })}
         />
         <Image
           src={image ? image : ""}
