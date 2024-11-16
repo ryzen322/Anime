@@ -1,3 +1,6 @@
+// Need to install the following packages:
+// supabase@1.219.2
+// Ok to proceed? (y) 
 export type Json =
   | string
   | number
@@ -11,6 +14,7 @@ export type Database = {
     Tables: {
       favorites: {
         Row: {
+          about: string | null
           anime_id: string | null
           created_at: string
           description: string | null
@@ -25,6 +29,7 @@ export type Database = {
           type: string | null
         }
         Insert: {
+          about?: string | null
           anime_id?: string | null
           created_at?: string
           description?: string | null
@@ -39,6 +44,7 @@ export type Database = {
           type?: string | null
         }
         Update: {
+          about?: string | null
           anime_id?: string | null
           created_at?: string
           description?: string | null

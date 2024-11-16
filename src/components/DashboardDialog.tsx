@@ -15,10 +15,11 @@ import { CiEdit } from "react-icons/ci";
 interface DialogType {
   id: string;
   title: string;
+  description: string;
 }
 
 const DashboardDialog = (props: DialogType) => {
-  const { id, title } = props;
+  const { id, title, description } = props;
 
   const { mutateAsync } = useRemoveFavorites();
 
@@ -30,10 +31,11 @@ const DashboardDialog = (props: DialogType) => {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>{title}</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </AlertDialogDescription>
+          <AlertDialogDescription
+            dangerouslySetInnerHTML={{
+              __html: `${description} `,
+            }}
+          ></AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>

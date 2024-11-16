@@ -10,7 +10,7 @@ import { useRemoveFavorites } from "@/server/action";
 import { CardsType } from "@/types";
 
 const Cards = (props: CardsType) => {
-  const { favorites, genres, id, image, title, type } = props;
+  const { favorites, genres, id, image, title, type, description } = props;
   const navigate = useNavigate();
 
   const { addFavorites } = useActions(props);
@@ -27,7 +27,8 @@ const Cards = (props: CardsType) => {
           actionFunction={addFavorites}
           anime={title}
           actionRemove={() => mutateAsync({ id, title })}
-          about={`${favorites ? "Remove" : "Add"} your favorite anime`}
+          description={description!}
+          about={description!}
         />
         <Image
           src={image ? image : ""}

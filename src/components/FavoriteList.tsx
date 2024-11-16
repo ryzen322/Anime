@@ -4,7 +4,7 @@ import { FaPlay } from "react-icons/fa6";
 import DashboardDialog from "./DashboardDialog";
 
 const FavoriteList = (props: Row<"favorites">) => {
-  const { image, title, type, genres, anime_id } = props;
+  const { image, title, type, genres, anime_id, description } = props;
   const navigate = useNavigate();
 
   return (
@@ -47,9 +47,11 @@ const FavoriteList = (props: Row<"favorites">) => {
             <div className=" h-5 w-5 bg-stone-600 rounded-sm flex items-center justify-center">
               <p className=" text-stone-300 font-semibold text-xs">E</p>
             </div>
-            <button className=" text-xl text-stone-400">
-              <DashboardDialog id={anime_id!} title={title!} />
-            </button>
+            <DashboardDialog
+              id={anime_id!}
+              title={title!}
+              description={description!}
+            />
           </div>
         </div>
       </article>

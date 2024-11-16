@@ -36,8 +36,6 @@ const Dialog = (props: Actions) => {
 
   const { isSignedIn } = useUser();
 
-  console.log(isSignedIn);
-
   return (
     <AlertDialog>
       <AlertDialogTrigger className=" text-white">
@@ -52,10 +50,14 @@ const Dialog = (props: Actions) => {
           <AlertDialogTitle>
             {isSignedIn ? `${title} ${anime}` : "Youre not login "}
           </AlertDialogTitle>
-          <AlertDialogDescription>
-            {isSignedIn
+          <AlertDialogDescription
+            dangerouslySetInnerHTML={{
+              __html: `${about} `,
+            }}
+          >
+            {/* {isSignedIn
               ? about
-              : "Please login before you add this anime to your favorite list"}
+              : "Please login before you add this anime to your favorite list"} */}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
