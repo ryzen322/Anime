@@ -9,6 +9,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { SignInButton, useUser } from "@clerk/clerk-react";
 
 import { IconType } from "react-icons/lib";
 
@@ -33,6 +34,10 @@ const Dialog = (props: Actions) => {
     actionRemove,
   } = props;
 
+  const { isSignedIn } = useUser();
+
+  console.log(isSignedIn);
+
   return (
     <AlertDialog>
       <AlertDialogTrigger className=" text-white">
@@ -45,20 +50,30 @@ const Dialog = (props: Actions) => {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            {title} {anime}
+            {isSignedIn ? `${title} ${anime}` : "Youre not login "}
           </AlertDialogTitle>
-          <AlertDialogDescription>{about}</AlertDialogDescription>
+          <AlertDialogDescription>
+            {isSignedIn
+              ? about
+              : "Please login before you add this anime to your favorite list"}
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction
-            className={` ${itemExist ? " bg-red-500 text-white" : ""}`}
-            onClick={() => {
-              itemExist ? actionRemove() : action();
-            }}
-          >
-            {itemExist ? "Remove" : "Add"}
-          </AlertDialogAction>
+          {isSignedIn ? (
+            <AlertDialogAction
+              className={` ${itemExist ? " bg-red-500 text-white" : ""}`}
+              onClick={() => {
+                itemExist ? actionRemove() : action();
+              }}
+            >
+              {itemExist ? "Remove" : "Add"}
+            </AlertDialogAction>
+          ) : (
+            <SignInButton>
+              <AlertDialogAction>Login</AlertDialogAction>
+            </SignInButton>
+          )}
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
