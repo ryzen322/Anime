@@ -9,9 +9,19 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { useRemoveFavorites } from "@/server/action";
 import { CiEdit } from "react-icons/ci";
 
-const DashboardDialog = () => {
+interface DialogType {
+  id: string;
+  title: string;
+}
+
+const DashboardDialog = (props: DialogType) => {
+  const { id, title } = props;
+
+  const { mutateAsync } = useRemoveFavorites();
+
   return (
     <AlertDialog>
       <AlertDialogTrigger>
@@ -19,7 +29,7 @@ const DashboardDialog = () => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>{title}</AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.
@@ -27,7 +37,14 @@ const DashboardDialog = () => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction className=" bg-red-500">Remove</AlertDialogAction>
+          <AlertDialogAction
+            className=" bg-red-500"
+            onClick={async () => {
+              mutateAsync({ id, title });
+            }}
+          >
+            Remove
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

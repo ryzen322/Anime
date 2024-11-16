@@ -48,7 +48,7 @@ const FavoriteList = (props: Row<"favorites">) => {
               <p className=" text-stone-300 font-semibold text-xs">E</p>
             </div>
             <button className=" text-xl text-stone-400">
-              <DashboardDialog />
+              <DashboardDialog id={anime_id!} title={title!} />
             </button>
           </div>
         </div>
