@@ -34,6 +34,7 @@ export const useActions = (actionT: CardsType) => {
           created_at: "",
           email: "",
           id: "",
+          about: ''
         });
       }
     };
