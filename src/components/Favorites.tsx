@@ -15,9 +15,6 @@ const Favorites = () => {
         Favorites
       </h1>
       <ul className=" flex flex-wrap justify-center items-center border-l border border-stone-600 rounded-md py-2 ">
-        {/* {data?.map((item) => (
-          <FavoriteList key={item.id} {...item} />
-        ))} */}
         {data?.length === 0 ? (
           <p className=" text-white font-semibold text-sm">No favorites list</p>
         ) : (

@@ -1,22 +1,29 @@
 import { IoMdMore } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Row } from "../interface/database";
+import { FaPlay } from "react-icons/fa6";
 
 const FavoriteList = (props: Row<"favorites">) => {
   const { image, title, type, genres, anime_id } = props;
+  const navigate = useNavigate();
 
   return (
-    <Link
-      to={`/detail/${anime_id}`}
-      className=" h-[7.5rem] w-full rounded-sm cursor-pointer flex items-center px-2 border-stone-700 gap-3 md:w-1/2 lg:w-1/3 xl:w-1/4"
-    >
-      <div className=" h-full w-[5.5rem] overflow-hidden py-2 flex-shrink-0">
-        <div className=" w-full h-full bg-stone-700  rounded-sm overflow-hidden">
+    <article className=" h-[7.5rem] w-full rounded-sm cursor-pointer flex items-center px-2 border-stone-700 gap-3 md:w-1/2 lg:w-1/3 xl:w-1/4 group">
+      <div className=" h-full w-[5.5rem] overflow-hidden py-2 flex-shrink-0 ">
+        <div className=" w-full h-full bg-stone-700  rounded-sm overflow-hidden relative">
           <img
             src={image ? image : ""}
             alt=""
-            className=" w-full h-full object-cover"
+            className=" w-full h-full object-cover relative"
           />
+          <div
+            className=" absolute h-full w-full  z-20 top-0 left-0 bg-black/20 flex items-center justify-center text-green-400 opacity-0 group-hover:opacity-100"
+            onClick={() => {
+              navigate(`/detail/${anime_id}`);
+            }}
+          >
+            <FaPlay size={40} />
+          </div>
         </div>
       </div>
       <div className=" flex items-center w-full h-full border-b border-stone-600">
@@ -42,7 +49,7 @@ const FavoriteList = (props: Row<"favorites">) => {
           <IoMdMore className=" text-xl text-stone-400" />
         </div>
       </div>
-    </Link>
+    </article>
   );
 };
 
