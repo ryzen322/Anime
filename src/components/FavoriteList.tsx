@@ -51,6 +51,7 @@ const FavoriteList = (props: Row<"favorites">) => {
               id={anime_id!}
               title={title!}
               description={description!}
+              collection={"favorite"}
             />
           </div>
         </div>

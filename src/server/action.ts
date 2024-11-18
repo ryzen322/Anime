@@ -4,6 +4,7 @@ import { supabase } from "../lib";
 import { useUser } from "@clerk/clerk-react";
 import { Row } from "../interface/database";
 import { useToast } from "@/hooks/use-toast";
+import { CollectionType } from "./service";
 
 
   export  function useAddFavorites () {
@@ -52,7 +53,7 @@ queryClient.invalidateQueries({ queryKey: ['likes'] })
   interface RemoveType {
     id: string, 
     title: string,
-    collectionType: string
+    collectionType: CollectionType
   }
 
 

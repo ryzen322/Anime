@@ -10,16 +10,18 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useRemoveFavorites } from "@/server/action";
+import { CollectionType } from "@/server/service";
 import { CiEdit } from "react-icons/ci";
 
 interface DialogType {
   id: string;
   title: string;
   description: string;
+  collection: CollectionType;
 }
 
 const DashboardDialog = (props: DialogType) => {
-  const { id, title, description } = props;
+  const { id, title, description, collection } = props;
 
   const { mutateAsync } = useRemoveFavorites();
 
@@ -42,7 +44,7 @@ const DashboardDialog = (props: DialogType) => {
           <AlertDialogAction
             className=" bg-red-500"
             onClick={async () => {
-              mutateAsync({ id, title });
+              mutateAsync({ id, title, collectionType: collection });
             }}
           >
             Remove
