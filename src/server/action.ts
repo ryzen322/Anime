@@ -52,6 +52,7 @@ queryClient.invalidateQueries({ queryKey: ['likes'] })
   interface RemoveType {
     id: string, 
     title: string,
+    collectionType: string
   }
 
 
@@ -62,9 +63,9 @@ queryClient.invalidateQueries({ queryKey: ['likes'] })
 
     const mutation = useMutation ( {
       mutationFn: async (remove : RemoveType) => {
-        const {id} = remove
+        const {id, collectionType} = remove
         try {
-          await supabase.from('favorites').delete().eq('anime_id', id)
+          await supabase.from('favorites').delete().eq('anime_id', id).eq('collection',  collectionType)
           
         } catch (error) {
           throw new Error('error')

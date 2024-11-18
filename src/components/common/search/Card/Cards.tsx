@@ -38,7 +38,9 @@ const Cards = (props: CardsTypeExtend) => {
               addFavorites({ ...props, collectionType: "favorite" })
             }
             anime={title}
-            actionRemove={() => mutateAsync({ id, title })}
+            actionRemove={() =>
+              mutateAsync({ id, title, collectionType: "favorite" })
+            }
             description={description!}
             about={description!}
           />
@@ -50,7 +52,9 @@ const Cards = (props: CardsTypeExtend) => {
               addFavorites({ ...props, collectionType: "bookmarks" })
             }
             anime={title}
-            actionRemove={() => mutateAsync({ id, title })}
+            actionRemove={() =>
+              mutateAsync({ id, title, collectionType: "bookmarks" })
+            }
             description={description!}
             about={description!}
           />
