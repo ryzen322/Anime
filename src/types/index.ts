@@ -272,5 +272,5 @@ export interface CardsType {
   total_episode: number | null;
   rating: number | null;
   favorites: boolean | null;
-  
+  collection?: string
 }

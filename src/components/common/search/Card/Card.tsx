@@ -1,11 +1,11 @@
-import { useFavoritesAnime } from "../../../../server/service";
+import { useGetAllList } from "@/server/service";
 import { popularAnimeType } from "../../../../types";
 import { CardUI } from "../loadingComponents/CardUI";
 import Cards from "./Cards";
 import { existingItem } from "@/utils";
 
 const Card = ({ listAnime }: { listAnime: popularAnimeType }) => {
-  const { data } = useFavoritesAnime();
+  const { data } = useGetAllList();
 
   return (
     <CardUI>

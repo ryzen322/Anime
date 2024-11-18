@@ -54,11 +54,7 @@ const Dialog = (props: Actions) => {
             dangerouslySetInnerHTML={{
               __html: `${about} `,
             }}
-          >
-            {/* {isSignedIn
-              ? about
-              : "Please login before you add this anime to your favorite list"} */}
-          </AlertDialogDescription>
+          ></AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
@@ -69,7 +65,7 @@ const Dialog = (props: Actions) => {
                 itemExist ? actionRemove() : action();
               }}
             >
-              {itemExist ? "Remove" : "Add"}
+              {itemExist ? "Remove" : "Add to Favorite"}
             </AlertDialogAction>
           ) : (
             <SignInButton>

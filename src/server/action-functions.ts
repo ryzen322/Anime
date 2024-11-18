@@ -7,15 +7,16 @@ import { CardsType } from "@/types";
 
 
 
-export const useActions = (actionT: CardsType) => {
+export const useActions = () => {
 
-    const {description, duration,  genres , id , image , rating , title , total_episode , type} = actionT
+
     const navigate = useNavigate();
     const { user } = useUser();
   
     const { mutateAsync } = useAddFavorites();
   
-    const addFavorites = () => {
+    const addFavorites = (actionT: CardsType) => {
+      const {description, duration,  genres , id , image , rating , title , total_episode , type, collection} = actionT
       if (!user) {
         navigate("sign-in");
       }
@@ -34,7 +35,7 @@ export const useActions = (actionT: CardsType) => {
           created_at: "",
           email: "",
           id: "",
-          about: ''
+          collection: collection!
         });
       }
     };

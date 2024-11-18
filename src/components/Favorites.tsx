@@ -3,7 +3,7 @@ import FavoriteList from "./FavoriteList";
 import { useFavoritesAnime } from "../server/service";
 
 const Favorites = () => {
-  const { data, isLoading } = useFavoritesAnime();
+  const { data, isLoading } = useFavoritesAnime("favorite");
 
   if (isLoading) {
     return <div className=" ">loading....</div>;

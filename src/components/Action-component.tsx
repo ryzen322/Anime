@@ -24,7 +24,7 @@ const ActionComponent = (props: Actions) => {
   } = props;
 
   return (
-    <div className=" w-full absolute z-30 flex flex-col p-1  cursor-pointer">
+    <div className=" w-full absolute z-30 flex justify-end p-2  cursor-pointer">
       <div className=" flex gap-2 items-center relative">
         <div
           className={` bg-black/80 flex items-center justify-center w-8 h-8 rounded-sm cursor-pointer relative group/item transition-all duration-200`}
@@ -33,7 +33,7 @@ const ActionComponent = (props: Actions) => {
             icon={Icon}
             itemExist={itemExist}
             about={about}
-            title="Favorite"
+            title="Title:"
             action={actionFunction}
             actionRemove={actionRemove}
             anime={anime}

@@ -242,7 +242,24 @@ export const getGetAiringAnime = async () => {
 
 // supabase
 
-export const getFavorites = async (userEmail: string) => {
+export const getFavorites = async (userEmail: string, collection: string) => {
+
+  try {
+    const { data = [] } = await supabase
+    .from('favorites')
+    .select(`*`).eq('email', userEmail).eq('collection', collection)
+ 
+    return data
+  } catch (error) {
+    throw new Error('unable to fetch')
+    
+  }
+  
+}
+
+
+
+export const getAllList = async (userEmail: string,) => {
 
   try {
     const { data = [] } = await supabase

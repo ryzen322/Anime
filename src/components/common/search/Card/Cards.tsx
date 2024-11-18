@@ -13,7 +13,7 @@ const Cards = (props: CardsType) => {
   const { favorites, genres, id, image, title, type, description } = props;
   const navigate = useNavigate();
 
-  const { addFavorites } = useActions(props);
+  const { addFavorites } = useActions();
 
   const { mutateAsync } = useRemoveFavorites();
 
@@ -24,7 +24,9 @@ const Cards = (props: CardsType) => {
           icon={MdOutlineFavorite}
           itemExist={favorites!}
           text="Favorite"
-          actionFunction={addFavorites}
+          actionFunction={() =>
+            addFavorites({ ...props, collection: "favorite" })
+          }
           anime={title}
           actionRemove={() => mutateAsync({ id, title })}
           description={description!}

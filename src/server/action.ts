@@ -18,9 +18,9 @@ import { useToast } from "@/hooks/use-toast";
       
       const mutation = useMutation({
           mutationFn: async (favorites : Row<'favorites'>) => {
-            const {anime_id, description , duration, type, title, total_Episodes, genres, image, rating, } = favorites
+            const {anime_id, description , duration, type, title, total_Episodes, genres, image, rating, collection } = favorites
               try {
-             await supabase.from('favorites').insert({'anime_id' : anime_id, 'description' : description, 'duration': duration, 'type': type, 'title' : title, 'total_Episodes' : total_Episodes, 'genres' : genres, 'image' : image , 'rating' : rating, 'email' : email}).select()
+             await supabase.from('favorites').insert({'anime_id' : anime_id, 'description' : description, 'duration': duration, 'type': type, 'title' : title, 'total_Episodes' : total_Episodes, 'genres' : genres, 'image' : image , 'rating' : rating, 'email' : email, 'collection': collection}).select()
 
 
 
