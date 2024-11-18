@@ -6,8 +6,10 @@ import { getAllList, getFavorites } from "../services/api";
 
 
 
+export type CollectionType = 'favorite' | 'watch later' | 'bookmarks' | 'collection' 
 
-export const useFavoritesAnime = (collection: string) => {
+
+export const useFavoritesAnime = (collection: CollectionType) => {
   const { user  } = useUser();
 
   const email = user?.emailAddresses[0]?.emailAddress

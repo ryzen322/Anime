@@ -1,3 +1,4 @@
+import { CollectionType } from "@/server/service";
 import { z } from "zod";
 
 export const titleObjectSchema = z.object({
@@ -271,6 +272,10 @@ export interface CardsType {
   description: string | null;
   total_episode: number | null;
   rating: number | null;
-  favorites: boolean | null;
-  collection?: string
+  collectionType?: CollectionType 
+}
+
+
+export interface CardsTypeExtend extends CardsType {
+  collection: (string | null)[]
 }

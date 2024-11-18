@@ -21,6 +21,7 @@ interface Actions {
   anime: string;
   action: () => void;
   actionRemove: () => void;
+  text: string;
 }
 
 const Dialog = (props: Actions) => {
@@ -32,6 +33,7 @@ const Dialog = (props: Actions) => {
     action,
     anime,
     actionRemove,
+    text,
   } = props;
 
   const { isSignedIn } = useUser();
@@ -40,7 +42,7 @@ const Dialog = (props: Actions) => {
     <AlertDialog>
       <AlertDialogTrigger className=" text-white">
         <Icon
-          className={` text-2xl   ${
+          className={` text-xl   ${
             itemExist ? " text-green-500" : "text-white"
           }`}
         />
@@ -65,7 +67,7 @@ const Dialog = (props: Actions) => {
                 itemExist ? actionRemove() : action();
               }}
             >
-              {itemExist ? "Remove" : "Add to Favorite"}
+              {itemExist ? "Remove" : `Add to ${text}`}
             </AlertDialogAction>
           ) : (
             <SignInButton>

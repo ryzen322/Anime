@@ -16,7 +16,7 @@ export const useActions = () => {
     const { mutateAsync } = useAddFavorites();
   
     const addFavorites = (actionT: CardsType) => {
-      const {description, duration,  genres , id , image , rating , title , total_episode , type, collection} = actionT
+      const {description, duration,  genres , id , image , rating , title , total_episode , type, collectionType} = actionT
       if (!user) {
         navigate("sign-in");
       }
@@ -35,7 +35,7 @@ export const useActions = () => {
           created_at: "",
           email: "",
           id: "",
-          collection: collection!
+          collection: collectionType!
         });
       }
     };

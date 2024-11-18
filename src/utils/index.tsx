@@ -32,7 +32,7 @@ export const divideArray = (trendingArr: TrendingAnimeObj[] | undefined) => {
 };
 
 interface existingItem extends AnimeObj {
-  favorite: boolean;
+  collection: (string | null)[];
 }
 
 export function existingItem(
@@ -43,18 +43,27 @@ export function existingItem(
     return arr1.map((item) => {
       return {
         ...item,
-        favorite: false,
+        collection: [""],
       };
     });
   } else {
-    const updatedArray = arr1.map((item) =>
-      arr2.some((favItem) => favItem.anime_id === item.id)
-        ? { ...item, favorite: true }
-        : {
-            ...item,
-            favorite: false,
-          }
-    );
-    return updatedArray;
+    const item = arr1.map((item) => {
+      const collections = arr2
+        .filter((data) => data.anime_id === item.id)
+        .map((item) => item.collection);
+
+      if (collections) {
+        return {
+          ...item,
+          collection: collections,
+        };
+      }
+      return {
+        ...item,
+        collection: [""],
+      };
+    });
+
+    return item;
   }
 }

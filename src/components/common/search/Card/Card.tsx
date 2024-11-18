@@ -21,7 +21,7 @@ const Card = ({ listAnime }: { listAnime: popularAnimeType }) => {
           duration={item.duration}
           rating={item.rating}
           total_episode={item.totalEpisodes}
-          favorites={item.favorite}
+          collection={item.collection}
         />
       ))}
     </CardUI>
