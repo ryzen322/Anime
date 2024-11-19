@@ -40,7 +40,7 @@ const ActionComponent = (props: Actions) => {
             text={text}
           />
 
-          <div className=" absolute h-8 w-20 bg-black/80 rounded-sm flex items-center justify-center right-[2.5rem] opacity-0 group-hover/item:opacity-100">
+          <div className=" absolute h-8 w-24 bg-black/80 rounded-sm flex items-center justify-center right-[2.5rem] opacity-0 group-hover/item:opacity-100">
             <h1 className=" text-white text-sm font-semibold ">{text}</h1>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { CardsUI } from "../loadingComponents/CardsUI";
 import { FaPlay } from "react-icons/fa6";
 import { MdOutlineFavorite } from "react-icons/md";
 import { FaBookmark } from "react-icons/fa6";
+import { IoIosTimer } from "react-icons/io";
 
 import ActionComponent from "@/components/Action-component";
 import { useActions } from "@/server/action-functions";
@@ -54,6 +55,20 @@ const Cards = (props: CardsTypeExtend) => {
             anime={title}
             actionRemove={() =>
               mutateAsync({ id, title, collectionType: "bookmarks" })
+            }
+            description={description!}
+            about={description!}
+          />
+          <ActionComponent
+            icon={IoIosTimer}
+            itemExist={checkAvailability(collection, "watch later")}
+            text="Watch Later"
+            actionFunction={() =>
+              addFavorites({ ...props, collectionType: "watch later" })
+            }
+            anime={title}
+            actionRemove={() =>
+              mutateAsync({ id, title, collectionType: "watch later" })
             }
             description={description!}
             about={description!}
