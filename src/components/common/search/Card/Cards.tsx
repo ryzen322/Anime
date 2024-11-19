@@ -32,7 +32,7 @@ const Cards = (props: CardsTypeExtend) => {
         <div className=" relative flex flex-col gap-2 p-1">
           <ActionComponent
             icon={MdOutlineFavorite}
-            itemExist={checkAvailability(collection!, "favorite")}
+            itemExist={checkAvailability(collection, "favorite")}
             text="Favorite"
             actionFunction={() =>
               addFavorites({ ...props, collectionType: "favorite" })
@@ -46,7 +46,7 @@ const Cards = (props: CardsTypeExtend) => {
           />
           <ActionComponent
             icon={FaBookmark}
-            itemExist={checkAvailability(collection!, "bookmarks")}
+            itemExist={checkAvailability(collection, "bookmarks")}
             text="Bookmarks"
             actionFunction={() =>
               addFavorites({ ...props, collectionType: "bookmarks" })

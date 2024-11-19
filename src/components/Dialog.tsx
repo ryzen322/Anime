@@ -49,15 +49,18 @@ const Dialog = (props: Actions) => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>
-            {isSignedIn ? `${title} ${anime}` : "Youre not login "}
-          </AlertDialogTitle>
+          <AlertDialogTitle>{`${title} ${anime}`}</AlertDialogTitle>
           <AlertDialogDescription
             dangerouslySetInnerHTML={{
-              __html: `${about} `,
+              __html: `${about}`,
             }}
-          ></AlertDialogDescription>
+          />
+          {!isSignedIn && (
+            <AlertDialogDescription className=" text-stone-700 font-semibold">{`
+You must log in to your account to add items to your playlist. `}</AlertDialogDescription>
+          )}
         </AlertDialogHeader>
+
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           {isSignedIn ? (
@@ -67,7 +70,7 @@ const Dialog = (props: Actions) => {
                 itemExist ? actionRemove() : action();
               }}
             >
-              {itemExist ? "Remove" : `Add to ${text}`}
+              {itemExist ? "Remove" : ` ${text}`}
             </AlertDialogAction>
           ) : (
             <SignInButton>
