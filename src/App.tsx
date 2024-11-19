@@ -13,6 +13,9 @@ const NotFoundPage = lazy(() => import("./page/NotFoundPage"));
 const NewsPage = lazy(() => import("./page/NewsPage"));
 const Dashboard = lazy(() => import("./page/Dashboard"));
 const Favorites = lazy(() => import("./components/Favorites"));
+const Bookmarks = lazy(() => import("./components/Bookmarks"));
+const WatchLater = lazy(() => import("./components/WatchLater"));
+const Collections = lazy(() => import("./components/Collections"));
 
 const SignIn = lazy(() => import("./page/SigninPage"));
 
@@ -34,6 +37,9 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="favorites" element={<Favorites />} />
+            <Route path="bookmarks" element={<Bookmarks />} />
+            <Route path="watch-Later" element={<WatchLater />} />
+            <Route path="collections" element={<Collections />} />
           </Route>
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="*" element={<NotFoundPage />} />

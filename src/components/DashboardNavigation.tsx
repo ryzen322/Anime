@@ -20,11 +20,23 @@ export function DashboardNavigation() {
         </div>
       </Link>
       <Link
-        to={"favorites"}
+        to={"bookmarks"}
         className=" h-11 bg-stone-400 rounded-md flex items-center justify-between px-2 phoneX:h-12  hover:bg-stone-50"
       >
         <div className=" flex items-center gap-2">
           <FaVideo className=" text-lg " />
+          <h1 className=" text-sm font-semibold">bookmarks</h1>
+        </div>
+        <div className=" flex items-center gap-2 text-stone-800">
+          <MdNavigateNext className=" text-xl font-semibold " />
+        </div>
+      </Link>
+      <Link
+        to={"watch-later"}
+        className=" h-11 bg-stone-400 rounded-md flex items-center justify-between px-2 phoneX:h-12 hover:bg-stone-50"
+      >
+        <div className=" flex items-center gap-2">
+          <FaBookmark className=" text-lg" />
           <h1 className=" text-sm font-semibold">Watch Later</h1>
         </div>
         <div className=" flex items-center gap-2 text-stone-800">
@@ -32,24 +44,12 @@ export function DashboardNavigation() {
         </div>
       </Link>
       <Link
-        to={"favorites"}
-        className=" h-11 bg-stone-400 rounded-md flex items-center justify-between px-2 phoneX:h-12 hover:bg-stone-50"
-      >
-        <div className=" flex items-center gap-2">
-          <FaBookmark className=" text-lg" />
-          <h1 className=" text-sm font-semibold">Bookmarks</h1>
-        </div>
-        <div className=" flex items-center gap-2 text-stone-800">
-          <MdNavigateNext className=" text-xl font-semibold " />
-        </div>
-      </Link>
-      <Link
-        to={"favorites"}
+        to={"collections"}
         className=" h-11 bg-stone-400 rounded-md flex items-center justify-between px-2 phoneX:h-12 hover:bg-stone-50"
       >
         <div className=" flex items-center gap-2">
           <FaFolder className=" text-lg" />
-          <h1 className=" text-sm font-semibold">Collection</h1>
+          <h1 className=" text-sm font-semibold">Collections</h1>
         </div>
         <div className=" flex items-center gap-2 text-stone-800">
           <MdNavigateNext className=" text-xl font-semibold " />
