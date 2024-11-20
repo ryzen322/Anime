@@ -13,7 +13,9 @@ import { Toaster } from "@/components/ui/toaster";
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 0,
+      gcTime: 1000 * 60 * 60 * 24, // 24 hours
+      refetchOnWindowFocus: false, // Disable refetching on window focus
+      staleTime: Infinity, // Data never becomes stale
     },
   },
 });

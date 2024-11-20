@@ -10,9 +10,9 @@ const Article = ({ animeProps }: { animeProps: listAnime }) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["animelist", animeProps],
     queryFn: async () => queryAnimeType(animeProps),
-    staleTime: 1000 * 60 * 10,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
+    refetchOnMount: false, // Avoid refetch on component remount
+    refetchOnWindowFocus: false, // Avoid refetch on focus
+    // cacheTime: 10 * 60 * 1000, // Keep cached data for 10 minutes
   });
 
   return (
