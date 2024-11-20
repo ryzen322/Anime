@@ -37,7 +37,7 @@ import { CollectionType } from "./service";
     title: `${variables.title}`,
     description: "Succes fully add to your favorite list",
   });
-queryClient.invalidateQueries()
+
 // Invalidate every query with a key that starts with `todos`
 queryClient.invalidateQueries({ queryKey: ['likes'] })
            
@@ -79,7 +79,7 @@ queryClient.invalidateQueries({ queryKey: ['likes'] })
           title: `${variables.title}`,
           description: "Succesfully removed to your favorite list",
         });
-     queryClient.invalidateQueries()
+
      // Invalidate every query with a key that starts with `todos`
      queryClient.invalidateQueries({ queryKey: ['likes'] })
                 

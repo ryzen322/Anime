@@ -41,9 +41,7 @@ export const searchAnime = async (search: string | undefined) => {
       },
     });
 
-    data.results.map(() => {
-      // console.log(item.title);
-    });
+
 
     const validatedAnime = searchAnimeSchema.safeParse(data);
 
@@ -79,6 +77,7 @@ export const queryAnimeType = async (animeTypeList: listAnime) => {
 
     const validatedAnime = popularAnimeSchema.safeParse(data);
 
+ 
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }
@@ -97,6 +96,7 @@ export const getPrimiumAnime = async () => {
     });
 
     const validatedAnime = popularAnimeSchema.safeParse(data);
+
 
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
