@@ -45,7 +45,7 @@ const MovieComponent = ({ resolution, thumbnail }: PlayerType) => {
       "
             />
             <h1 className=" text-lg font-bold">We're apologize</h1>
-            <h1 className=" text-lg font-bold">Page Not Found</h1>
+            <h1 className=" text-lg font-bold">Video Not Found</h1>
             <p className=" mt-3 text-xs text-center">{playerError}</p>
             <p className=" text-sm font-semibold flex gap-1 mt-1">
               <span className=" text-stone-400">View Our</span>

@@ -32,7 +32,6 @@ const Player = (props: MediaType) => {
     }
   }
   function onError(detail: MediaErrorDetail) {
-    console.log(detail);
     checkPlayerError(detail.message);
   }
 

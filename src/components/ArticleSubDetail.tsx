@@ -39,7 +39,7 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
   });
 
   return (
-    <article className=" w-full flex flex-col gap-8 h-full md:w-[60%] lg:w-[70%]">
+    <article className=" w-full flex flex-col gap-8 h-full md:min-w-[60%] lg:min-w-[70%]">
       <article className="  w-full rounded-md overflow-hidden cursor-pointer  aspect-video">
         {playerState === "youtube" ? (
           <Player
