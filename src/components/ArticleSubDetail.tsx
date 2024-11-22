@@ -18,7 +18,7 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
   const { user } = useUser();
 
   const resolution = user ? 3 : 0;
-  const { changeEpisode, playerState, changePlayer } =
+  const { changeEpisode, playerState, changePlayer, checkPlayerError } =
     useContext(ContextEpisode);
 
   const {
@@ -33,7 +33,10 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
     currentEpisode,
   } = props;
 
-  const activeEp = activeEpisode({ activeEp: currentEpisode + "", episodes });
+  const activeEp = activeEpisode({
+    activeEp: currentEpisode ? currentEpisode + "" : episodes?.length + "",
+    episodes,
+  });
 
   return (
     <article className=" w-full flex flex-col gap-8 h-full md:w-[60%] lg:w-[70%]">
@@ -68,6 +71,7 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
                 onClick={() => {
                   changePlayer("anime");
                   changeEpisode(activeEp);
+                  checkPlayerError(null);
                 }}
               >
                 Click to Watch HD

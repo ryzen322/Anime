@@ -35,7 +35,7 @@ export const animeObjectSchema = z.object({
   type: z.string().nullable(),
   genres: genresObjectSchema,
   trailer: trailerObjectSchema,
-  title: titleObjectSchema,
+  title: titleObjectSchema
 });
 
 export const popularAnimeSchema = z.object({
@@ -131,16 +131,16 @@ export const Characters = z.object({
 });
 
 export const Recommendation = z.object({
-  id: z.number(),
+  id: z.number().optional(),
   cover: z.string(),
   coverHash: z.string(),
   episodes: z.number().nullable(),
   image: z.string(),
   imageHash: z.string(),
-  malId: z.number(),
-  rating: z.number(),
-  status: z.string(),
-  type: z.string(),
+  malId: z.number().nullable(),
+  rating: z.number().nullable(),
+  status: z.string().nullable(),
+  type: z.string().nullable(),
   title: titleObjectSchema,
 });
 

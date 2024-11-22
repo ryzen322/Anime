@@ -10,12 +10,13 @@ import { useContext } from "react";
 
 const Detail = () => {
   const { id } = useParams();
-  const { changePlayer } = useContext(ContextEpisode);
+  const { changePlayer, checkPlayerError } = useContext(ContextEpisode);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["detail-anime", id],
     queryFn: async () => {
       changePlayer("youtube");
+      checkPlayerError(null);
       return getDetailAnime(id);
     },
   });

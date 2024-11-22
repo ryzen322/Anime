@@ -3,7 +3,6 @@ import "@vidstack/react/player/styles/default/layouts/video.css";
 import {
   isYouTubeProvider,
   MediaErrorDetail,
-  MediaErrorEvent,
   MediaPlayer,
   MediaPlayerInstance,
   MediaProvider,
@@ -15,20 +14,26 @@ import {
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from "@vidstack/react/player/layouts/default";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { ContextEpisode } from "./store/store";
 
-const Player = (props: MediaPlayerProps) => {
+interface MediaType extends MediaPlayerProps {
+  playerError?: (param: string) => void;
+}
+
+const Player = (props: MediaType) => {
   const { poster, title } = props;
+  const { checkPlayerError } = useContext(ContextEpisode);
+
   const player = useRef<MediaPlayerInstance>(null);
   function onProviderChange(provider: MediaProviderAdapter | null) {
     if (isYouTubeProvider(provider)) {
       provider.cookies = true;
     }
   }
-  function onError(detail: MediaErrorDetail, nativeEvent: MediaErrorEvent) {
+  function onError(detail: MediaErrorDetail) {
     console.log(detail);
-    console.log(nativeEvent);
-    console.log("hello");
+    checkPlayerError(detail.message);
   }
 
   useEffect(() => {
@@ -48,6 +53,8 @@ const Player = (props: MediaPlayerProps) => {
       posterLoad="visible"
       crossOrigin
       playsInline
+      crossorigin={true}
+      playsinline={true}
       onProviderChange={onProviderChange}
       ref={player}
     >

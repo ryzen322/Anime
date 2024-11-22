@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Image from "./common/search/Image";
+import { useContext } from "react";
+import { ContextEpisode } from "./store/store";
 
 interface ListSearch {
   src?: string | null;
@@ -18,11 +20,17 @@ const SearchList = ({
   detailId,
   modal,
 }: ListSearch) => {
+  const { changePlayer, checkPlayerError } = useContext(ContextEpisode);
+
   return (
     <Link
       to={`detail/${detailId}`}
       className=" w-full min-h-[3.75rem]  rounded-md flex items-center px-3 gap-4 hover:bg-[#2F2F2F] py-2 group"
-      onClick={modal}
+      onClick={() => {
+        modal();
+        changePlayer("youtube");
+        checkPlayerError(null);
+      }}
     >
       <div className=" h-[3rem] w-[3rem] shrink-0  rounded-md ">
         <Image

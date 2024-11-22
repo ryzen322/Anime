@@ -45,6 +45,8 @@ export const searchAnime = async (search: string | undefined) => {
 
     const validatedAnime = searchAnimeSchema.safeParse(data);
 
+
+
     if (!validatedAnime.success) {
       throw new Error(`${validatedAnime.error}`);
     }
@@ -131,11 +133,11 @@ export const getDetailAnime = async (id: string | undefined) => {
   try {
     const { data } = await instance.get(`meta/anilist/info/${id}`);
 
-    console.log(data);
 
+
+    console.log(data)
     const validateDetail = DetailSchema.safeParse(data);
 
-    console.log(validateDetail);
 
     if (!validateDetail.success) {
       throw new Error(`${validateDetail.error}`);
@@ -153,11 +155,15 @@ export const getStreaming = async (mailId: string) => {
   try {
     const { data } = await instance.get(`meta/anilist/watch/${mailId}`);
 
+        console.log(data)
+
     const validate = StreamingSchema.safeParse(data);
 
     if (!validate.success) {
       throw new Error(`${validate.error}`);
     }
+
+
 
     return validate.data;
   } catch (error) {
