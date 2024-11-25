@@ -19,12 +19,12 @@ const NavigationMenu = ({
         showMenu ? " top-[4rem] opacity-100" : " -top-[100rem] opacity-0"
       } transition-all duration-700 flex flex-col gap-10 p-4 lg:hidden`}
     >
-      <h1 className=" text-3xl font-bold">Epic Games</h1>
+      <h1 className=" text-3xl font-bold">Welcome To My-Anime</h1>
 
       <ul className=" flex flex-col gap-10 w-full">
         <NavigationList
           closeModal={toggle}
-          category="Play"
+          category="Navigation"
           list={["News", "Store", "News", "Dashboard"]}
         />
         {/* <NavigationList

@@ -6,7 +6,7 @@ import { FiLogIn } from "react-icons/fi";
 import SearchModal from "../modal/SearchModal";
 import { togglePortal } from "../../utils/togglePortal";
 import { Link } from "react-router-dom";
-import { SignInButton, useUser } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 import Image from "../common/search/Image";
 
 const Navigation = () => {
@@ -42,8 +42,6 @@ const Navigation = () => {
     togglePortal();
   }
 
-  console.log(user);
-
   return (
     <>
       <header
@@ -54,7 +52,9 @@ const Navigation = () => {
           <div className=" flex items-center gap-1">
             <div
               className=" h-[35px] w-[35px] rounded-full bg-stone-700 cursor-pointer flex items-center justify-center"
-              onClick={(): void => setCheState(!chevState)}
+              onClick={(): void => {
+                setCheState(!chevState);
+              }}
             >
               {user ? (
                 <Image
@@ -62,11 +62,9 @@ const Navigation = () => {
                   className=" w-full h-full rounded-full object-contain"
                 />
               ) : (
-                <SignInButton>
-                  <button className=" w-full h-full rounded-full flex items-center justify-center pr-1">
-                    <FiLogIn className=" text-lg text-stone-300 font-bold" />
-                  </button>
-                </SignInButton>
+                <button className=" w-full h-full rounded-full flex items-center justify-center pr-1">
+                  <FiLogIn className=" text-lg text-stone-300 font-bold" />
+                </button>
               )}
             </div>
             <IoChevronDownOutline
