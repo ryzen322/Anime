@@ -67,6 +67,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
             rating={data.rating}
             title={data.title.english ?? data.title.userPreferred}
             stopScrolling={setStopScroll}
+            id={data.id}
           />
         ))}
       </ul>

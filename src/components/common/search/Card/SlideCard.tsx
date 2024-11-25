@@ -1,9 +1,11 @@
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 import Image from "../Image";
 import { FaPlay, FaPlus } from "react-icons/fa";
 import { MdOutlinePlaylistAdd } from "react-icons/md";
 import { IoAlertCircle } from "react-icons/io5";
 import { Button } from "../../../Button";
+import { Link } from "react-router-dom";
+import DialogDetail from "@/components/DialogDetail";
 
 interface ListItemProps {
   src?: string;
@@ -13,6 +15,7 @@ interface ListItemProps {
   title: string;
   rating?: number | null;
   genre: string[] | null;
+  id: string;
   stopScrolling: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -26,14 +29,11 @@ const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
       genre,
       rating,
       title,
+      id,
       stopScrolling,
     },
     ref
   ) => {
-    const [toggleText, setToggleText] = useState(true);
-
-    const text = description?.split(" ").slice(0, 6);
-    const textSTring = [...(text as string[])].toString().replaceAll(",", " ");
     return (
       <li
         ref={ref}
@@ -60,64 +60,45 @@ const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
               <p className=" text-sm font-semibold text-stone-300 phoneX:text-lg sm:text-lg md:text-sm xl:text-2xl">
                 Rating: {rating}
               </p>
-              <div className=" flex items-center gap-2">
+              <div className=" flex  gap-2">
                 <span className=" text-xs font-semibold text-stone-300 phoneX:text-sm sm:text-base md:text-sm xl:text-2xl">
                   Genre:
                 </span>
-                {genre?.map((gen, index) =>
-                  index === genre.length - 1 ? (
-                    <span
-                      key={index}
-                      className=" text-xs font-semibold text-stone-300 phoneX:text-sm sm:text-base md:text-sm xl:text-2xl"
-                    >
-                      {gen}
-                    </span>
-                  ) : (
-                    <span
-                      key={index}
-                      className=" text-xs font-semibold text-stone-300 phoneX:text-sm sm:text-base md:text-sm xl:text-2xl"
-                    >
-                      {gen},
-                    </span>
-                  )
-                )}
+                <div className=" flex gap-1 flex-wrap">
+                  {genre?.map((gen, index) =>
+                    index === genre.length - 1 ? (
+                      <span
+                        key={index}
+                        className=" text-xs font-semibold text-stone-300 hover:underline phoneX:text-sm sm:text-base md:text-sm xl:text-2xl"
+                      >
+                        {gen}
+                      </span>
+                    ) : (
+                      <span
+                        key={index}
+                        className=" text-xs font-semibold text-stone-300 hover:underline phoneX:text-sm sm:text-base md:text-sm xl:text-2xl"
+                      >
+                        {gen},
+                      </span>
+                    )
+                  )}
+                </div>
               </div>
-              <div
-                className={` relative  ${
-                  toggleText
-                    ? "h-[1rem] overflow-y-scroll no-scrollbar flex gap-1 sm:h-[1.75rem]"
-                    : " min-h-[5rem] max-h-[5rem] flex flex-col overflow-y-scroll no-scrollbar sm:min-h-[5rem] xl:min-h-[7rem]"
-                } transition-all duration-200 ease-linear`}
-              >
-                <p
-                  className=" text-xs relative top-0 bottom-0 cursor-pointer phoneX:text-sm sm:text-lg md:text-sm xl:text-base"
-                  dangerouslySetInnerHTML={{
-                    __html: toggleText
-                      ? `${textSTring} ...`
-                      : `${description} `,
-                  }}
-                  onClick={() => setToggleText(!toggleText)}
-                />
-                <p
-                  className=" text-stone-400 text-xs text-right cursor-pointer phoneX:text-sm sm:text-lg md:text-sm xl:text-base"
-                  onClick={() => setToggleText(!toggleText)}
-                >
-                  {toggleText ? "more" : ""}
-                </p>
-              </div>
+
               <div className=" flex items-center gap-2 mt-1 phoneX:mt-2 md:mt-1">
-                <Button>
-                  <FaPlay className="  h-full" />
-                  <p className=" text-sm text-center h-full flex items-center justify-center xl:text-lg xl:relative top-[-2px]">
-                    Play
-                  </p>
-                </Button>
+                <Link to={`detail/${id}`}>
+                  <Button>
+                    <FaPlay className="  h-full" />
+                  </Button>
+                </Link>
                 <Button variant={"secondaryColor"}>
                   <MdOutlinePlaylistAdd className="  h-full text-2xl" />
                 </Button>
-                <Button variant={"thirdColor"}>
-                  <IoAlertCircle className=" h-full text-2xl" />
-                </Button>
+                <DialogDetail
+                  icon={IoAlertCircle}
+                  description={description!}
+                  title={title}
+                />
               </div>
             </div>
           </div>
