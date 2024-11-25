@@ -25,12 +25,30 @@ const DialogCollection = (props: DialogType) => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle className=" font-bold">Service</AlertDialogTitle>
+          <AlertDialogTitle className=" font-bold">
+            Choose the plan that’s right for you
+          </AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability
+            subject to your internet service and device capabilities. Not all
+            content is available in all resolutions. See our Terms of Use for
+            more details.
+          </AlertDialogDescription>
+          <AlertDialogDescription>
+            Only people who live with you may use your account. Watch on 4
+            different devices at the same time with Premium, 2 with Standard,
+            and 1 with Basic and Mobile.
           </AlertDialogDescription>
         </AlertDialogHeader>
+
+        <div className=" grid grid-cols-4 gap-1">
+          <AlertDialogAction className=" price">Mobile</AlertDialogAction>
+          <AlertDialogAction className=" price">Basic</AlertDialogAction>
+          <AlertDialogAction className=" price">Standard</AlertDialogAction>
+          <AlertDialogAction className=" price">Primium</AlertDialogAction>
+        </div>
+
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction>Continue</AlertDialogAction>
