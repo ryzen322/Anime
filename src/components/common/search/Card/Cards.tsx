@@ -48,7 +48,7 @@ const Cards = (props: CardsTypeExtend) => {
           <ActionComponent
             icon={FaBookmark}
             itemExist={checkAvailability(collection, "bookmarks")}
-            text="Bookmarks"
+            text="Bookmarks "
             actionFunction={() =>
               addFavorites({ ...props, collectionType: "bookmarks" })
             }
@@ -62,7 +62,7 @@ const Cards = (props: CardsTypeExtend) => {
           <ActionComponent
             icon={IoIosTimer}
             itemExist={checkAvailability(collection, "watch later")}
-            text="Watch Later"
+            text="Watch"
             actionFunction={() =>
               addFavorites({ ...props, collectionType: "watch later" })
             }

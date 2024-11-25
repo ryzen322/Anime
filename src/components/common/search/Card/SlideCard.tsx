@@ -1,7 +1,8 @@
 import { forwardRef } from "react";
 import Image from "../Image";
 import { FaBookmark, FaPlay } from "react-icons/fa";
-import { MdOutlineFavorite, MdOutlinePlaylistAdd } from "react-icons/md";
+import { MdOutlineFavorite } from "react-icons/md";
+import { IoMdPricetag } from "react-icons/io";
 import { IoAlertCircle } from "react-icons/io5";
 import { Button } from "../../../Button";
 import { Link } from "react-router-dom";
@@ -120,7 +121,7 @@ const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
               <ActionComponent
                 icon={IoIosTimer}
                 itemExist={checkAvailability(collection, "watch later")}
-                text="Watch Later"
+                text="Watch"
                 actionFunction={() =>
                   addFavorites({ ...props, collectionType: "watch later" })
                 }
@@ -171,7 +172,7 @@ const SlideCard = forwardRef<HTMLLIElement, ListItemProps>(
                     <FaPlay className="  h-full" />
                   </Button>
                 </Link>
-                <DialogCollection icon={MdOutlinePlaylistAdd} />
+                <DialogCollection icon={IoMdPricetag} />
                 <DialogDetail
                   icon={IoAlertCircle}
                   description={description!}

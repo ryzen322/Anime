@@ -46,14 +46,14 @@ const ActionComponent = (props: Actions) => {
           />
 
           <div
-            className={`  absolute h-8 w-12 bg-black/80 rounded-sm flex items-center justify-center right-[2.5rem] opacity-0 group-hover/item:opacity-100 ${
+            className={`  absolute h-8 px-2 bg-black/80 rounded-sm flex items-center justify-center right-[2.5rem] opacity-0 group-hover/item:opacity-100 ${
               type === "slide"
                 ? " phoneX:h-12 phoneX:w-32 phoneX:right-[3.5rem] "
                 : ""
             }`}
           >
             <h1
-              className={` text-white text-sm font-semibold ${
+              className={` text-white text-sm font-semibold text-center ${
                 type === "slide" ? " phoneX:text-base" : ""
               }`}
             >

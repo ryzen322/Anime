@@ -21,7 +21,7 @@ const DialogCollection = (props: DialogType) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger className=" flex items-center justify-center bg-[#7E8183] text-white hover:bg-[#7E8183]/75 rounded-sm px-[1.5rem] phoneX:text-lg h-[2rem] xl:h-[2.75rem] xl:text-2xl">
-        {<Icon className=" h-full text-2xl" />}
+        {<Icon className=" h-full text-2xl text-black" />}
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
