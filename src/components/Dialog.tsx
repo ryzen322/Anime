@@ -22,6 +22,7 @@ interface Actions {
   action: () => void;
   actionRemove: () => void;
   text: string;
+  type?: "artist" | "slide";
 }
 
 const Dialog = (props: Actions) => {
@@ -34,6 +35,7 @@ const Dialog = (props: Actions) => {
     anime,
     actionRemove,
     text,
+    type,
   } = props;
 
   const { isSignedIn } = useUser();
@@ -44,7 +46,7 @@ const Dialog = (props: Actions) => {
         <Icon
           className={` text-xl   ${
             itemExist ? " text-green-500" : "text-white"
-          }`}
+          } ${type === "slide" ? " phoneX:text-3xl" : " "}`}
         />
       </AlertDialogTrigger>
       <AlertDialogContent>

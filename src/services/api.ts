@@ -10,28 +10,6 @@ import {
 } from "../types";
 import { instance } from "./instance";
 
-export const popularAnime = async () => {
-  try {
-    const { data }: { data: unknown } = await instance.get(
-      "meta/anilist/popular",
-      {
-        params: { page: 1, perPage: 6 },
-      }
-    );
-
- 
-    const validatedAnime = popularAnimeSchema.safeParse(data);
-
-    if (!validatedAnime.success) {
-      throw new Error(`${validatedAnime.error}`);
-    }
-    return validatedAnime.data;
-  } catch (error) {
-    const { data } = ErrorSchema.safeParse(error);
-
-    throw new Error(`${data?.message} code:${data?.code}`);
-  }
-};
 
 export const searchAnime = async (search: string | undefined) => {
   try {

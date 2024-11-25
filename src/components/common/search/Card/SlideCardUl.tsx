@@ -65,15 +65,19 @@ const SlideCardUl = ({ item }: { item: AnimeObj[] | undefined }) => {
           <SlideCard
             ref={intervalRef}
             key={data.id}
-            src={data.image ? data.image : ""}
+            image={data.image ? data.image : ""}
             description={data.description}
             coverImage={data.cover}
             active={index === viewScroll ? true : false}
-            genre={data.genres}
+            genres={data.genres}
             rating={data.rating}
             title={data.title.english ?? data.title.userPreferred}
             stopScrolling={setStopScroll}
             id={data.id}
+            collection={data.collection}
+            duration={data.duration}
+            total_episode={data.totalEpisodes}
+            type={data.type}
           />
         ))}
       </ul>
