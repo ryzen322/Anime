@@ -63,11 +63,11 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
         <h1 className=" text-white text-xs font-semibold">
           {!user ? "Sign in to Watch HD" : "Enjoy You're Full HD"}
         </h1>
-        <div className=" py-1 px-1 text-black bg-stone-100 font-bold w-[25%] text-sm rounded-sm flex items-center justify-center cursor-pointer hover:bg-stone-300">
+        <div className=" py-1 px-1 text-black  font-bold w-[25%] text-sm rounded-sm flex items-center justify-center cursor-pointer ">
           {!user ? (
             <SignInButton>
               <button
-                className=" "
+                className=" price rounded-sm text-white p-3"
                 onClick={() => {
                   changePlayer("anime");
                   changeEpisode(activeEp);
@@ -78,7 +78,9 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
               </button>
             </SignInButton>
           ) : (
-            <p className=" text-center font-bold text-xs">1080p60</p>
+            <p className=" text-center font-bold text-xs price rounded-sm text-white p-3">
+              1080p60
+            </p>
           )}
         </div>
       </div>
@@ -99,7 +101,7 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
             {activeEp}
           </p>
           <button
-            className=" bg-white text-black flex items-center justify-center rounded-md px-7 py-1 font-bold text-sm mt-2 cursor-pointer"
+            className=" bg-white text-white flex items-center justify-center rounded-md px-7 py-1 font-bold text-sm mt-2 cursor-pointer price"
             onClick={() => {
               changePlayer("anime");
               changeEpisode(activeEp);

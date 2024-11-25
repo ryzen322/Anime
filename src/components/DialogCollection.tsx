@@ -42,11 +42,23 @@ const DialogCollection = (props: DialogType) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
 
-        <div className=" grid grid-cols-4 gap-1">
-          <AlertDialogAction className=" price">Mobile</AlertDialogAction>
-          <AlertDialogAction className=" price">Basic</AlertDialogAction>
-          <AlertDialogAction className=" price">Standard</AlertDialogAction>
-          <AlertDialogAction className=" price">Primium</AlertDialogAction>
+        <div className=" grid grid-cols-2 gap-2">
+          <AlertDialogAction className=" price rounded-sm text-white font-semibold py-2 cursor-pointer">
+            <p>Mobile</p>
+            <p>480p</p>
+          </AlertDialogAction>
+          <AlertDialogAction className=" price rounded-sm text-white font-semibold py-2 cursor-pointer">
+            <p>Basic</p>
+            <p>720p</p>
+          </AlertDialogAction>
+          <AlertDialogAction className=" price rounded-sm text-white font-semibold py-2 cursor-pointer">
+            <p>Mobile</p>
+            <p>1080p</p>
+          </AlertDialogAction>
+          <AlertDialogAction className=" price rounded-sm text-white font-semibold py-2 cursor-pointer">
+            <p>Basic</p>
+            <p>4K + HDR</p>
+          </AlertDialogAction>
         </div>
 
         <AlertDialogFooter>
