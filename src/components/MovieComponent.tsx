@@ -54,17 +54,11 @@ const MovieComponent = ({ resolution, thumbnail }: PlayerType) => {
               </span>
             </p>
             <div className=" flex flex-col items-center gap-2 w-full mt-3 ">
-              <button
-                disabled
+              <Link
+                to={""}
                 className=" bg-[#212125] py-2  rounded-md text-stone-400 cursor-not-allowed  px-2 text-sm"
               >
-                Continue
-              </button>
-              <Link
-                to={"/"}
-                className=" border py-2  rounded-md text-stone-400 cursor-pointer flex items-center justify-center hover:bg-stone-500 transition-all duration-200 px-2 text-sm"
-              >
-                Home
+                Back To home
               </Link>
             </div>
           </div>
