@@ -15,6 +15,10 @@ const Article = ({ animeProps }: { animeProps: listAnime }) => {
     // cacheTime: 10 * 60 * 1000, // Keep cached data for 10 minutes
   });
 
+  const loading = isLoading && <LoadingCardUI />;
+  const loadingWithError = !isLoading && error && <LoadingCardUI />;
+  const item = !isLoading && !error && <Card listAnime={data!} />;
+
   return (
     <article className=" w-full  mb-4 px-1 flex flex-col gap-3 mt-6">
       <div className=" flex items-center gap-2 hover:gap-4 transition-all duration-200 ease-in-out">
@@ -26,9 +30,9 @@ const Article = ({ animeProps }: { animeProps: listAnime }) => {
         </Link>
         <MdOutlineNavigateNext className=" text-white text-4xl font-bold" />
       </div>
-      {isLoading && <LoadingCardUI />}
-      {!isLoading && error && <LoadingCardUI />}
-      {!isLoading && !error && <Card listAnime={data!} />}
+      {loading}
+      {loadingWithError}
+      {item}
     </article>
   );
 };

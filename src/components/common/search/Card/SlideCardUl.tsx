@@ -1,15 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import SlideCardAction from "./SlideCardAction";
 
-import { popularAnimeType } from "../../../../types";
+import { AnimeObj } from "../../../../types";
 import SlideCard from "./SlideCard";
+import { useGetAllList } from "@/server/service";
+import { existingItem } from "@/utils";
 
-const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
+const SlideCardUl = ({ item }: { item: AnimeObj[] | undefined }) => {
   const [viewScroll, setViewScroll] = useState(0);
   const [stopScroll, setStopScroll] = useState(true);
   const [increment, setIncrement] = useState(true);
   const intervalRef = useRef<HTMLLIElement | null>(null);
   const refEl = useRef<HTMLUListElement | null>(null);
+
+  const { data } = useGetAllList();
+
+  const value = existingItem(item!, data!);
 
   useEffect(() => {
     if (refEl) {
@@ -55,7 +61,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
         className=" w-full  flex items-center rounded-md overflow-hidden relative transition-all duration-200 ease-in-out"
         id={"parent"}
       >
-        {item?.results?.map((data, index) => (
+        {value.map((data, index) => (
           <SlideCard
             ref={intervalRef}
             key={data.id}
@@ -73,7 +79,7 @@ const SlideCardUl = ({ item }: { item: popularAnimeType }) => {
       </ul>
 
       <ul className=" flex items-center justify-center  gap-2 md:flex-col md:gap-1">
-        {item?.results?.map((data, index) => (
+        {value.map((data, index) => (
           <SlideCardAction
             key={data.id}
             current={index}
