@@ -6,9 +6,12 @@ import Episodes from "./Series/Episodes";
 import { ContextEpisode } from "./store/store";
 import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
+import { FaPlay } from "react-icons/fa";
+import { activeEpisode } from "@/utils/activeEpisode";
 
 export const ArticleDetailCards = (props: DetailAnimeObj) => {
-  const { playerState, checkPlayerError } = useContext(ContextEpisode);
+  const { playerState, checkPlayerError, changePlayer, changeEpisode } =
+    useContext(ContextEpisode);
   const { user } = useUser();
 
   const navigate = useNavigate();
@@ -29,18 +32,34 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
   const parental = isAdult ? "18plus" : "13+";
   const licensed = isLicensed ? "Licensed" : "Pirated";
 
+  const activeEp = activeEpisode({
+    activeEp: currentEpisode ? currentEpisode + "" : episodes?.length + "",
+    episodes,
+  });
+
   return (
     <article className=" flex flex-col h-full gap-4 w-full">
       {playerState === "anime" && (
         <Episodes className=" hidden md:block" episodes={episodes!} />
       )}
 
-      <article className=" h-[500px] w-full mb-auto rounded-md overflow-hidden relative cursor-pointer group md:h-[400px] lg:h-[500px]">
+      <article
+        className=" h-[500px] w-full mb-auto rounded-md overflow-hidden relative cursor-pointer group md:h-[400px] lg:h-[500px]"
+        onClick={() => {
+          changePlayer("anime");
+          changeEpisode(activeEp);
+          changeEpisode(activeEp);
+        }}
+      >
         <Image
           src={`${image}`}
-          className=" w-full h-full object-cover relative group-hover:scale-110 transition-all duration-200 ease-in-out"
+          className=" w-full h-full object-cover relative group-hover:scale-110 transition-all duration-200 ease-in"
         />
-        <div className=" absolute w-full h-full top-0 left-0 bg-gradient-to-b from-black/10 to-black/65 flex items-center justify-center "></div>
+        <div className=" absolute w-full h-full top-0 left-0 bg-gradient-to-b from-black/10 to-black/65 flex items-center justify-center ">
+          <div className=" w-16 h-16 rounded-full bg-black flex items-center justify-center pl-1 opacity-0 transition-all duration-200 ease-in group-hover:opacity-100">
+            <FaPlay className=" text-3xl text-white" />
+          </div>
+        </div>
       </article>
 
       <article className=" w-full h-[119px] border border-stone-400/50 rounded-md p-4 flex items-center gap-4 hover:border-white">

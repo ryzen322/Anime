@@ -51,7 +51,7 @@ const Episodes = ({
             key={item.id}
             className={` rounded-md ${
               item.id === episode
-                ? "bg-stone-400 text-black"
+                ? "price text-white"
                 : "bg-stone-700/85 text-stone-300"
             }  h-[3rem]  shadow-md cursor-pointer flex items-center justify-center flex-col flex-wrap  font-semibold `}
             onClick={() => changeEpisode(item.id)}
