@@ -42,6 +42,27 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
       {playerState === "anime" && (
         <Episodes className=" hidden md:block" episodes={episodes!} />
       )}
+      <div className="flex flex-col items-center gap-1 ">
+        <div className=" py-1 px-1 text-black  font-bold text-sm rounded-sm flex items-center justify-center cursor-pointer w-full">
+          {!user ? (
+            <button
+              className=" price rounded-sm text-white p-3 w-full"
+              onClick={() => {
+                navigate("/sign-in");
+                checkPlayerError(null);
+              }}
+            >
+              Sign in To Watch HD
+            </button>
+          ) : (
+            <div className="  font-bold flex flex-col justify-center  premium rounded-sm text-white p-3 w-full">
+              <p>You are Watching</p>
+              <p>Premium</p>
+              <p>4K + HDR</p>
+            </div>
+          )}
+        </div>
+      </div>
 
       <article
         className=" h-[500px] w-full mb-auto rounded-md overflow-hidden relative cursor-pointer group md:h-[400px] lg:h-[500px]"
@@ -83,25 +104,6 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
           </div>
         </div>
       </article>
-      <div className="flex flex-col items-center gap-1 ">
-        <div className=" py-1 px-1 text-black  font-bold text-sm rounded-sm flex items-center justify-center cursor-pointer w-full">
-          {!user ? (
-            <button
-              className=" price rounded-sm text-white p-3 w-full"
-              onClick={() => {
-                navigate("/sign-in");
-                checkPlayerError(null);
-              }}
-            >
-              Sign in To Watch HD
-            </button>
-          ) : (
-            <p className=" text-center font-bold text-xs price rounded-sm text-white p-3">
-              1080p60
-            </p>
-          )}
-        </div>
-      </div>
 
       <article className=" w-full h-[26px] flex items-center justify-center">
         <button className=" text-stone-200 bg-[#333337] px-2 font-semibold rounded-md">

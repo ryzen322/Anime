@@ -21,7 +21,7 @@ const MovieComponent = ({ resolution, thumbnail }: PlayerType) => {
   });
 
   return (
-    <div className=" w-full h-full ">
+    <div className=" w-full h-full">
       {!playerError ? (
         <Player
           children=""
@@ -39,24 +39,26 @@ const MovieComponent = ({ resolution, thumbnail }: PlayerType) => {
         />
       ) : (
         <div className=" w-full h-full p-1">
-          <div className=" flex flex-col items-center justify-center text-white font-semibold">
+          <div className=" flex flex-col items-center justify-center text-white font-semibold  w-full h-full ">
             <MdOutlineErrorOutline
-              className=" text-white text-4xl
+              className=" text-white text-4xl lg:text-8xl
       "
             />
-            <h1 className=" text-lg font-bold">We're apologize</h1>
-            <h1 className=" text-lg font-bold">Video Not Found</h1>
-            <p className=" mt-3 text-xs text-center">{playerError}</p>
-            <p className=" text-sm font-semibold flex gap-1 mt-1">
+            <h1 className=" text-lg font-bold lg:text-2xl">We're apologize</h1>
+            <h1 className=" text-lg font-bold  lg:text-2xl">Video Not Found</h1>
+            <p className=" mt-3 text-xs text-center lg:text-lg">
+              {playerError}
+            </p>
+            <p className=" text-sm font-semibold flex items-center gap-1 mt-1 ">
               <span className=" text-stone-400">View Our</span>
               <span className=" underline text-blue-400 text-xs">
-                privacy policy
+                Privacy Policy
               </span>
             </p>
             <div className=" flex flex-col items-center gap-2 w-full mt-3 ">
               <Link
-                to={""}
-                className=" bg-[#212125] py-2  rounded-md text-stone-400 cursor-not-allowed  px-2 text-sm"
+                to={"/"}
+                className=" bg-[#212125] py-2  rounded-md text-stone-400  cursor-pointer px-2 text-sm"
               >
                 Back To home
               </Link>
