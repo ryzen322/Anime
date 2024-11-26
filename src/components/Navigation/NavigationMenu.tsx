@@ -36,9 +36,7 @@ const NavigationMenu = ({
       <div className=" w-full flex flex-col gap-1 px-6 text-white">
         {!user ? (
           <SignInButton>
-            <button className=" w-full py-2 rounded-md bg-stone-800">
-              Sign In
-            </button>
+            <button className=" w-full py-2 rounded-md price">Sign In</button>
           </SignInButton>
         ) : (
           <>

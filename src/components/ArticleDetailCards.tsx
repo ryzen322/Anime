@@ -4,9 +4,14 @@ import { SecondaryButton } from "./SecondaryButton";
 import { useContext } from "react";
 import Episodes from "./Series/Episodes";
 import { ContextEpisode } from "./store/store";
+import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
 
 export const ArticleDetailCards = (props: DetailAnimeObj) => {
-  const { playerState } = useContext(ContextEpisode);
+  const { playerState, checkPlayerError } = useContext(ContextEpisode);
+  const { user } = useUser();
+
+  const navigate = useNavigate();
 
   const {
     image,
@@ -59,6 +64,25 @@ export const ArticleDetailCards = (props: DetailAnimeObj) => {
           </div>
         </div>
       </article>
+      <div className="flex flex-col items-center gap-1 ">
+        <div className=" py-1 px-1 text-black  font-bold text-sm rounded-sm flex items-center justify-center cursor-pointer w-full">
+          {!user ? (
+            <button
+              className=" price rounded-sm text-white p-3 w-full"
+              onClick={() => {
+                navigate("/sign-in");
+                checkPlayerError(null);
+              }}
+            >
+              Sign in To Watch HD
+            </button>
+          ) : (
+            <p className=" text-center font-bold text-xs price rounded-sm text-white p-3">
+              1080p60
+            </p>
+          )}
+        </div>
+      </div>
 
       <article className=" w-full h-[26px] flex items-center justify-center">
         <button className=" text-stone-200 bg-[#333337] px-2 font-semibold rounded-md">

@@ -11,17 +11,14 @@ import { ContextEpisode } from "./store/store";
 import { activeEpisode } from "../utils/activeEpisode";
 import { useUser } from "@clerk/clerk-react";
 import MovieComponent from "./MovieComponent";
-import { useNavigate } from "react-router-dom";
 
 type Player = "youtube" | "anime";
 
 export const ArticleSubDetail = (props: DetailAnimeObj) => {
   const { user } = useUser();
 
-  const navigate = useNavigate();
-
   const resolution = user ? 3 : 0;
-  const { changeEpisode, playerState, changePlayer, checkPlayerError } =
+  const { changeEpisode, playerState, changePlayer } =
     useContext(ContextEpisode);
 
   const {
@@ -62,28 +59,6 @@ export const ArticleSubDetail = (props: DetailAnimeObj) => {
           />
         )}
       </article>
-      <div className="flex flex-col items-center gap-1">
-        <h1 className=" text-white text-xs font-semibold">
-          {!user ? "Sign in to Watch HD" : "Enjoy You're Full HD"}
-        </h1>
-        <div className=" py-1 px-1 text-black  font-bold w-[25%] text-sm rounded-sm flex items-center justify-center cursor-pointer ">
-          {!user ? (
-            <button
-              className=" price rounded-sm text-white p-3"
-              onClick={() => {
-                navigate("/sign-in");
-                checkPlayerError(null);
-              }}
-            >
-              Sign to Watch HD
-            </button>
-          ) : (
-            <p className=" text-center font-bold text-xs price rounded-sm text-white p-3">
-              1080p60
-            </p>
-          )}
-        </div>
-      </div>
 
       {playerState === "anime" && (
         <Episodes className="  md:hidden" episodes={episodes!} />
